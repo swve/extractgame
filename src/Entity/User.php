@@ -37,12 +37,12 @@ class User
     private $avatar_img;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="array", nullable=true)
      */
-    private $rank;
+    private $roles = [];
 
     /**
-     * @ORM\Column(type="integer" ,  nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $games_played;
 
@@ -104,14 +104,14 @@ class User
         return $this;
     }
 
-    public function getRank(): ?int
+    public function getRoles(): ?array
     {
-        return $this->rank;
+        return $this->roles;
     }
 
-    public function setRank(int $rank): self
+    public function setRoles(?array $roles): self
     {
-        $this->rank = $rank;
+        $this->roles = $roles;
 
         return $this;
     }
@@ -121,7 +121,7 @@ class User
         return $this->games_played;
     }
 
-    public function setGamesPlayed(int $games_played): self
+    public function setGamesPlayed(?int $games_played): self
     {
         $this->games_played = $games_played;
 
