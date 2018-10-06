@@ -14,11 +14,11 @@
     <br>
     <h1>Extract : Login </h1>
     <br><br>
-    <form action="" method="post">
+    <form action="{{ path('security_login') }}" method="post">
         <div class="form-group">
 
-            <input type="text" name="" id="" class="form-control" placeholder="Username" aria-describedby="helpId"><br>
-            <input type="password" name="" id="" class="form-control" placeholder="Password" aria-describedby="helpId"><br>
+            <input type="text" name="_username" id="" class="form-control" placeholder="Username" aria-describedby="helpId"><br>
+            <input type="password" name="_password" id="" class="form-control" placeholder="Password" aria-describedby="helpId"><br>
             <button type="submit" class="btn btn-success">Login</button>
 
         </div>

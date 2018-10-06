@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="container">
+
+
+    <br>
+    <br>
+    <br>
+    <h1>Extract : Registration </h1>
+    <br><br>
+    {{ form_start(form) }}
+   
+
+    <button type="submit">Register!</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

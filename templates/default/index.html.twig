@@ -4,8 +4,17 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .example-wrapper {
+        margin: 1em auto;
+        max-width: 800px;
+        width: 95%;
+        font: 18px/1.5 sans-serif;
+    }
+
+    .example-wrapper code {
+        background: #F5F5F5;
+        padding: 2px 6px;
+    }
 </style>
 
 <div class="container">
@@ -14,7 +23,17 @@
     <br>
     <h1>Welcome in Extract </h1>
     <br><br>
-    <a name="" id="" class="btn btn-success" href="#" role="button">Se connecter</a> 
-    <a name="" id="" class="btn btn-info" href="#" role="button">S'inscrire</a>
+
+    {% if app.user %}
+
+    <p>Bienvenue à toi cher : {{ app.user.username }}</p>
+    <p><a href="{{ path('security_logout') }}">Se déconnecter </a></p>
+    {% endif %}
+
+    {% if not app.user %}
+
+    <a name="" id="" class="btn btn-success" href="{{ path('security_login') }}" role="button">Se connecter</a>
+    <a name="" id="" class="btn btn-info" href="{{ path('security_register') }}" role="button">S'inscrire</a>
+    {% endif %}
 </div>
 {% endblock %}
