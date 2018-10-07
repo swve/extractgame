@@ -21,7 +21,18 @@
     <br>
     <br>
     <br>
-    <h1>Welcome in Extract </h1>
+    <h1>Welcome in Extract  </h1>
+    <br>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>Ceci est une version beta du jeu , quelques fonctionnalités sont encore en développement </strong> 
+    </div>
+    
+    <script>
+      $(".alert").alert();
+    </script>
     <br><br>
 
     {% if app.user %}
