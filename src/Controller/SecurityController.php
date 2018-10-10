@@ -42,7 +42,7 @@ class SecurityController extends AbstractController
      /**
      * @Route("/register", name="security_register")
      */
-    public function register(Request $request , ObjectManager $manager , UserPasswordEncoderInterface $encoder , AuthorizationCheckerInterface $authChecker)
+    public function register(Request $request , ObjectManager $manager , UserPasswordEncoderInterface $encoder , AuthorizationCheckerInterface $authChecker , \Swift_Mailer $mailer)
     {
 
         // Redirection if the user is already registered and logged in
@@ -60,12 +60,32 @@ class SecurityController extends AbstractController
 
             $user->setAvatarImg('nothing');
             $encoded = $encoder->encodePassword($user, $user->getPassword());
+            $plain_password= $user->getPassword() ; 
             $user->setPassword($encoded);
-           
+            $mail_user = $user->getEmail();
+            $username_user = $user->getUsername();
             $manager->persist($user);
             $manager->flush();
 
-            // ... do any other work - like sending them an email, etc
+
+
+            // Sending an Email 
+
+            $message = (new \Swift_Message('Extract | Inscription réussie '))
+            ->setFrom('extract.mission312@gmail.com')
+            ->setTo($mail_user)
+            ->setBody(
+                $this->renderView(
+                    // templates/emails/registration.html.twig
+                    'emails/registration.html.twig',
+                    array('username' => $username_user , 'plain_pass' => $plain_password )
+                ),
+                'text/html'
+            );
+    
+            $mailer->send($message);
+
+
             // maybe set a "flash" success message for the user
 
             return $this->redirectToRoute('security_login');
