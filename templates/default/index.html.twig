@@ -44,7 +44,8 @@
     {% if not app.user %}
 
     <a name="" id="" class="btn btn-success" href="{{ path('security_login') }}" role="button">Se connecter</a>
-    <a name="" id="" class="btn btn-info" href="{{ path('security_register') }}" role="button">S'inscrire</a>
+    <a name="" id="" class="btn btn-info" href="{{ path('security_register') }}" role="button">S'inscrire</a><br><br>
+    <a name="" id=""  href="{{ path('security_reset') }}" role="button">J'ai oublié le mot de passe</a>
     {% endif %}
 </div>
 {% endblock %}

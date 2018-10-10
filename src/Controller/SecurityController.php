@@ -102,4 +102,27 @@ class SecurityController extends AbstractController
     {
         
     }
+
+      /**
+     * @Route("/reset", name="security_reset")
+     */
+    public function reset(Request $request)
+    {
+      
+        $id = $request->get('user_id');
+        $email = $request->get('user_email');
+       
+       // $request->query->get('user_id');
+
+      
+        $this->addFlash('info', "formulaire non disponible");
+      
+
+        return $this->render('security/reset.html.twig', [
+            'user_id' => $id , 'user_email' => $email
+        ]);
+
+       
+        
+    }
 }
