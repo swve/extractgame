@@ -25,12 +25,12 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $email;
+    private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $password;
+    private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -40,7 +40,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="array", nullable=true)
      */
-    private $role = [];
+    private $roles = [];
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -69,18 +69,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
     public function getPassword(): ?string
     {
         return $this->password;
@@ -89,6 +77,18 @@ class User implements UserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }
@@ -105,14 +105,14 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRole(): ?array
+    public function getRoles(): ?array
     {
-        return $this->role;
+        return $this->roles;
     }
 
-    public function setRole(?array $role): self
+    public function setRoles(?array $roles): self
     {
-        $this->role = $role;
+        $this->roles = $roles;
 
         return $this;
     }
@@ -141,10 +141,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRoles(){
-        return ['ROLE_USER'];
-    }
     public function getSalt(){}
     public function eraseCredentials(){}
 
-}
+    }

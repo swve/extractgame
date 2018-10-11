@@ -1,4 +1,5 @@
 security:
+    access_denied_url: /
     encoders:
         App\Entity\User:
             algorithm: bcrypt
@@ -36,5 +37,5 @@ security:
     access_control:
 
         - { path: ^/home, roles: ROLE_USER }
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
