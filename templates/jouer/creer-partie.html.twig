@@ -1,0 +1,32 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <form action="{{ path('creer-partie') }}" method="post">
+        <div>
+            <label>Joueur 1</label>
+            <select name="joueur1">
+                {% for joueur in joueurs %}
+                <option value="{{ joueur.id }}">{{ joueur.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label>Joueur 2</label>
+            <select name="joueur2">
+                {% for joueur in joueurs %}
+                    <option value="{{ joueur.id }}">{{ joueur.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="Créer Partie">
+        </div>
+    </form>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
