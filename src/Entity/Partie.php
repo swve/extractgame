@@ -27,13 +27,12 @@ class Partie
     private $status;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="json_array")
      */
     private $terrain;
 
-
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="json_array")
      */
     private $pioche;
 
@@ -48,12 +47,12 @@ class Partie
     private $defausse;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="json_array")
      */
     private $main_j1;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="json_array")
      */
     private $main_j2;
 
@@ -68,22 +67,22 @@ class Partie
     private $joueur2;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="json_array")
      */
     private $chameaux_j1;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="json_array")
      */
     private $chameaux_j2;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="json_array")
      */
     private $jetons_j1;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="json_array")
      */
     private $jetons_j2;
 
@@ -103,7 +102,7 @@ class Partie
     private $point_j2;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="json_array")
      */
     private $jetons_terrain;
 
