@@ -18,9 +18,9 @@ hr {
 }
 
 #welcome {
-    margin-top: 25vh;
+    margin-top: 28vh;
     img {
-        height:7.5rem;
+        height:13rem;
     }
 }
 
@@ -32,14 +32,16 @@ hr {
         border: white 2px solid;
         font-size: 2.3rem;
         color:white;
+        font-family: 'Roboto', sans-serif!important;
+        transform:0.5s;
         :visited {
             color: white;
         }
-        :hover {
-            text-decoration: none;
-            color: white;
+    }a:hover {
+        text-decoration: none;
+        color: white;
+        transform: scale(1.5)!important;
 
-        }
     }
 }
 
@@ -74,4 +76,10 @@ hr {
 
 #news video {
     width: 100%;
+}
+
+@media (max-width: 900px) {
+    div {
+        background-color: purple;
+    }
 }

@@ -25,11 +25,11 @@ hr {
 
 /* line 20, ../sass/_header.scss */
 #welcome {
-  margin-top: 25vh;
+  margin-top: 28vh;
 }
 /* line 22, ../sass/_header.scss */
 #welcome img {
-  height: 7.5rem;
+  height: 13rem;
 }
 
 /* line 27, ../sass/_header.scss */
@@ -43,33 +43,36 @@ hr {
   border: white 2px solid;
   font-size: 2.3rem;
   color: white;
+  font-family: "Roboto", sans-serif !important;
+  transform: 0.5s;
 }
-/* line 35, ../sass/_header.scss */
+/* line 37, ../sass/_header.scss */
 #bouton a :visited {
   color: white;
 }
-/* line 38, ../sass/_header.scss */
-#bouton a :hover {
+/* line 40, ../sass/_header.scss */
+#bouton a:hover {
   text-decoration: none;
   color: white;
+  transform: scale(1.5) !important;
 }
 
-/* line 46, ../sass/_header.scss */
+/* line 48, ../sass/_header.scss */
 #indication {
   margin-top: 22vh;
   margin-bottom: 3vh;
   font-size: 0.8rem;
 }
-/* line 50, ../sass/_header.scss */
+/* line 52, ../sass/_header.scss */
 #indication p {
   margin: 0;
 }
-/* line 53, ../sass/_header.scss */
+/* line 55, ../sass/_header.scss */
 #indication img {
   max-height: 25px;
 }
 
-/* line 58, ../sass/_header.scss */
+/* line 60, ../sass/_header.scss */
 #intro {
   min-width: 100%;
   min-height: 100vh;
@@ -78,18 +81,25 @@ hr {
   background-size: cover;
 }
 
-/* line 66, ../sass/_header.scss */
+/* line 68, ../sass/_header.scss */
 #intro video {
   object-fit: cover;
   filter: brightness(50%);
 }
 
-/* line 71, ../sass/_header.scss */
+/* line 73, ../sass/_header.scss */
 #titre {
   margin-bottom: 20px;
 }
 
-/* line 75, ../sass/_header.scss */
+/* line 77, ../sass/_header.scss */
 #news video {
   width: 100%;
+}
+
+@media (max-width: 900px) {
+  /* line 82, ../sass/_header.scss */
+  div {
+    background-color: purple;
+  }
 }
