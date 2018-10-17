@@ -1,0 +1,95 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+@font-face {
+  font-family: "Leixo";
+  src: url("../img/LEIXO-DEMO.ttf") format("truetype");
+}
+/* line 6, ../sass/_header.scss */
+body {
+  margin: 0 auto;
+}
+
+/* line 10, ../sass/_header.scss */
+.main {
+  max-width: 100%;
+  width: 1600px;
+  margin: 0 auto;
+}
+
+/* line 16, ../sass/_header.scss */
+hr {
+  width: 50%;
+}
+
+/* line 20, ../sass/_header.scss */
+#welcome {
+  margin-top: 25vh;
+}
+/* line 22, ../sass/_header.scss */
+#welcome img {
+  height: 7.5rem;
+}
+
+/* line 27, ../sass/_header.scss */
+#bouton {
+  margin-top: 20vh;
+}
+/* line 29, ../sass/_header.scss */
+#bouton a {
+  padding: 10px 50px;
+  border-radius: 50px;
+  border: white 2px solid;
+  font-size: 2.3rem;
+  color: white;
+}
+/* line 35, ../sass/_header.scss */
+#bouton a :visited {
+  color: white;
+}
+/* line 38, ../sass/_header.scss */
+#bouton a :hover {
+  text-decoration: none;
+  color: white;
+}
+
+/* line 46, ../sass/_header.scss */
+#indication {
+  margin-top: 22vh;
+  margin-bottom: 3vh;
+  font-size: 0.8rem;
+}
+/* line 50, ../sass/_header.scss */
+#indication p {
+  margin: 0;
+}
+/* line 53, ../sass/_header.scss */
+#indication img {
+  max-height: 25px;
+}
+
+/* line 58, ../sass/_header.scss */
+#intro {
+  min-width: 100%;
+  min-height: 100vh;
+  background-position: center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+/* line 66, ../sass/_header.scss */
+#intro video {
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+/* line 71, ../sass/_header.scss */
+#titre {
+  margin-bottom: 20px;
+}
+
+/* line 75, ../sass/_header.scss */
+#news video {
+  width: 100%;
+}
