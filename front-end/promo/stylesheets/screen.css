@@ -1,0 +1,298 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+@font-face {
+  font-family: "Leixo";
+  src: url("../img/LEIXO-DEMO.ttf") format("truetype");
+}
+/* line 6, ../sass/_header.scss */
+body {
+  margin: 0 auto;
+}
+
+/* line 10, ../sass/_header.scss */
+.main {
+  max-width: 100%;
+  width: 1600px;
+  margin: 0 auto;
+}
+
+/* line 16, ../sass/_header.scss */
+hr {
+  width: 50%;
+}
+
+/* line 20, ../sass/_header.scss */
+#welcome {
+  margin-top: 25vh;
+}
+/* line 22, ../sass/_header.scss */
+#welcome img {
+  height: 7.5rem;
+}
+
+/* line 27, ../sass/_header.scss */
+#bouton {
+  margin-top: 20vh;
+}
+/* line 29, ../sass/_header.scss */
+#bouton a {
+  padding: 10px 50px;
+  border-radius: 50px;
+  border: white 2px solid;
+  font-size: 2.3rem;
+  color: white;
+}
+/* line 35, ../sass/_header.scss */
+#bouton a :visited {
+  color: white;
+}
+/* line 38, ../sass/_header.scss */
+#bouton a :hover {
+  text-decoration: none;
+  color: white;
+}
+
+/* line 46, ../sass/_header.scss */
+#indication {
+  margin-top: 22vh;
+  margin-bottom: 3vh;
+  font-size: 0.8rem;
+}
+/* line 50, ../sass/_header.scss */
+#indication p {
+  margin: 0;
+}
+/* line 53, ../sass/_header.scss */
+#indication img {
+  max-height: 25px;
+}
+
+/* line 58, ../sass/_header.scss */
+#intro {
+  min-width: 100%;
+  min-height: 100vh;
+  background-position: center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+/* line 66, ../sass/_header.scss */
+#intro video {
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+/* line 71, ../sass/_header.scss */
+#titre {
+  margin-bottom: 20px;
+}
+
+/* line 75, ../sass/_header.scss */
+#news video {
+  width: 100%;
+}
+
+/* line 79, ../sass/_header.scss */
+#contact {
+  background-image: url(img/fond-form.png);
+  background-position: center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  color: #fff;
+}
+
+/* line 88, ../sass/_header.scss */
+.row h2 {
+  font-family: 'LEIXO-DEMO', sans-serif;
+}
+
+/* /!\ You need to add vendor prefixes in order to render the CSS properly (or simply use http://leaverou.github.io/prefixfree/) /!\ */
+/* line 1, ../sass/_3D.scss */
+#tridiv {
+  perspective: 800px;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  font-size: 325%;
+}
+
+/* line 10, ../sass/_3D.scss */
+.face {
+  box-shadow: inset 0 0 0 1px black;
+}
+
+/* line 13, ../sass/_3D.scss */
+.scene, .shape, .face, .face-wrapper, .cr {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+/* line 17, ../sass/_3D.scss */
+.scene {
+  width: 80em;
+  height: 80em;
+  top: 50%;
+  left: 50%;
+  margin: -40em 0 0 -40em;
+}
+
+/* line 24, ../sass/_3D.scss */
+.shape {
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-origin: 50%;
+}
+
+/* line 31, ../sass/_3D.scss */
+.face, .face-wrapper {
+  overflow: hidden;
+  transform-origin: 0 0;
+  backface-visibility: hidden;
+  /* hidden by default, prevent blinking and other weird rendering glitchs */
+}
+
+/* line 37, ../sass/_3D.scss */
+.face {
+  background-size: 100% 100% !important;
+  background-position: center;
+}
+
+/* line 41, ../sass/_3D.scss */
+.face-wrapper .face {
+  left: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 46, ../sass/_3D.scss */
+.photon-shader {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 53, ../sass/_3D.scss */
+.side {
+  left: 50%;
+}
+
+/* line 56, ../sass/_3D.scss */
+.cr, .cr .side {
+  height: 100%;
+}
+
+/* line 59, ../sass/_3D.scss */
+[class*="cuboid"] .ft, [class*="cuboid"] .bk {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 63, ../sass/_3D.scss */
+[class*="cuboid"] .bk {
+  left: 100%;
+}
+
+/* line 66, ../sass/_3D.scss */
+[class*="cuboid"] .rt {
+  transform: rotateY(-90deg) translateX(-50%);
+}
+
+/* line 69, ../sass/_3D.scss */
+[class*="cuboid"] .lt {
+  transform: rotateY(90deg) translateX(-50%);
+}
+
+/* line 72, ../sass/_3D.scss */
+[class*="cuboid"] .tp {
+  transform: rotateX(90deg) translateY(-50%);
+}
+
+/* line 75, ../sass/_3D.scss */
+[class*="cuboid"] .bm {
+  transform: rotateX(-90deg) translateY(-50%);
+}
+
+/* line 78, ../sass/_3D.scss */
+[class*="cuboid"] .lt {
+  left: 100%;
+}
+
+/* line 81, ../sass/_3D.scss */
+[class*="cuboid"] .bm {
+  top: 100%;
+}
+
+/* .cub-1 styles */
+/* line 85, ../sass/_3D.scss */
+.cub-1 {
+  transform: translate3D(0em, -0.1875em, 0em) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  opacity: 1;
+  width: 4.625em;
+  height: 7.625em;
+  margin: -3.8125em 0 0 -2.3125em;
+}
+
+/* line 92, ../sass/_3D.scss */
+.cub-1 .ft {
+  transform: translateZ(1em);
+}
+
+/* line 95, ../sass/_3D.scss */
+.cub-1 .bk {
+  transform: translateZ(-1em) rotateY(180deg);
+}
+
+/* line 98, ../sass/_3D.scss */
+.cub-1 .rt, .cub-1 .lt {
+  width: 2em;
+  height: 7.625em;
+}
+
+/* line 102, ../sass/_3D.scss */
+.cub-1 .tp, .cub-1 .bm {
+  width: 4.625em;
+  height: 2em;
+}
+
+/* line 106, ../sass/_3D.scss */
+.cub-1 .face {
+  background-color: #000000;
+}
+
+/* line 109, ../sass/_3D.scss */
+.cub-1 .ft {
+  background: url(http://149.91.88.165/promo/3D/front.svg) #000000;
+}
+
+/* line 112, ../sass/_3D.scss */
+.cub-1 .bk {
+  background-color: #000000;
+}
+
+/* line 115, ../sass/_3D.scss */
+.cub-1 .tp {
+  background: url(http://149.91.88.165/promo/3D/top.svg) #000000;
+}
+
+/* line 118, ../sass/_3D.scss */
+.cub-1 .bm {
+  background-color: #000000;
+}
+
+/* line 121, ../sass/_3D.scss */
+.cub-1 .lt {
+  background-color: #000000;
+}
+
+/* line 124, ../sass/_3D.scss */
+.cub-1 .rt {
+  background: url(http://149.91.88.165/promo/3D/cote.svg) #000000;
+}
