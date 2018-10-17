@@ -6,6 +6,7 @@
     <title>{% block title %}Welcome!{% endblock %}</title>
     {% block stylesheets %}
     <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     {% endblock %}
 </head>
 
@@ -29,7 +30,7 @@
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ path('creer-partie') }}">Créer une partie </a>
+                        <a class="nav-link" href="{{ path('creer_partie') }}">Créer une partie </a>
                     </li>
                 
                 {% if is_granted('ROLE_ADMIN') %}
