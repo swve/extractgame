@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Partie entre {{ partie.joueur1.username }} et {{ partie.joueur2.username }}</h1>
+
+    <div id="plateau">
+    {{ render(controller(
+        'App\\Controller\\JouerController::afficherPlateau',
+        { 'partie': partie.id }
+    )) }}
+    </div>
+
+    <div id="attentejoueur" style="position:fixed; top:0; left:0; height: 100%; width: 100%; background-color: darkgray; opacity: 0.8;font-size: 60px; display:none">
+        Attente du joueur
+    </div>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    var actualise = false;
+    $(document).ready(function(){
+      setInterval(actualisePlateau, 2000);
+    })
+
+    function actualisePlateau() {
+      $.ajax({
+        url: "{{ path('actualise_plateau', {partie: partie.id}) }}",
+      }).done(function (etat) {
+        console.log(etat);
+        if (etat === 'touradversaire') {
+          actualise = false;
+          console.log('attente Adversaire')
+          $('#attentejoueur').show();
+        }
+        if (etat === 'montour') {
+          if (actualise === false) {
+            console.log('reload');
+            $('#plateau').empty().load("{{ path('afficher_plateau', {partie:partie.id}) }}");
+            actualise = true;
+            $('#attentejoueur').hide();
+          }
+          console.log('Mon tour')
+
+        }
+      });
+    }
+
+</script>
+{% endblock %}
+
