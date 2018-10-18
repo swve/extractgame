@@ -1,0 +1,91 @@
+@font-face {
+    font-family:"Leixo";
+    src: url("../img/LEIXO-DEMO.ttf") format("truetype");
+}
+
+body {
+    margin: 0 auto;
+}
+
+.main {
+    max-width: 100%;
+    width: 1600px;
+    margin: 0 auto;
+}
+
+hr {
+    width: 50%;
+}
+
+#welcome {
+    margin-top: 5vh;
+    img {
+        height:20rem;
+    }
+}
+
+#bouton {
+    margin-top: 15vh;
+    a {
+        padding: 10px 50px;
+        border-radius: 50px;
+        border: white 2px solid;
+        font-size: 2.3rem;
+        color:white;
+        :visited {
+            color: white;
+        }
+        :hover {
+            text-decoration: none;
+            color: white;
+
+        }
+    }
+}
+
+#indication {
+    margin-top: 22vh;
+    margin-bottom:3vh;
+    font-size:0.8rem;
+    p {
+        margin:0;
+    }
+    img {
+        max-height:25px;
+    }
+}
+
+#intro {
+    min-width: 100%;
+    min-height: 100vh;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+#intro video {
+    object-fit: cover;
+    filter: brightness(50%);
+}
+
+#titre {
+    margin-bottom:20px;
+}
+
+#news video {
+    width: 100%;
+}
+
+#contact {
+    background-image: url(img/fond-form.png);
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    color: #fff;
+}
+
+.row {
+    h2 {
+        font-family: 'LEIXO-DEMO', sans-serif;
+    }
+}
