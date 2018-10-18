@@ -33,16 +33,17 @@ hr {
         font-size: 2.3rem;
         color:white;
         font-family: 'Roboto', sans-serif!important;
-        transform:0.5s;
+        transition: width 0.5s;
         :visited {
             color: white;
         }
-    }a:hover {
-        text-decoration: none;
-        color: white;
-        transform: scale(1.5)!important;
-
     }
+}
+
+#bouton a:hover {
+    color:white;
+    text-decoration:none;
+    width:350px;
 }
 
 #indication {

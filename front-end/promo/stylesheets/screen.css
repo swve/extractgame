@@ -25,16 +25,16 @@ hr {
 
 /* line 20, ../sass/_header.scss */
 #welcome {
-  margin-top: 25vh;
+  margin-top: 5vh;
 }
 /* line 22, ../sass/_header.scss */
 #welcome img {
-  height: 7.5rem;
+  height: 20rem;
 }
 
 /* line 27, ../sass/_header.scss */
 #bouton {
-  margin-top: 20vh;
+  margin-top: 15vh;
 }
 /* line 29, ../sass/_header.scss */
 #bouton a {
