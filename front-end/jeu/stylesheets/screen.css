@@ -118,7 +118,21 @@ hr {
   box-shadow: 11px 11px 35px -10px rgba(0, 0, 0, 0.7);
 }
 
-/* line 16, ../sass/_connexion.scss */
+/* line 14, ../sass/_connexion.scss */
+.fondmdp {
+  background-color: #071D25;
+  width: 500px;
+  height: 280px;
+  margin: auto;
+  border-radius: 25px;
+  margin-top: 15vh;
+  margin-bottom: 12.5vh;
+  -webkit-box-shadow: 11px 11px 35px -10px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 11px 11px 35px -10px rgba(0, 0, 0, 0.7);
+  box-shadow: 11px 11px 35px -10px rgba(0, 0, 0, 0.7);
+}
+
+/* line 29, ../sass/_connexion.scss */
 #connexion .fond h2 {
   color: white;
   font-family: 'Roboto', sans-serif;
@@ -128,7 +142,7 @@ hr {
   padding-bottom: 10px;
   margin: 0;
 }
-/* line 24, ../sass/_connexion.scss */
+/* line 37, ../sass/_connexion.scss */
 #connexion .fond input[type=text] {
   border: none;
   border-radius: 10px;
@@ -139,20 +153,20 @@ hr {
   font-family: 'Roboto', sans-serif;
   font-size: 1.1em;
 }
-/* line 33, ../sass/_connexion.scss */
+/* line 46, ../sass/_connexion.scss */
 #connexion .fond #un {
   margin-top: 30px;
   margin-bottom: 40px;
   padding-top: 5px;
   padding-bottom: 5px;
 }
-/* line 38, ../sass/_connexion.scss */
+/* line 51, ../sass/_connexion.scss */
 #connexion .fond #deux {
   margin-bottom: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
 }
-/* line 42, ../sass/_connexion.scss */
+/* line 55, ../sass/_connexion.scss */
 #connexion .fond input[type=submit] {
   display: block;
   margin: 0 auto;
@@ -167,39 +181,172 @@ hr {
   margin-bottom: 30px;
   padding-top: 5px;
 }
-/* line 55, ../sass/_connexion.scss */
+/* line 68, ../sass/_connexion.scss */
 #connexion .fond input[type=submit]:hover {
   transform: scale(1.05);
 }
-/* line 57, ../sass/_connexion.scss */
+/* line 70, ../sass/_connexion.scss */
 #connexion .fond input[type=submit]:active {
   background-color: rgba(255, 255, 255, 0.2);
   border-style: inset;
 }
-/* line 60, ../sass/_connexion.scss */
+/* line 73, ../sass/_connexion.scss */
 #connexion .fond a {
   color: white;
   font-size: 1em;
 }
-/* line 63, ../sass/_connexion.scss */
+/* line 76, ../sass/_connexion.scss */
 #connexion .fond #mdpoub {
   font-size: 0.6em;
 }
-/* line 65, ../sass/_connexion.scss */
+/* line 78, ../sass/_connexion.scss */
 #connexion .fond a:visited {
   color: white;
 }
-/* line 67, ../sass/_connexion.scss */
+/* line 80, ../sass/_connexion.scss */
 #connexion .fond a:hover {
   text-decoration: underline;
   color: white;
 }
 
-/* line 74, ../sass/_connexion.scss */
+/* line 87, ../sass/_connexion.scss */
 .trait {
   border-bottom: 1px white solid;
   width: 350px;
   margin: 0 auto;
   margin-top: 40px;
   margin-bottom: 25px;
+}
+
+/* line 97, ../sass/_connexion.scss */
+#changer .fondmdp h2 {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  padding-top: 25px;
+  padding-bottom: 10px;
+  margin: 0;
+}
+/* line 105, ../sass/_connexion.scss */
+#changer .fondmdp input[type=text] {
+  border: none;
+  border-radius: 10px;
+  padding-left: 10px;
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1em;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+/* line 118, ../sass/_connexion.scss */
+#changer .fondmdp input[type=submit] {
+  display: block;
+  margin: 0 auto;
+  border-radius: 20px;
+  width: 250px;
+  background: none;
+  border: 1px white solid;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  margin-top: 25px;
+  padding-bottom: 5px;
+  margin-bottom: 30px;
+  padding-top: 5px;
+}
+/* line 131, ../sass/_connexion.scss */
+#changer .fondmdp input[type=submit]:hover {
+  transform: scale(1.05);
+}
+/* line 133, ../sass/_connexion.scss */
+#changer .fondmdp input[type=submit]:active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-style: inset;
+}
+
+/* line 3, ../sass/_inscription.scss */
+#inscription .fond h2 {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  padding-top: 25px;
+  padding-bottom: 10px;
+  margin: 0;
+}
+/* line 11, ../sass/_inscription.scss */
+#inscription .fond input[type=text] {
+  border: none;
+  border-radius: 10px;
+  padding-left: 10px;
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1em;
+}
+/* line 20, ../sass/_inscription.scss */
+#inscription .fond input[type=date] {
+  border: none;
+  border-radius: 10px;
+  padding-left: 10px;
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1em;
+  color: gray;
+}
+/* line 30, ../sass/_inscription.scss */
+#inscription .fond #pseudo {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+/* line 35, ../sass/_inscription.scss */
+#inscription .fond #mdp {
+  margin-bottom: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+/* line 39, ../sass/_inscription.scss */
+#inscription .fond #mdpplus {
+  margin-bottom: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+/* line 43, ../sass/_inscription.scss */
+#inscription .fond #datepicker {
+  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+/* line 47, ../sass/_inscription.scss */
+#inscription .fond input[type=submit] {
+  display: block;
+  margin: 0 auto;
+  border-radius: 20px;
+  width: 250px;
+  background: none;
+  border: 1px white solid;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  margin-top: 35px;
+  padding-bottom: 5px;
+  margin-bottom: 30px;
+  padding-top: 5px;
+}
+/* line 60, ../sass/_inscription.scss */
+#inscription .fond input[type=submit]:hover {
+  transform: scale(1.05);
+}
+/* line 62, ../sass/_inscription.scss */
+#inscription .fond input[type=submit]:active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-style: inset;
 }
