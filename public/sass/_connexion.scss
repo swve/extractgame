@@ -43,7 +43,19 @@
             width:400px;
             font-family: 'Roboto', sans-serif;
             font-size:1.1em;
-        } #un {
+        } 
+        input[type=password]{
+            border:none;
+            border-radius:10px;
+            padding-left:10px;
+            display:block;
+            margin: 0 auto;
+            width:400px;
+            font-family: 'Roboto', sans-serif;
+            font-size:1.1em;
+        }
+        
+        #un {
             margin-top:30px;
             margin-bottom:40px;
             padding-top:5px;

@@ -17,7 +17,18 @@
             width:400px;
             font-family: 'Roboto', sans-serif;
             font-size:1.1em;
-        } input[type=date] {
+        }
+        input[type=password] {
+            border:none;
+            border-radius:10px;
+            padding-left:10px;
+            display:block;
+            margin: 0 auto;
+            width:400px;
+            font-family: 'Roboto', sans-serif;
+            font-size:1.1em;
+        }
+        input[type=date] {
             border:none;
             border-radius:10px;
             padding-left:10px;

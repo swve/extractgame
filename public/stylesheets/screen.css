@@ -153,20 +153,31 @@ hr {
   font-family: 'Roboto', sans-serif;
   font-size: 1.1em;
 }
-/* line 46, ../sass/_connexion.scss */
+/* line 47, ../sass/_connexion.scss */
+#connexion .fond input[type=password] {
+  border: none;
+  border-radius: 10px;
+  padding-left: 10px;
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1em;
+}
+/* line 58, ../sass/_connexion.scss */
 #connexion .fond #un {
   margin-top: 30px;
   margin-bottom: 40px;
   padding-top: 5px;
   padding-bottom: 5px;
 }
-/* line 51, ../sass/_connexion.scss */
+/* line 63, ../sass/_connexion.scss */
 #connexion .fond #deux {
   margin-bottom: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
 }
-/* line 55, ../sass/_connexion.scss */
+/* line 67, ../sass/_connexion.scss */
 #connexion .fond input[type=submit] {
   display: block;
   margin: 0 auto;
@@ -181,35 +192,35 @@ hr {
   margin-bottom: 30px;
   padding-top: 5px;
 }
-/* line 68, ../sass/_connexion.scss */
+/* line 80, ../sass/_connexion.scss */
 #connexion .fond input[type=submit]:hover {
   transform: scale(1.05);
 }
-/* line 70, ../sass/_connexion.scss */
+/* line 82, ../sass/_connexion.scss */
 #connexion .fond input[type=submit]:active {
   background-color: rgba(255, 255, 255, 0.2);
   border-style: inset;
 }
-/* line 73, ../sass/_connexion.scss */
+/* line 85, ../sass/_connexion.scss */
 #connexion .fond a {
   color: white;
   font-size: 1em;
 }
-/* line 76, ../sass/_connexion.scss */
+/* line 88, ../sass/_connexion.scss */
 #connexion .fond #mdpoub {
   font-size: 0.6em;
 }
-/* line 78, ../sass/_connexion.scss */
+/* line 90, ../sass/_connexion.scss */
 #connexion .fond a:visited {
   color: white;
 }
-/* line 80, ../sass/_connexion.scss */
+/* line 92, ../sass/_connexion.scss */
 #connexion .fond a:hover {
   text-decoration: underline;
   color: white;
 }
 
-/* line 87, ../sass/_connexion.scss */
+/* line 99, ../sass/_connexion.scss */
 .trait {
   border-bottom: 1px white solid;
   width: 350px;
@@ -218,7 +229,7 @@ hr {
   margin-bottom: 25px;
 }
 
-/* line 97, ../sass/_connexion.scss */
+/* line 109, ../sass/_connexion.scss */
 #changer .fondmdp h2 {
   color: white;
   font-family: 'Roboto', sans-serif;
@@ -228,7 +239,7 @@ hr {
   padding-bottom: 10px;
   margin: 0;
 }
-/* line 105, ../sass/_connexion.scss */
+/* line 117, ../sass/_connexion.scss */
 #changer .fondmdp input[type=text] {
   border: none;
   border-radius: 10px;
@@ -243,7 +254,7 @@ hr {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-/* line 118, ../sass/_connexion.scss */
+/* line 130, ../sass/_connexion.scss */
 #changer .fondmdp input[type=submit] {
   display: block;
   margin: 0 auto;
@@ -258,11 +269,11 @@ hr {
   margin-bottom: 30px;
   padding-top: 5px;
 }
-/* line 131, ../sass/_connexion.scss */
+/* line 143, ../sass/_connexion.scss */
 #changer .fondmdp input[type=submit]:hover {
   transform: scale(1.05);
 }
-/* line 133, ../sass/_connexion.scss */
+/* line 145, ../sass/_connexion.scss */
 #changer .fondmdp input[type=submit]:active {
   background-color: rgba(255, 255, 255, 0.2);
   border-style: inset;
@@ -289,7 +300,18 @@ hr {
   font-family: 'Roboto', sans-serif;
   font-size: 1.1em;
 }
-/* line 20, ../sass/_inscription.scss */
+/* line 21, ../sass/_inscription.scss */
+#inscription .fond input[type=password] {
+  border: none;
+  border-radius: 10px;
+  padding-left: 10px;
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1em;
+}
+/* line 31, ../sass/_inscription.scss */
 #inscription .fond input[type=date] {
   border: none;
   border-radius: 10px;
@@ -301,32 +323,32 @@ hr {
   font-size: 1.1em;
   color: gray;
 }
-/* line 30, ../sass/_inscription.scss */
+/* line 41, ../sass/_inscription.scss */
 #inscription .fond #pseudo {
   margin-top: 20px;
   margin-bottom: 30px;
   padding-top: 5px;
   padding-bottom: 5px;
 }
-/* line 35, ../sass/_inscription.scss */
+/* line 46, ../sass/_inscription.scss */
 #inscription .fond #mdp {
   margin-bottom: 30px;
   padding-top: 5px;
   padding-bottom: 5px;
 }
-/* line 39, ../sass/_inscription.scss */
+/* line 50, ../sass/_inscription.scss */
 #inscription .fond #mdpplus {
   margin-bottom: 30px;
   padding-top: 5px;
   padding-bottom: 5px;
 }
-/* line 43, ../sass/_inscription.scss */
+/* line 54, ../sass/_inscription.scss */
 #inscription .fond #datepicker {
   margin-bottom: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
 }
-/* line 47, ../sass/_inscription.scss */
+/* line 58, ../sass/_inscription.scss */
 #inscription .fond input[type=submit] {
   display: block;
   margin: 0 auto;
@@ -341,11 +363,11 @@ hr {
   margin-bottom: 30px;
   padding-top: 5px;
 }
-/* line 60, ../sass/_inscription.scss */
+/* line 71, ../sass/_inscription.scss */
 #inscription .fond input[type=submit]:hover {
   transform: scale(1.05);
 }
-/* line 62, ../sass/_inscription.scss */
+/* line 73, ../sass/_inscription.scss */
 #inscription .fond input[type=submit]:active {
   background-color: rgba(255, 255, 255, 0.2);
   border-style: inset;
