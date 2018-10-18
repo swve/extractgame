@@ -3,47 +3,27 @@
 {% block title %}Extract | A CréaSpace game {% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper {
-        margin: 1em auto;
-        max-width: 800px;
-        width: 95%;
-        font: 18px/1.5 sans-serif;
-    }
 
-    .example-wrapper code {
-        background: #F5F5F5;
-        padding: 2px 6px;
-    }
-</style>
 
-<div class="container">
-    <br>
-    <br>
-    <br>
-    <h1>Welcome in Extract  </h1>
-    <br>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <strong>Ceci est une version beta du jeu , quelques fonctionnalités sont encore en développement </strong> 
+    <div class="main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 embed-responsive" id="intro">
+                    <video autoplay loop muted>
+                        <source src="video/animation.mp4" type="video/mp4">
+                    </video>
+                    <div id="welcome" class="col-12 text-center">
+                        <img class="img-responsive"src="img/logo.svg">
+                    </div>
+                    <div id="bouton" class="col-12 text-center">
+                        <a href="{{ path('security_login') }}">Se connecter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
+</body>
 
-    <br><br>
 
-    {% if app.user %}
-
-    <p>Bienvenue à toi cher : {{ app.user.username }}</p>
-    <p><a href="{{ path('security_logout') }}">Se déconnecter </a></p>
-    {% endif %}
-
-    {% if not app.user %}
-
-    <a name="" id="" class="btn btn-success" href="{{ path('security_login') }}" role="button">Se connecter</a>
-    <a name="" id="" class="btn btn-info" href="{{ path('security_register') }}" role="button">S'inscrire</a><br><br>
-    <a name="" id=""  href="{{ path('security_reset') }}" role="button">J'ai oublié le mot de passe</a>
-    {% endif %}
-</div>
 {% endblock %}
