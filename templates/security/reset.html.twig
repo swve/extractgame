@@ -5,15 +5,15 @@
 {% block body %}
 
 
-<div class="container">
+<div class="main">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 embed-responsive" id="intro">
+                <video autoplay loop muted>
+                    <source src="video/animation.mp4" type="video/mp4">
+                </video>
 
-
-    <br>
-    <br>
-    <br>
-    <h1>Extract : Reset password </h1>
-<br>
-    {% for flash_message in app.session.flashBag.get('fail') %}
+                {% for flash_message in app.session.flashBag.get('fail') %}
     <div class="alert alert-danger" role="alert">
         <strong>{{ flash_message }}</strong>
     </div>
@@ -27,16 +27,20 @@
     <a name="" id="" class="btn btn-info" href="{{path('security_login')}}" role="button">Se connecter </a>
     <br>
     {% endfor %}
-<br>
-    <form action="{{ path('security_reset') }}" method="post">
-        <div class="form-group">
-            <label for="">Pour changer votre mot de passe , veuillez entrer votre email</label>
-            <input type="text" class="form-control" name="user_email" id="" aria-describedby="emailHelpId" placeholder="">
-            <small id="emailHelpId" class="form-text text-muted">Un mail de configuration vous sera envoyé </small><br>
-            <button type="submit" class="btn btn-primary ">Changer de mot de passe</button>
 
+                <div id="changer" class="col-12 text-center">
+                    <form action="{{ path('security_reset') }}" method="post">
+                    <div class="fondmdp">
+                        <h2>Changer de mot de passe</h2>
+                        <input id="pseudo" type="text" name="user_email" placeholder="Votre adresse email">
+                        <input type="submit" value="Changer de mot de passe">
+                    </div>
+                    </form>
+                </div>
+            </div>
         </div>
-    </form>
-
+    </div>
 </div>
+
+
 {% endblock %}
