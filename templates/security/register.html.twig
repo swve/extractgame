@@ -4,25 +4,29 @@
 
 {% block body %}
 
-
-<div class="container">
-
-
-    <br>
-    <br>
-    <br>
-    <h1>Extract : Registration </h1>
-    <br><br>
-    <form name="registration" method="post" class="my-form-class">
-
-        <div id="registration" class="form-group">
-            
-            <input type="text" id="registration_username" class="form-control" placeholder="Username"  name="registration[username]" required="required" maxlength="255" /><br>
-            <input type="text" id="registration_email" class="form-control" placeholder="Email" name="registration[email]" required="required" maxlength="255" /><br>
-            <input type="password" id="registration_password" class="form-control" placeholder="Password" name="registration[password]" required="required" maxlength="255" /><br>
-            {{ form_row(form._token) }}
+<div class="main">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 embed-responsive" id="intro">
+                <video autoplay loop muted>
+                    <source src="video/animation.mp4" type="video/mp4">
+                </video>
+                <form name="registration" method="post" class="my-form-class">
+                <div id="inscription" class="col-12 text-center">
+                    <div class="fond">
+                        <h2>Inscription</h2>
+                        <input id="pseudo" type="text" placeholder="Pseudo" name="registration[username]" required="required" maxlength="255" >
+                        <input id="mdp" type="text" placeholder="Adresse email " name="registration[email]" required="required" maxlength="255">
+                        <input id="mdpplus" type="password" placeholder="Mot de passe " name="registration[password]" required="required" maxlength="255">
+                        {{ form_row(form._token) }}
+                        <input type="submit" value="Inscription">
+                    </div>
+                </div>
+                </form>
+            </div>
         </div>
-        <button type="submit" class="btn btn-success">Register!</button>
-    </form>
+    </div>
 </div>
+
+
 {% endblock %}

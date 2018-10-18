@@ -3,29 +3,31 @@
 {% block title %}Extract | Login {% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="container">
-    <br>
-    <br>
-    <br>
-    <h1>Extract : Login </h1>
-    <br><br>
-    <form action="{{ path('security_login') }}" method="post">
-        <div class="form-group">
-
-            <input type="text" name="_username" id="" class="form-control" placeholder="Username" aria-describedby="helpId"><br>
-            <input type="password" name="_password" id="" class="form-control" placeholder="Password" aria-describedby="helpId"><br>
-            <button type="submit" class="btn btn-success">Login</button>
-
+<div class="main">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 embed-responsive" id="intro">
+                <video autoplay loop muted>
+                    <source src="video/animation.mp4" type="video/mp4">
+                </video>
+                <form action="{{ path('security_login') }}" method="post">
+                <div id="connexion" class="col-12 text-center">
+                    <div class="fond">
+                        <h2>Connexion</h2>
+                        <input id="un" type="text" name="_username" placeholder="Pseudo">
+                        <input id="deux" type="password" name="_password" placeholder="Mot de passe">
+                        <a id="mdpoub" href="{{ path('security_reset') }}">Mot de passe oublié ?</a>
+                        <input type="submit" value="Connexion">
+                        <div class="trait"></div>
+                        <a href="{{ path('security_register') }}">Pas encore de compte ? Inscrivez-vous maintenant !</a>
+                    </div>
+                </div>
+                </form>
+            </div>
         </div>
-    </form>
-
-    <br>
-    <a name="" id=""  href="{{ path('security_reset') }}" role="button">J'ai oublié le mot de passe</a>
-
+    </div>
 </div>
+
+
 {% endblock %}
