@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Jeton{% endblock %}
+
+{% block body %}
+    <h1>Create new Jeton</h1>
+
+    {{ include('jeton/_form.html.twig') }}
+
+    <a href="{{ path('jeton_index') }}">back to list</a>
+{% endblock %}

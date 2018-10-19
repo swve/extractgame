@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jeton index{% endblock %}
+
+{% block body %}
+    <h1>Jeton index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Valeur</th>
+                <th>Fichier</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for jeton in jetons %}
+            <tr>
+                <td>{{ jeton.id }}</td>
+                <td>{{ jeton.nom }}</td>
+                <td>{{ jeton.valeur }}</td>
+                <td>{{ jeton.fichier }}</td>
+                <td>
+                    <a href="{{ path('jeton_show', {'id': jeton.id}) }}">show</a>
+                    <a href="{{ path('jeton_edit', {'id': jeton.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('jeton_new') }}">Create new</a>
+{% endblock %}
