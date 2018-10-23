@@ -71,13 +71,4 @@ class Carte
 
         return $this;
     }
-
-    public function getJson() {
-        return [
-            'id' => $this->getId(),
-            'fichier' => $this->getFichier(),
-            'valeur' => $this->getValeur(),
-            'nom' => $this->getNom()
-        ];
-    }
 }

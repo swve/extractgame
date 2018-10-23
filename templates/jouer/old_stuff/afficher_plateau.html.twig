@@ -1,9 +1,13 @@
+
 <div class="row">
     <div class="col-sm-4">
         <div class="row">
-            <div class="col-sm-12">{% for jeton in partie.jetonsTerrain.argent %}
+            <div class="col-sm-12">
+                
+                {% for jeton in partie.jetonsTerrain.argent %}
                     <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="50px" />
-                {% endfor %}</div>
+                {% endfor %}
+            </div>
             <div class="col-sm-12">{% for jeton in partie.jetonsTerrain.diamant %}
                     <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="50px" />
                 {% endfor %}</div>
@@ -51,6 +55,7 @@
             <div class="col-sm-12">
                 {% for jeton in partie.jetonsTerrain.tissu %}
                     <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="50px" />
+                    
                 {% endfor %}
             </div>
             <div class="col-sm-12">
@@ -61,7 +66,7 @@
         </div>
     </div>
     <div class="col-sm-8">
-        <div class="row" style="margin-bottom:30px; height:550px">
+        <div class="row">
             <div class="col-sm-12" style="height: 100px">
                 {% for carte in partie.mainJ2 %}
                     <img src="{{ asset('cartes/dos.jpg') }}" height="100px" />
@@ -74,40 +79,23 @@
             </div>
             <div class="col-sm-12" style="height: 100px">
                 <div class="row">
-                    <div class="col-sm-2">{% if partie.pioche|length >0 %}<img src="{{ asset('cartes/dos.jpg') }}" height="100px"  />{% else %}Vide{% endif %}<p>Pioche {{ partie.pioche|length }}</p></div>
-                    <div id="terrain" class="row">
+                    <div class="col-sm-2">{% if partie.pioche|length >0 %}<img src="{{ asset('cartes/dos.jpg') }}" height="100px" />{% else %}Vide{% endif %}<p>Pioche</p></div>
                     {% for carte in partie.terrain %}
-                    <div class="col-sm-2" id="carte-{{ carte }}"><img src="{{ asset('cartes/'~cartes[carte].fichier) }}" height="100px" class="carteterrain {% if cartes[carte].valeur == 0 %}chameau{% endif %}"  data-carte="{{ carte }}" /></div>
+                    <div class="col-sm-2"><img src="{{ asset('cartes/'~cartes[carte].fichier) }}" height="100px" /></div>
                     {% endfor %}
-                    </div>
+
                 </div>
             </div>
             <div class="col-sm-12" style="height: 100px">
                 {% for carte in partie.chameauxJ1 %}
-                    <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="cartechameau" height="100px" data-carte="{{ carte }}" />
+                    <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" height="100px" />
                 {% endfor %}
             </div>
-            <div class="col-sm-12" style="height: 100px" >Mes cartes<br>
-                <div id="main" class="row">
-                    {% for carte in partie.mainJ1 %}
-                        <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="cartemain" height="100px" data-carte="{{ carte }}" />
-                    {% endfor %}
-                </div>
+            <div class="col-sm-12" style="height: 100px">Mes cartes<br>
+            {% for carte in partie.mainJ1 %}
+                <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" height="100px" />
+            {% endfor %}
             </div>
-        </div>
-        <div class="row" id="bloc-action">
-            <div class="col-sm-4">
-                <button class="btn btn-block btn-info" id="action-prendre">Prendre</button>
-            </div>
-            <div class="col-sm-4">
-                <button class="btn btn-block btn-danger" id="action-vendre">Vendre</button>
-            </div>
-            <div class="col-sm-4">
-                <button class="btn btn-block btn-warning" id="action-troquer">Troquer</button>
-            </div>
-        </div>
-        <div class="row" id="bloc-suivant" style="display:none">
-            <button class="btn btn-block btn-success" id="action-terminer">Terminer mon tour</button>
         </div>
     </div>
 </div>
