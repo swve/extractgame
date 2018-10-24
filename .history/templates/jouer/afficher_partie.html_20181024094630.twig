@@ -67,9 +67,9 @@
     });
   }
 
-
+  
   $(document).on('click', '.cartechameau', function () {
-    
+    alert('clicked');
     if ($(this).hasClass('selected')) {
       $(this).removeClass('selected');
       //retirer d'un tableau
@@ -100,7 +100,6 @@
       console.log(cartesSelectedMain)
     }
   })
-  
   $(document).on('click', '#action-prendre', function () {
     console.log(cartesSelectedTerrain)
     if (cartesSelectedTerrain.length == 0) {

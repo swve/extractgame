@@ -1,14 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-<style>
-  .selected {
-      border: 2px solid red;
-  }
-  .new {
-    border: 2px solid green;
-  }
-</style>
+
 {% endblock %}
 
 {% block body %}
@@ -36,7 +29,7 @@
   var cartesSelectedTerrain = Array();
   var cartesSelectedChameau = Array();
   var cartesSelectedMain = Array();
-
+  
   $(document).ready(function () {
     setInterval(actualisePlateau, 2000);
   })
@@ -66,10 +59,7 @@
       }
     });
   }
-
-
   $(document).on('click', '.cartechameau', function () {
-    
     if ($(this).hasClass('selected')) {
       $(this).removeClass('selected');
       //retirer d'un tableau
@@ -83,9 +73,6 @@
       console.log(cartesSelectedChameau)
     }
   })
-
-
-
   $(document).on('click', '.cartemain', function () {
     if ($(this).hasClass('selected')) {
       $(this).removeClass('selected');
@@ -100,7 +87,6 @@
       console.log(cartesSelectedMain)
     }
   })
-  
   $(document).on('click', '#action-prendre', function () {
     console.log(cartesSelectedTerrain)
     if (cartesSelectedTerrain.length == 0) {

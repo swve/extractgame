@@ -3,12 +3,14 @@
 {% block stylesheets %}
 <style>
   .selected {
-      border: 2px solid red;
+    border: 2px solid red;
   }
+
   .new {
     border: 2px solid green;
   }
 </style>
+
 {% endblock %}
 
 {% block body %}
@@ -38,10 +40,12 @@
   var cartesSelectedMain = Array();
 
   $(document).ready(function () {
+
     setInterval(actualisePlateau, 2000);
   })
 
   function actualisePlateau() {
+
     $.ajax({
       url: "{{ path('actualise_plateau', {partie: partie.id}) }}",
     }).done(function (etat) {
@@ -52,6 +56,7 @@
         $('#attentejoueur').show();
       }
       if (etat === 'montour') {
+
         if (actualise === false) {
           console.log('reload');
           $('#plateau').empty().load("{{ path('afficher_plateau', {partie:partie.id}) }}");
@@ -62,29 +67,29 @@
           actualise = true;
           $('#attentejoueur').hide();
         }
-        console.log('Mon tour')
+        console.log('Mon tour');
+
       }
     });
   }
 
 
   $(document).on('click', '.cartechameau', function () {
-    
     if ($(this).hasClass('selected')) {
       $(this).removeClass('selected');
       //retirer d'un tableau
       $index = cartesSelectedChameau.indexOf($(this).data('carte'));
       cartesSelectedChameau.splice($index, 1);
       console.log(cartesSelectedChameau)
+
     } else {
       $(this).addClass('selected');
       //ajouter dans un tableau
       cartesSelectedChameau.push($(this).data('carte'));
       console.log(cartesSelectedChameau)
+
     }
   })
-
-
 
   $(document).on('click', '.cartemain', function () {
     if ($(this).hasClass('selected')) {
@@ -98,9 +103,10 @@
       //ajouter dans un tableau
       cartesSelectedMain.push($(this).data('carte'));
       console.log(cartesSelectedMain)
+
     }
   })
-  
+
   $(document).on('click', '#action-prendre', function () {
     console.log(cartesSelectedTerrain)
     if (cartesSelectedTerrain.length == 0) {
@@ -130,6 +136,7 @@
             .id + '" /></div>');
           $('#main').append('<img src="http://localhost:8888/jaipur/public/cartes/' + data['cartemain'].fichier +
             '" class="cartemain new" height="100px" data-carte="' + data['cartemain'].id + '" />');
+
         },
         error: function (data) {
           if (data === 'erreur7') {
@@ -137,10 +144,13 @@
           } else {
             alert('erreur action prendre');
           }
+
         }
       })
+
     }
   })
+
   $(document).on('click', '#action-terminer', function () {
     $.ajax({
       url: "{{ path('jouer_action_suivant', {partie: partie.id}) }}",
