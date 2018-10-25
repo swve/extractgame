@@ -1,18 +1,25 @@
 <div class="row">
     <div class="col-sm-4">
         <div class="row">
-            <div class="col-sm-12">{% for jeton in partie.jetonsTerrain.argent %}
+            <div class="col-sm-9 jeton_div">
+                {% for jeton in partie.jetonsTerrain.video %}
                     <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="50px" />
-                {% endfor %}</div>
-            <div class="col-sm-12">{% for jeton in partie.jetonsTerrain.diamant %}
-                    <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="50px" />
-                {% endfor %}</div>
-            <div class="col-sm-12">
-                {% for jeton in partie.jetonsTerrain.or %}
+                {% endfor %}
+            </div> 
+                
+            <div class="col-sm-9 jeton_div">
+                {% for jeton in partie.jetonsTerrain.data %}
                     <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="50px" />
                 {% endfor %}
             </div>
-            <div class="col-sm-12">
+                
+            <div class="col-sm-9 jeton_div">
+                {% for jeton in partie.jetonsTerrain.plan %}
+                    <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="50px" />
+                {% endfor %}
+            </div>
+           
+            <div class="col-sm-9 jeton_div">
                 <div class="row">
                     <div class="col-sm-4">
                         {% for jeton in partie.jetonsTerrain.Bonus_3 %}
@@ -43,21 +50,25 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12">
-                {% for jeton in partie.jetonsTerrain.epice %}
+            
+            <div class="col-sm-9 jeton_div">
+                {% for jeton in partie.jetonsTerrain.audio %}
                     <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="50px" />{{ loop.index }}
                 {% endfor %}
             </div>
-            <div class="col-sm-12">
-                {% for jeton in partie.jetonsTerrain.tissu %}
+           
+            <div class="col-sm-9 jeton_div">
+                {% for jeton in partie.jetonsTerrain.app %}
                     <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="50px" />
                 {% endfor %}
             </div>
-            <div class="col-sm-12">
-                {% for jeton in partie.jetonsTerrain.cuir %}
+           
+            <div class="col-sm-9 jeton_div">
+                {% for jeton in partie.jetonsTerrain.disque %}
                     <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="50px" />
                 {% endfor %}
             </div>
+           
         </div>
     </div>
     <div class="col-sm-8">
