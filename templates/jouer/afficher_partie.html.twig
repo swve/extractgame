@@ -145,10 +145,10 @@
           }
           $('#terrain').append('<div class="col-sm-2" id="carte-' + data['carteterrain'].id +
             '"><img src="../cartes/' + data['carteterrain'].fichier +
-            '" height="100px" class="carteterrain ' + chameau + ' new"  data-carte="' + data['carteterrain']
+            '" height="70px" class="carteterrain ' + chameau + ' new"  data-carte="' + data['carteterrain']
             .id + '" /></div>');
           $('#main').append('<img src="../cartes/' + data['cartemain'].fichier +
-            '" class="cartemain new" height="100px" data-carte="' + data['cartemain'].id + '" />');
+            '" class="cartemain new" height="70px" data-carte="' + data['cartemain'].id + '" />');
         },
         error: function (data) {
           if (data === 'erreur7') {
