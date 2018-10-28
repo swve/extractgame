@@ -131,6 +131,8 @@
     }
   })
   
+
+
   $(document).on('click', '#action-prendre', function () {
     console.log(cartesSelectedTerrain)
     if (cartesSelectedTerrain.length == 0) {
@@ -151,16 +153,16 @@
           $('#bloc-action').hide();
           $('#bloc-suivant').show();
           $('#carte-' + data['cartemain'].id).remove();
-          var chameau = ''
-          if (data['carteterrain'].valeur == 0) {
+          var chameau = '';
+
+
+          if (data['carteterrain'].valeur == 0) { 
             chameau = "chameau";
-          }
-          $('#terrain').append('<div class="col-sm-2" id="carte-' + data['carteterrain'].id +
-            '"><img src="../cartes/' + data['carteterrain'].fichier +
-            '" height="70px" class="carteterrain ' + chameau + ' new"  data-carte="' + data['carteterrain']
-            .id + '" /></div>');
-          $('#main').append('<img src="../cartes/' + data['cartemain'].fichier +
-            '" class="cartemain new" height="70px" data-carte="' + data['cartemain'].id + '" />');
+         }
+
+         
+          $('#terrain').append('<div class="col-sm-2" id="carte-' + data['carteterrain'].id + '"><img src="../cartes/' + data['carteterrain'].fichier + '" height="70px" class="carteterrain ' + chameau + ' new"  data-carte="' + data['carteterrain'].id + '" /></div>');
+          $('#main').append('<img src="../cartes/' + data['cartemain'].fichier + '" class="cartemain new" height="70px" data-carte="' + data['cartemain'].id + '" />');
         },
         error: function (data) {
           if (data === 'erreur7') {
@@ -172,6 +174,10 @@
       })
     }
   })
+
+
+
+
   $(document).on('click', '#action-terminer', function () {
     $.ajax({
       url: "{{ path('jouer_action_suivant', {partie: partie.id}) }}",

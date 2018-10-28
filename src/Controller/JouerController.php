@@ -193,6 +193,7 @@ class JouerController extends AbstractController
                         $terrain[] = $cartep->getId(); //piocher et mettre sur le terrain
                     }
                 }
+                
                 $partie->setMainJ1($main);
                 $partie->setTerrain($terrain);
                 $partie->setPioche($pioche);

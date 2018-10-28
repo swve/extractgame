@@ -76,17 +76,17 @@
     </div>
     <div class="col-sm-8">
         <div class="row" style="margin-bottom:30px; height:550px">
-            <div class="col-sm-12" style="height: 100px">
+            <div class="col-sm-12 box_main_j2" style="height: 100px">
                 {% for carte in partie.mainJ2 %}
                     <img src="{{ asset('cartes/dos.jpg') }}" height="70px" />
                 {% endfor %}
             </div>
-            <div class="col-sm-12" style="height: 100px">
+            <div class="col-sm-12 box_chameaux_j2" style="height: 100px">
                 {% for carte in partie.chameauxJ2 %}
                     <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" height="70px" />
                 {% endfor %}
             </div>
-            <div class="col-sm-12" style="height: 140px">
+            <div class="col-sm-12 box_pioche" style="height: 140px">
                 <div class="row">
                     <div class="col-sm-2">{% if partie.pioche|length >0 %}<img src="{{ asset('cartes/dos.jpg') }}" height="70px"  />{% else %}Vide{% endif %}<p>Pioche {{ partie.pioche|length }}</p></div>
                     <div id="terrain" class="row">
@@ -97,13 +97,13 @@
                 </div>
             </div>
             <br><br>
-            <div class="col-sm-12" style="height: 100px">
+            <div class="col-sm-12 box_chameaux_j1" style="height: 100px">
                 {% for carte in partie.chameauxJ1 %}
                     <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="carteMain_chameau" height="70px" data-carte="{{ carte }}" />
                 {% endfor %}
             </div>
             <br><br>
-            <div class="col-sm-12" style="height: 100px" >Mes cartes<br>
+            <div class="col-sm-12 box_main_J1" style="height: 100px" >Mes cartes<br>
                 <div id="main" class="row">
                     {% for carte in partie.mainJ1 %}
                         <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="carteMain" height="70px" data-carte="{{ carte }}" />
