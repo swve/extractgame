@@ -66,7 +66,7 @@
           actualise = true;
           $('#attentejoueur').hide();
         }
-        console.log('Mon tour')
+        //console.log('Mon tour')
       }
     });
   }
@@ -81,14 +81,15 @@
       $index = cartesSelectedChameau.indexOf($(this).data('carte'));
       cartesSelectedChameau.splice($index, 1);
       console.log( "Chameaux " + cartesSelectedChameau)
-    } else {
+    }
+    
+     else {
       $('.cartechameau').addClass('selected');
       //ajouter dans un tableau
-
       carteType="chameau";
       $( '.cartechameau' ).each(function( index ) {
         cartesSelectedChameau.push($(this).data('carte'));
-        cartesSelectedTerrain.push($(this).data('carte'));
+       
         console.log( "Chameaux : " + cartesSelectedChameau + " Etat carteType : " + carteType);
         console.log( "Carte main à envoyer : " + cartesSelectedTerrain);
       });
@@ -135,11 +136,49 @@
 
   $(document).on('click', '#action-prendre', function () {
     console.log(cartesSelectedTerrain)
+
+
     if (cartesSelectedTerrain.length == 0) {
       alert('Selectionnez une carte');
-    } else if (cartesSelectedTerrain.length > 1 && carteType != "chameau") {
+    } 
+    
+    else if (cartesSelectedTerrain.length > 1 && carteType != "chameau") {
       alert('Selectionnez une seule carte');
     } 
+
+    else if(carteType == "chameau"){
+
+      // Envoi de cartes chameaux 
+      console.log("Cartes chameaux envoyés");
+
+      // Requete ajax
+      $.ajax({
+        url: "{{ path('jouer_action_prendre', {partie: partie.id}) }}",
+        data: {
+          chameaux: cartesSelectedChameau
+        },
+        method: 'POST',
+
+        success: function (data) {
+
+          console.log('carte' + data['cartemain'].id);
+          $('#bloc-action').hide();
+          $('#bloc-suivant').show();
+          $('#carte-' + data['cartemain'].id).remove();
+          var chameau = '';
+
+         
+          $('#terrain').append('<div class="col-sm-2" id="carte-' + data['carteterrain'].id + '"><img src="../cartes/' + data['carteterrain'].fichier + '" height="70px" class="carteterrain ' + chameau + ' new"  data-carte="' + data['carteterrain'].id + '" /></div>');
+          $('#main').append('<img src="../cartes/' + data['cartemain'].fichier + '" class="cartemain new" height="70px" data-carte="' + data['cartemain'].id + '" />');
+        },
+       
+      })
+
+
+
+    }
+
+
     else {
       console.log('OK');
       $.ajax({

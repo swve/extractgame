@@ -177,9 +177,11 @@ class JouerController extends AbstractController
         $idcarte = $request->request->get('cartes');
         $carte = $carteRepository->find($idcarte[0]);
         if ($carte !== null) {
+
             //je considére que je suis j1.
             $main = $partie->getMainJ1();
             //vérifier s'il y a 7 cartes dans la main (pourrait se faire en js).
+            
             if (count($main) < 7) {
                 $main[] = $carte->getId(); //on ajoute dans la main de J1
                 $terrain = $partie->getTerrain();
