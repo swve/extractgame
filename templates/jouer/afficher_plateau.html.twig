@@ -91,7 +91,7 @@
                     <div class="col-sm-2">{% if partie.pioche|length >0 %}<img src="{{ asset('cartes/dos.jpg') }}" height="70px"  />{% else %}Vide{% endif %}<p>Pioche {{ partie.pioche|length }}</p></div>
                     <div id="terrain" class="row">
                     {% for carte in partie.terrain %}
-                    <div class="col-sm-2" id="carte-{{ carte }}"><img src="{{ asset('cartes/'~cartes[carte].fichier) }}" height="70px" class="carte{% if cartes[carte].valeur == 0 %}chameau{% else %}terrain{% endif %}"  data-carte="{{ carte }}" /></div>
+                    <div class="col-sm-2" id="carte-{{ carte }}"><img src="{{ asset('cartes/'~cartes[carte].fichier) }}" height="70px" class="carte{% if cartes[carte].valeur == 0 %}chameau{% else %}terrain{% endif %}"  data-carte="{{ carte }}" />{{ carte }}</div>
                     {% endfor %}
                     </div>
                 </div>
@@ -99,14 +99,14 @@
             <br><br>
             <div class="col-sm-12 box_chameaux_j1" style="height: 100px">
                 {% for carte in partie.chameauxJ1 %}
-                    <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="carteMain_chameau" height="70px" data-carte="{{ carte }}" />
+                    <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="carteMain_chameau" height="70px" data-carte="{{ carte }}" />{{ carte }}
                 {% endfor %}
             </div>
             <br><br>
             <div class="col-sm-12 box_main_J1" style="height: 100px" >Mes cartes<br>
                 <div id="main" class="row">
                     {% for carte in partie.mainJ1 %}
-                        <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="carteMain" height="70px" data-carte="{{ carte }}" />
+                        <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="carteMain" height="70px" data-carte="{{ carte }}" />{{ carte }}
                     {% endfor %}
                 </div>
             </div>

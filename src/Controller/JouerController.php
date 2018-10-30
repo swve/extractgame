@@ -6,10 +6,8 @@ use App\Entity\Partie;
 use App\Repository\CarteRepository;
 use App\Repository\JetonRepository;
 use App\Repository\UserRepository;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -113,11 +111,10 @@ class JouerController extends AbstractController
 
             return $this->redirectToRoute('afficher_partie', ['partie' => $partie->getId()]);
 
-
         }
 
         return $this->render('jouer/creer-partie.html.twig', [
-            'joueurs' => $userRepository->findAll()
+            'joueurs' => $userRepository->findAll(),
         ]);
     }
 
@@ -129,7 +126,7 @@ class JouerController extends AbstractController
 
         return $this->render('jouer/afficher_partie.html.twig',
             [
-                'partie' => $partie
+                'partie' => $partie,
             ]);
     }
 
@@ -174,39 +171,85 @@ class JouerController extends AbstractController
         Request $request,
         Partie $partie
     ) {
+
         $idcarte = $request->request->get('cartes');
-        $carte = $carteRepository->find($idcarte[0]);
-        if ($carte !== null) {
+        $idchameaux = $request->request->get('chameaux');
+
+        if ($idchameaux !== null) {
+            $chameau = $carteRepository->find($idchameaux[0]);
 
             //je considére que je suis j1.
-            $main = $partie->getMainJ1();
-            //vérifier s'il y a 7 cartes dans la main (pourrait se faire en js).
-            
-            if (count($main) < 7) {
-                $main[] = $carte->getId(); //on ajoute dans la main de J1
-                $terrain = $partie->getTerrain();
-                $index = array_search($carte->getId(), $terrain);
-                unset($terrain[$index]); // on retire du terrain
-                $pioche = $partie->getPioche();
-                if (count($pioche) > 0) {
-                    $idcartep = array_pop($pioche);
-                    $cartep = $carteRepository->find($idcartep);
-                    if ($cartep !== null) {
-                        $terrain[] = $cartep->getId(); //piocher et mettre sur le terrain
-                    }
-                }
-                
-                $partie->setMainJ1($main);
-                $partie->setTerrain($terrain);
-                $partie->setPioche($pioche);
-                $entityManager->flush();
+            $main_chameaux = $partie->getChameauxJ1();
+            $terrain = $partie->getTerrain();
 
-                return $this->json(['carteterrain' => $cartep->getJson(), 'cartemain' => $carte->getJson()], 200);
-            } else {
-                return $this->json('erreur7', 500);
+            for ($i = 0; $i < count($idchameaux); $i++) {
+
+                $main_chameaux[] = $idchameaux[$i]; //on ajoute dans la main de J1
+
+                $index = array_search($idchameaux[$i], $terrain);
+
+                unset($terrain[$index]); // on retire du terrain
+
+                $pioche = $partie->getPioche();
+
             }
 
+            for ($i = 0; $i < count($idchameaux); $i++) {
 
+                $pioche2 = $partie->getPioche();
+          
+                $idcartep = array_pop($pioche2);
+                $cartep = $carteRepository->find($idcartep);
+                $terrain[] = $cartep->getId(); //piocher et mettre sur le terrain
+               
+                
+                
+            }
+
+            // executer
+            $partie->setChameauxJ1($main_chameaux);
+            $partie->setTerrain($terrain);
+            $partie->setPioche($pioche);
+
+            $entityManager->flush();
+
+            return $this->json($main_chameaux, 200);
+        }
+
+        if ($idcarte !== null) {
+            $carte = $carteRepository->find($idcarte[0]);
+
+            if ($carte !== null) {
+
+                //je considére que je suis j1.
+                $main = $partie->getMainJ1();
+                //vérifier s'il y a 7 cartes dans la main (pourrait se faire en js).
+
+                if (count($main) < 7) {
+                    $main[] = $carte->getId(); //on ajoute dans la main de J1
+                    $terrain = $partie->getTerrain();
+                    $index = array_search($carte->getId(), $terrain);
+                    unset($terrain[$index]); // on retire du terrain
+                    $pioche = $partie->getPioche();
+                    if (count($pioche) > 0) {
+                        $idcartep = array_pop($pioche);
+                        $cartep = $carteRepository->find($idcartep);
+                        if ($cartep !== null) {
+                            $terrain[] = $cartep->getId(); //piocher et mettre sur le terrain
+                        }
+                    }
+
+                    $partie->setMainJ1($main);
+                    $partie->setTerrain($terrain);
+                    $partie->setPioche($pioche);
+                    $entityManager->flush();
+
+                    return $this->json(['carteterrain' => $cartep->getJson(), 'cartemain' => $carte->getJson()], 200);
+                } else {
+                    return $this->json('erreur7', 500);
+                }
+
+            }
         }
         return $this->json('erreur', 500);
     }
@@ -214,9 +257,8 @@ class JouerController extends AbstractController
     /**
      * @Route("/jouer-action/suivant/{partie}", name="jouer_action_suivant")
      */
-    public function jouerActionSuivant( EntityManagerInterface $entityManager,
-        Partie $partie)
-    {
+    public function jouerActionSuivant(EntityManagerInterface $entityManager,
+        Partie $partie) {
         $partie->setStatus('2'); //en considérant que je suis J1 ... a calculer.
         $entityManager->flush();
         return $this->json('Joueur-suivant', 200);

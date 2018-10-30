@@ -41,20 +41,26 @@
   var cartesSelectedMain = Array();
   var carteType = "default";
 
-  $(document).ready(function () {
-    setInterval(actualisePlateau, 2000);
-  })
+  //$(document).ready(function () {
+    //setInterval(actualisePlateau, 2000);
+  //})
 
   function actualisePlateau() {
     $.ajax({
       url: "{{ path('actualise_plateau', {partie: partie.id}) }}",
     }).done(function (etat) {
+
+
       console.log(etat);
+
+
       if (etat === 'touradversaire') {
         actualise = false;
         console.log('attente Adversaire')
         $('#attentejoueur').show();
       }
+
+
       if (etat === 'montour') {
         if (actualise === false) {
           console.log('reload');
@@ -68,6 +74,8 @@
         }
         //console.log('Mon tour')
       }
+
+
     });
   }
 
@@ -138,7 +146,7 @@
     console.log(cartesSelectedTerrain)
 
 
-    if (cartesSelectedTerrain.length == 0) {
+    if (cartesSelectedTerrain.length == 0 && carteType != "chameau") {
       alert('Selectionnez une carte');
     } 
     
