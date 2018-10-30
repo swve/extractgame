@@ -89,9 +89,9 @@
             <div class="col-sm-12 box_pioche" style="height: 140px">
                 <div class="row">
                     <div class="col-sm-2">{% if partie.pioche|length >0 %}<img src="{{ asset('cartes/dos.jpg') }}" height="70px"  />{% else %}Vide{% endif %}<p>Pioche {{ partie.pioche|length }}</p></div>
-                    <div id="terrain" class="row">
+                    <div id="terrain" class="row terrain">
                     {% for carte in partie.terrain %}
-                    <div class="col-sm-2" id="carte-{{ carte }}"><img src="{{ asset('cartes/'~cartes[carte].fichier) }}" height="70px" class="carte{% if cartes[carte].valeur == 0 %}chameau{% else %}terrain{% endif %}"  data-carte="{{ carte }}" />{{ carte }}</div>
+                    <div class="col-sm-2 carte_{{ carte }}" id="carte-{{ carte }}"><img src="{{ asset('cartes/'~cartes[carte].fichier) }}" height="70px" class="carte{% if cartes[carte].valeur == 0 %}chameau{% else %}terrain{% endif %}"  data-carte="{{ carte }}" />{{ carte }}</div>
                     {% endfor %}
                     </div>
                 </div>

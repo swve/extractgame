@@ -215,7 +215,7 @@ class JouerController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->json($main_chameaux, 200);
+            return $this->json(['carteterrain' => $cartep->getJson() , 'carteschameaux' => $chameau->getJson()] , 200);
         }
 
         if ($idcarte !== null) {

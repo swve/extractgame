@@ -41,9 +41,10 @@
   var cartesSelectedMain = Array();
   var carteType = "default";
 
-  //$(document).ready(function () {
-    //setInterval(actualisePlateau, 2000);
-  //})
+  $(document).ready(function () {
+   setInterval(actualisePlateau, 2000);
+    
+})
 
   function actualisePlateau() {
     $.ajax({
@@ -64,6 +65,7 @@
       if (etat === 'montour') {
         if (actualise === false) {
           console.log('reload');
+          
           $('#plateau').empty().load("{{ path('afficher_plateau', {partie:partie.id}) }}");
           $('img').removeClass('selected');
           cartesSelectedTerrain = Array();
@@ -169,16 +171,24 @@
 
         success: function (data) {
 
-          console.log('carte' + data['cartemain'].id);
-          $('#bloc-action').hide();
-          $('#bloc-suivant').show();
-          $('#carte-' + data['cartemain'].id).remove();
-          var chameau = '';
-
+          console.log('DEBUG')
+          $('#bloc-action').hide('2000');
+          $('#bloc-suivant').show('2000');
          
-          $('#terrain').append('<div class="col-sm-2" id="carte-' + data['carteterrain'].id + '"><img src="../cartes/' + data['carteterrain'].fichier + '" height="70px" class="carteterrain ' + chameau + ' new"  data-carte="' + data['carteterrain'].id + '" /></div>');
-          $('#main').append('<img src="../cartes/' + data['cartemain'].fichier + '" class="cartemain new" height="70px" data-carte="' + data['cartemain'].id + '" />');
-        },
+
+          var i;
+          for (i = 0; i < cartesSelectedChameau.length; ++i) {
+              // do something with `substr[i]`
+              $('.carte_' + cartesSelectedChameau[i] ).hide('20000'); 
+              $('.box_chameaux_j1').append('<img style="margin-right: 25px;" src="../cartes/' + data['carteschameaux'].fichier + '" class="cartemain new" height="70px" data-carte="' +  data['carteschameaux'].id + '" />').show('200');
+            
+          }
+          
+        
+         
+     
+         
+       },
        
       })
 
@@ -197,9 +207,9 @@
         method: 'POST',
         success: function (data) {
           console.log('carte' + data['cartemain'].id);
-          $('#bloc-action').hide();
-          $('#bloc-suivant').show();
-          $('#carte-' + data['cartemain'].id).remove();
+          $('#bloc-action').hide('2000');
+          $('#bloc-suivant').show('2000');
+          $('#carte-' + data['cartemain'].id).hide('20');
           var chameau = '';
 
 
@@ -207,9 +217,8 @@
             chameau = "chameau";
          }
 
-         
-          $('#terrain').append('<div class="col-sm-2" id="carte-' + data['carteterrain'].id + '"><img src="../cartes/' + data['carteterrain'].fichier + '" height="70px" class="carteterrain ' + chameau + ' new"  data-carte="' + data['carteterrain'].id + '" /></div>');
-          $('#main').append('<img src="../cartes/' + data['cartemain'].fichier + '" class="cartemain new" height="70px" data-carte="' + data['cartemain'].id + '" />');
+           $('#terrain').append('<div class="col-sm-2" id="carte-' + data['carteterrain'].id + '"><img src="../cartes/' + data['carteterrain'].fichier + '" height="70px" class="carteterrain ' + chameau + ' new"  data-carte="' + data['carteterrain'].id + '" /></div>');
+         $('#main').append('<img src="../cartes/' + data['cartemain'].fichier + '" class="cartemain new" height="70px" data-carte="' + data['cartemain'].id + '" />');
         },
         error: function (data) {
           if (data === 'erreur7') {
@@ -230,6 +239,7 @@
       url: "{{ path('jouer_action_suivant', {partie: partie.id}) }}",
       method: 'POST'
     });
+    location.reload();
   });
 </script>
 {% endblock %}
