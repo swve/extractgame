@@ -196,11 +196,13 @@ class JouerController extends AbstractController
 
             for ($i = 0; $i < count($idchameaux); $i++) {
 
-                $pioche2 = $partie->getPioche();
+                $pioche = $partie->getPioche();
           
-                $idcartep = array_pop($pioche2);
+                
+                $idcartep = array_pop($pioche);
                 $cartep = $carteRepository->find($idcartep);
-                $terrain[] = $cartep->getId(); //piocher et mettre sur le terrain
+
+                $terrain[] = array_rand($pioche); //piocher et mettre sur le terrain
                
                 
                 
