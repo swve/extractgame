@@ -1,0 +1,86 @@
+{% extends 'back_base.html.twig' %}
+
+{% block title %}Partie{% endblock %}
+
+{% block body %}
+    <h1>Partie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ partie.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ partie.date ? partie.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ partie.status }}</td>
+            </tr>
+            <tr>
+                <th>Terrain</th>
+                <td>{{ partie.terrain }}</td>
+            </tr>
+            <tr>
+                <th>Pioche</th>
+                <td>{{ partie.pioche }}</td>
+            </tr>
+            <tr>
+                <th>Jeton_chameaux</th>
+                <td>{{ partie.jetonChameaux }}</td>
+            </tr>
+            <tr>
+                <th>Defausse</th>
+                <td>{{ partie.defausse ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Main_j1</th>
+                <td>{{ partie.mainJ1 }}</td>
+            </tr>
+            <tr>
+                <th>Main_j2</th>
+                <td>{{ partie.mainJ2 }}</td>
+            </tr>
+            <tr>
+                <th>Chameaux_j1</th>
+                <td>{{ partie.chameauxJ1 }}</td>
+            </tr>
+            <tr>
+                <th>Chameaux_j2</th>
+                <td>{{ partie.chameauxJ2 }}</td>
+            </tr>
+            <tr>
+                <th>Jetons_j1</th>
+                <td>{{ partie.jetonsJ1 }}</td>
+            </tr>
+            <tr>
+                <th>Jetons_j2</th>
+                <td>{{ partie.jetonsJ2 }}</td>
+            </tr>
+            <tr>
+                <th>Nb_manche</th>
+                <td>{{ partie.nbManche }}</td>
+            </tr>
+            <tr>
+                <th>Point_j1</th>
+                <td>{{ partie.pointJ1 }}</td>
+            </tr>
+            <tr>
+                <th>Point_j2</th>
+                <td>{{ partie.pointJ2 }}</td>
+            </tr>
+            <tr>
+                <th>Jetons_terrain</th>
+                <td>{{ partie.jetonsTerrain }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('partie_index') }}">back to list</a>
+
+    <a href="{{ path('partie_edit', {'id': partie.id}) }}">edit</a>
+
+    {{ include('partie/_delete_form.html.twig') }}
+{% endblock %}

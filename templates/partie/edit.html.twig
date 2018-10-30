@@ -1,0 +1,13 @@
+{% extends 'back_base.html.twig' %}
+
+{% block title %}Edit Partie{% endblock %}
+
+{% block body %}
+    <h1>Edit Partie</h1>
+
+    {{ include('partie/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('partie_index') }}">back to list</a>
+
+    {{ include('partie/_delete_form.html.twig') }}
+{% endblock %}

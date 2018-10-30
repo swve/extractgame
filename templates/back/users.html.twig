@@ -1,0 +1,43 @@
+{% extends 'back_base.html.twig' %}
+
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+
+
+
+<br><br><br><br><br><br>
+<div class="container">
+
+
+        <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Last</th>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                        {% for user in users %}
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    
+                  </tr>
+                  {%endfor%}
+ 
+
+
+                  
+                </tbody>
+              </table>
+
+
+    
+   
+</div>
+
+{% endblock %}

@@ -36,6 +36,11 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
 
-        - { path: ^/home, roles: ROLE_USER }
+        - { path: ^/home, roles: IS_AUTHENTICATED_FULLY  }
+       
+        - { path: ^/creer-partie, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/afficher-partie, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
+  
+        - { path: ^/back, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

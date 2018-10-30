@@ -1,0 +1,60 @@
+{% extends 'back_base.html.twig' %}
+
+{% block title %}Partie index{% endblock %}
+
+{% block body %}
+    <h1>Partie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Terrain</th>
+                <th>Pioche</th>
+                <th>Jeton_chameaux</th>
+                <th>Defausse</th>
+                <th>Main_j1</th>
+                <th>Main_j2</th>
+                <th>Chameaux_j1</th>
+                <th>Chameaux_j2</th>
+                <th>Jetons_j1</th>
+                <th>Jetons_j2</th>
+                <th>Nb_manche</th>
+                <th>Point_j1</th>
+                <th>Point_j2</th>
+                <th>Jetons_terrain</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for partie in parties %}
+            <tr>
+                <td>{{ partie.id }}</td>
+                <td>{{ partie.date ? partie.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ partie.status }}</td>
+               
+                <td>{{ partie.jetonChameaux }}</td>
+                <td>{{ partie.defausse ? 'Yes' : 'No' }}</td>
+               
+              
+                <td>{{ partie.nbManche }}</td>
+                <td>{{ partie.pointJ1 }}</td>
+                <td>{{ partie.pointJ2 }}</td>
+             
+                <td>
+                    <a href="{{ path('partie_show', {'id': partie.id}) }}">show</a>
+                    <a href="{{ path('partie_edit', {'id': partie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="18">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('partie_new') }}">Create new</a>
+{% endblock %}
