@@ -268,22 +268,30 @@ class JouerController extends AbstractController
         if ($idcarteMain !== null) {
             $carte = $carteRepository->find($idcarteMain[0]);
 
-            if ($carte !== null) {
+            $terrain = $partie->getTerrain();
+            if ($carte !== null && count($terrain) <= 5) {
+                //je considére que je suis j1.
 
-          
+                $main = $partie->getMainJ1();
+                $terrain = $partie->getTerrain();
+                $index = array_search($carte->getId(), $main);
+                unset($main[$index]); // on retire du terrain
 
+                // Ajouter au terrain
+                $terrain[] = $carte->getId(); //piocher et mettre sur le terrain
 
+                $partie->setMainJ1($main);
+                $partie->setTerrain($terrain);
 
+                $entityManager->flush();
 
-                    return $this->json(['cartemain' => $carte->getJson()], 200);
-                } else {
-                    return $this->json('Erreur action vendre ' , 500);
-                }
-
+                return $this->json(['cartemain' => $carte->getJson(), 'main' => $main, 'terrain' => $terrain, 'count' => count($terrain)], 200);
+            } else {
+                return $this->json('Erreur action vendre ', 500);
             }
+
         }
-        
-    
+    }
 
     /**
      * @Route("/jouer-action/suivant/{partie}", name="jouer_action_suivant")
