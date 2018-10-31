@@ -1,112 +1,116 @@
-
-
 <div class="row">
     <div class="col-sm-4">
         <div class="row">
             <div class="col-sm-9 jeton_div">
                 {% for jeton in partie.jetonsTerrain.video %}
-                    <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px" />
-                    
+                <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px" />
+
                 {% endfor %}
-            </div> 
-                
+            </div>
+
             <div class="col-sm-9 jeton_div">
                 {% for jeton in partie.jetonsTerrain.data %}
-                    <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px" />
+                <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px" />
                 {% endfor %}
             </div>
-                
+
             <div class="col-sm-9 jeton_div">
                 {% for jeton in partie.jetonsTerrain.plan %}
-                    <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px" />
+                <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px" />
                 {% endfor %}
             </div>
-           
+
             <div class="col-sm-9 jeton_div">
                 <div class="row">
                     <div class="col-sm-4">
                         {% for jeton in partie.jetonsTerrain.Bonus_3 %}
-                            {% if loop.first %}
-                                <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px"/>
-                            {% endif %}
+                        {% if loop.first %}
+                        <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px" />
+                        {% endif %}
 
                         {% endfor %}
                         {{ partie.jetonsTerrain.Bonus_3|length }}
                     </div>
                     <div class="col-sm-4">
                         {% for jeton in partie.jetonsTerrain.Bonus_4 %}
-                            {% if loop.first %}
-                                <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px"/>
-                            {% endif %}
+                        {% if loop.first %}
+                        <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px" />
+                        {% endif %}
 
                         {% endfor %}
                         {{ partie.jetonsTerrain.Bonus_4|length }}
                     </div>
                     <div class="col-sm-4">
                         {% for jeton in partie.jetonsTerrain.Bonus_5 %}
-                            {% if loop.first %}
-                                <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px"/>
-                            {% endif %}
+                        {% if loop.first %}
+                        <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px" />
+                        {% endif %}
 
                         {% endfor %}
                         {{ partie.jetonsTerrain.Bonus_5|length }}
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-sm-9 jeton_div">
                 {% for jeton in partie.jetonsTerrain.audio %}
-                    <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px" />
+                <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px" />
                 {% endfor %}
             </div>
-           
+
             <div class="col-sm-9 jeton_div">
                 {% for jeton in partie.jetonsTerrain.app %}
-                    <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px" />
+                <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px" />
                 {% endfor %}
             </div>
-           
+
             <div class="col-sm-9 jeton_div">
                 {% for jeton in partie.jetonsTerrain.disque %}
-                    <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px" />
+                <img src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px" />
                 {% endfor %}
             </div>
-           
+
         </div>
     </div>
     <div class="col-sm-8">
         <div class="row" style="margin-bottom:30px; height:550px">
             <div class="col-sm-12 box_main_j2" style="height: 100px">
                 {% for carte in partie.mainJ2 %}
-                    <img src="{{ asset('cartes/dos.jpg') }}" height="70px" />
+                <img src="{{ asset('cartes/dos.jpg') }}" height="70px" />
                 {% endfor %}
             </div>
             <div class="col-sm-12 box_chameaux_j2" style="height: 100px">
                 {% for carte in partie.chameauxJ2 %}
-                    <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" height="70px" />
+                <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" height="70px" />
                 {% endfor %}
             </div>
             <div class="col-sm-12 box_pioche" style="height: 140px">
                 <div class="row">
-                    <div class="col-sm-2">{% if partie.pioche|length >0 %}<img src="{{ asset('cartes/dos.jpg') }}" height="70px"  />{% else %}Vide{% endif %}<p>Pioche {{ partie.pioche|length }}</p></div>
+                    <div class="col-sm-2">{% if partie.pioche|length >0 %}<img src="{{ asset('cartes/dos.jpg') }}"
+                            height="70px" />{% else %}Vide{% endif %}<p>Pioche {{ partie.pioche|length }}</p>
+                    </div>
                     <div id="terrain" class="row terrain">
-                    {% for carte in partie.terrain %}
-                    <div class="col-sm-2 carte_{{ carte }}" id="carte-{{ carte }}"><img src="{{ asset('cartes/'~cartes[carte].fichier) }}" height="70px" class="carte{% if cartes[carte].valeur == 0 %}chameau{% else %}terrain{% endif %}"  data-carte="{{ carte }}" />{{ carte }}</div>
-                    {% endfor %}
+                        {% for carte in partie.terrain %}
+                        <div class="col-sm-2 carte_{{ carte }}" id="carte-{{ carte }}"><img src="{{ asset('cartes/'~cartes[carte].fichier) }}"
+                                height="70px" class="carte{% if cartes[carte].valeur == 0 %}chameau{% else %}terrain{% endif %}"
+                                data-carte="{{ carte }}" />{{ carte }}</div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
             <br><br>
             <div class="col-sm-12 box_chameaux_j1" style="height: 100px">
                 {% for carte in partie.chameauxJ1 %}
-                    <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="carteMain_chameau" height="70px" data-carte="{{ carte }}" />{{ carte }}
+                <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="carteMain_chameau" height="70px"
+                    data-carte="{{ carte }}" />{{ carte }}
                 {% endfor %}
             </div>
             <br><br>
-            <div class="col-sm-12 box_main_J1" style="height: 100px" >Mes cartes<br>
+            <div class="col-sm-12 box_main_J1" style="height: 100px">Mes cartes<br>
                 <div id="main" class="row">
                     {% for carte in partie.mainJ1 %}
-                        <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="carteMain" height="70px" data-carte="{{ carte }}" />{{ carte }}
+                    <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="carteMain carteMain_{{ carte }}" height="70px" data-carte="{{ carte }}" />{{
+                    carte }}
                     {% endfor %}
                 </div>
             </div>

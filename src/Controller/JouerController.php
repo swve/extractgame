@@ -197,15 +197,12 @@ class JouerController extends AbstractController
             for ($i = 0; $i < count($idchameaux); $i++) {
 
                 $pioche = $partie->getPioche();
-          
-                
+
                 $idcartep = array_pop($pioche);
                 $cartep = $carteRepository->find($idcartep);
 
                 $terrain[] = array_rand($pioche); //piocher et mettre sur le terrain
-               
-                
-                
+
             }
 
             // executer
@@ -215,7 +212,7 @@ class JouerController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->json(['carteterrain' => $cartep->getJson() , 'carteschameaux' => $chameau->getJson()] , 200);
+            return $this->json(['carteterrain' => $cartep->getJson(), 'carteschameaux' => $chameau->getJson()], 200);
         }
 
         if ($idcarte !== null) {
@@ -255,6 +252,38 @@ class JouerController extends AbstractController
         }
         return $this->json('erreur', 500);
     }
+
+    /**
+     * @Route("/jouer-action/vendre/{partie}", name="jouer_action_vendre")
+     */
+    public function jouerActionVendre(
+        EntityManagerInterface $entityManager,
+        CarteRepository $carteRepository,
+        Request $request,
+        Partie $partie
+    ) {
+
+        $idcarteMain = $request->request->get('main');
+
+        if ($idcarteMain !== null) {
+            $carte = $carteRepository->find($idcarteMain[0]);
+
+            if ($carte !== null) {
+
+          
+
+
+
+
+                    return $this->json(['cartemain' => $carte->getJson()], 200);
+                } else {
+                    return $this->json('Erreur action vendre ' , 500);
+                }
+
+            }
+        }
+        
+    
 
     /**
      * @Route("/jouer-action/suivant/{partie}", name="jouer_action_suivant")

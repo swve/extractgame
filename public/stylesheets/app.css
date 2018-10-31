@@ -18,3 +18,11 @@ body {
 .jeton_div img {
   padding-right: 10px;
 }
+
+/* line 22, ../sass/app.scss */
+.box_chameaux_j1, .box_chameaux_j2 {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #617f7533;
+  margin-bottom: 10px;
+}

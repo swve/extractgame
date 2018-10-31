@@ -4,13 +4,17 @@
 <link rel="stylesheet" href="../stylesheets/app.css">
 <style>
   .selected {
-      border: 2px solid red;
+    border: 2px solid red;
   }
+
   .new {
     border: 2px solid green;
   }
 
-  body{padding: 28px;background-color: aliceblue;}
+  body {
+    padding: 28px;
+    background-color: aliceblue;
+  }
 </style>
 {% endblock %}
 
@@ -42,9 +46,9 @@
   var carteType = "default";
 
   $(document).ready(function () {
-   setInterval(actualisePlateau, 2000);
-    
-})
+    setInterval(actualisePlateau, 2000);
+
+  })
 
   function actualisePlateau() {
     $.ajax({
@@ -65,7 +69,7 @@
       if (etat === 'montour') {
         if (actualise === false) {
           console.log('reload');
-          
+
           $('#plateau').empty().load("{{ path('afficher_plateau', {partie:partie.id}) }}");
           $('img').removeClass('selected');
           cartesSelectedTerrain = Array();
@@ -83,36 +87,35 @@
 
 
   $(document).on('click', '#terrain .cartechameau', function () {
-    
+
     if ($(this).hasClass('selected')) {
       $(this).removeClass('selected');
-      
+
       //retirer d'un tableau
       $index = cartesSelectedChameau.indexOf($(this).data('carte'));
       cartesSelectedChameau.splice($index, 1);
-      console.log( "Chameaux " + cartesSelectedChameau)
-    }
-    
-     else {
+      console.log("Chameaux " + cartesSelectedChameau)
+    } else {
       $('.cartechameau').addClass('selected');
       //ajouter dans un tableau
-      carteType="chameau";
-      $( '.cartechameau' ).each(function( index ) {
+      carteType = "chameau";
+      $('.cartechameau').each(function (index) {
         cartesSelectedChameau.push($(this).data('carte'));
-       
-        console.log( "Chameaux : " + cartesSelectedChameau + " Etat carteType : " + carteType);
-        console.log( "Carte main à envoyer : " + cartesSelectedTerrain);
+
+        console.log("Chameaux : " + cartesSelectedChameau + " Etat carteType : " + carteType);
+        console.log("Carte main à envoyer : " + cartesSelectedTerrain);
       });
 
 
-      
+
     }
   })
 
-    $(document).on('click', '.carteterrain', function () {
-    
+  $(document).on('click', '.carteterrain', function () {
+
     if ($(this).hasClass('selected')) {
       $(this).removeClass('selected');
+      carteType = "terrain";
       //retirer d'un tableau
       $index = cartesSelectedTerrain.indexOf($(this).data('carte'));
       cartesSelectedTerrain.splice($index, 1);
@@ -127,36 +130,39 @@
 
 
 
-  $(document).on('click', '.cartemain', function () {
+  $(document).on('click', '.carteMain', function () {
     if ($(this).hasClass('selected')) {
       $(this).removeClass('selected');
+
       //retirer d'un tableau
       $index = cartesSelectedMain.indexOf($(this).data('carte'));
       cartesSelectedMain.splice($index, 1);
       console.log("Main :" + cartesSelectedMain)
     } else {
       $(this).addClass('selected');
+      carteType = "main";
+
       //ajouter dans un tableau
       cartesSelectedMain.push($(this).data('carte'));
       console.log("Main :" + cartesSelectedMain)
     }
   })
-  
+
 
 
   $(document).on('click', '#action-prendre', function () {
-    console.log(cartesSelectedTerrain)
+    console.log("Terrain  > " + cartesSelectedTerrain + " | Main > " + cartesSelectedMain + " | Chameaux > " +
+      cartesSelectedChameau)
 
 
-    if (cartesSelectedTerrain.length == 0 && carteType != "chameau") {
+    if (cartesSelectedTerrain.length == 0 && carteType == "terrain") {
       alert('Selectionnez une carte');
-    } 
-    
-    else if (cartesSelectedTerrain.length > 1 && carteType != "chameau") {
+    } else if (cartesSelectedTerrain.length > 1 && cartesSelectedMain.length > 0 && carteType != "chameau") {
       alert('Selectionnez une seule carte');
-    } 
+    }
 
-    else if(carteType == "chameau"){
+    // Envoi des cartes chameaux
+    else if (carteType == "chameau") {
 
       // Envoi de cartes chameaux 
       console.log("Cartes chameaux envoyés");
@@ -174,30 +180,27 @@
           console.log('DEBUG')
           $('#bloc-action').hide('2000');
           $('#bloc-suivant').show('2000');
-         
+
 
           var i;
           for (i = 0; i < cartesSelectedChameau.length; ++i) {
-              // do something with `substr[i]`
-              $('.carte_' + cartesSelectedChameau[i] ).hide('20000'); 
-              $('.box_chameaux_j1').append('<img style="margin-right: 25px;" src="../cartes/' + data['carteschameaux'].fichier + '" class="cartemain new" height="70px" data-carte="' +  data['carteschameaux'].id + '" />').show('200');
-            
+            // do something with `substr[i]`
+            $('.carte_' + cartesSelectedChameau[i]).hide('20000');
+            $('.box_chameaux_j1').append('<img style="margin-right: 25px;" src="../cartes/' + data[
+              'carteschameaux'].fichier + '" class="cartemain new" height="70px" data-carte="' + data[
+              'carteschameaux'].id + '" />').show('200');
+
           }
-          
-        
-         
-     
-         
-       },
-       
+
+
+
+
+
+        },
+
       })
 
-
-
-    }
-
-
-    else {
+    } else {
       console.log('OK');
       $.ajax({
         url: "{{ path('jouer_action_prendre', {partie: partie.id}) }}",
@@ -213,12 +216,16 @@
           var chameau = '';
 
 
-          if (data['carteterrain'].valeur == 0) { 
+          if (data['carteterrain'].valeur == 0) {
             chameau = "chameau";
-         }
+          }
 
-           $('#terrain').append('<div class="col-sm-2" id="carte-' + data['carteterrain'].id + '"><img src="../cartes/' + data['carteterrain'].fichier + '" height="70px" class="carteterrain ' + chameau + ' new"  data-carte="' + data['carteterrain'].id + '" /></div>');
-         $('#main').append('<img src="../cartes/' + data['cartemain'].fichier + '" class="cartemain new" height="70px" data-carte="' + data['cartemain'].id + '" />');
+          $('#terrain').append('<div class="col-sm-2" id="carte-' + data['carteterrain'].id +
+            '"><img src="../cartes/' + data['carteterrain'].fichier +
+            '" height="70px" class="carteterrain ' + chameau + ' new"  data-carte="' + data['carteterrain']
+            .id + '" /></div>');
+          $('#main').append('<img src="../cartes/' + data['cartemain'].fichier +
+            '" class="cartemain new" height="70px" data-carte="' + data['cartemain'].id + '" />');
         },
         error: function (data) {
           if (data === 'erreur7') {
@@ -231,6 +238,38 @@
     }
   })
 
+
+  $(document).on('click', '#action-vendre', function () {
+    // Envoi des cartes en Main
+    if (carteType == "main") {
+      console.log('Envoi des cartes main :D ');
+      
+      $.ajax({
+        url: "{{ path('jouer_action_vendre', {partie: partie.id}) }}",
+        data: {
+          main: cartesSelectedMain
+        },
+        method: 'POST',
+
+        success: function (data) {
+          $('#bloc-action').hide('2000');
+          $('#bloc-suivant').show('2000');
+
+          var i;
+          for (i = 0; i < cartesSelectedMain.length; ++i) {
+            // do something with `substr[i]`
+            $('.carteMain_' + cartesSelectedMain[i]).hide('20000');
+            $('#terrain').append('<img style="margin-right: 25px;" src="../cartes/' + data[
+              'cartemain'].fichier + '" class="cartemain new" height="70px" data-carte="' + data[
+              'cartemain'].id + '" />').show('200');
+
+          }
+
+        },
+
+      })
+    }
+  })
 
 
 
