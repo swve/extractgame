@@ -290,7 +290,7 @@ $(document).on('click', '#action-troquer', function () {
 
           var i;
           
-          if(cartesSelectedChameau.length == cartesSelectedTerrain.length ){
+          if(cartesSelectedMain.length == cartesSelectedTerrain.length ){
 
               for (i = 0; i < cartesSelectedMain.length; ++i) {
               // do something with `substr[i]`
@@ -302,12 +302,12 @@ $(document).on('click', '#action-troquer', function () {
 
              for (i = 0; i < cartesSelectedTerrain.length; ++i) {
               // do something with `substr[i]`
-              $('.carteMain_' + cartesSelectedTerrain[i]).hide('20000');
-              $('#terrain').append('<img style="margin-right: 25px;" src="../cartes/' + data[
-                'cartemain'].fichier + '" class="cartemain new" height="70px" data-carte="' + data[
-                'cartemain'].id + '" />').show('200');
+              $('.terrain_' + cartesSelectedTerrain[i]).hide('20000');
+              $('#main').append('<img style="margin-right: 25px;" src="../cartes/' + data[
+                'carteterrain'].fichier + '" class="carteterrain new" height="70px" data-carte="' + data[
+                'carteterrain'].id + '" />').show('200');
             }
-
+            console.log('done')
           }
           else{
             console.log('ERREUR LENGTH');

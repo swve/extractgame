@@ -92,7 +92,7 @@
                     <div id="terrain" class="row terrain">
                         {% for carte in partie.terrain %}
                         <div class="col-sm-2 carte_{{ carte }}" id="carte-{{ carte }}"><img src="{{ asset('cartes/'~cartes[carte].fichier) }}"
-                                height="70px" class="carte{% if cartes[carte].valeur == 0 %}chameau{% else %}terrain{% endif %}"
+                                height="70px" class="carte{% if cartes[carte].valeur == 0 %}chameau{% else %}terrain terrain_{{ carte }}{% endif %}"
                                 data-carte="{{ carte }}" />{{ carte }}</div>
                         {% endfor %}
                     </div>
