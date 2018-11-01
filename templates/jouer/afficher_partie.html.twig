@@ -271,7 +271,53 @@
     }
   })
 
+$(document).on('click', '#action-troquer', function () {
+    // Envoi des cartes en Main
+    if (carteType == "main") {
+      console.log('Envoi des cartes main :D ');
+      
+      $.ajax({
+        url: "{{ path('jouer_action_troc', {partie: partie.id}) }}",
+        data: {
+          main: cartesSelectedMain , 
+          terrain: cartesSelectedTerrain
+        },
+        method: 'POST',
 
+        success: function (data) {
+          $('#bloc-action').hide('2000');
+          $('#bloc-suivant').show('2000');
+
+          var i;
+          
+          if(cartesSelectedChameau.length == cartesSelectedTerrain.length ){
+
+              for (i = 0; i < cartesSelectedMain.length; ++i) {
+              // do something with `substr[i]`
+              $('.carteMain_' + cartesSelectedMain[i]).hide('20000');
+              $('#terrain').append('<img style="margin-right: 25px;" src="../cartes/' + data[
+                'cartemain'].fichier + '" class="cartemain new" height="70px" data-carte="' + data[
+                'cartemain'].id + '" />').show('200');
+            }
+
+             for (i = 0; i < cartesSelectedTerrain.length; ++i) {
+              // do something with `substr[i]`
+              $('.carteMain_' + cartesSelectedTerrain[i]).hide('20000');
+              $('#terrain').append('<img style="margin-right: 25px;" src="../cartes/' + data[
+                'cartemain'].fichier + '" class="cartemain new" height="70px" data-carte="' + data[
+                'cartemain'].id + '" />').show('200');
+            }
+
+          }
+          else{
+            console.log('ERREUR LENGTH');
+          }
+
+        },
+
+      })
+    }
+  })
 
   $(document).on('click', '#action-terminer', function () {
     $.ajax({
