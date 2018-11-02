@@ -12,21 +12,38 @@
                     <source src="video/animation.mp4" type="video/mp4">
                 </video>
                 <form name="registration" method="post" class="my-form-class">
-                <div id="inscription" class="col-12 text-center">
-                    <div class="fond">
-                        <h2>Inscription</h2>
-                        <input id="pseudo" type="text" placeholder="Pseudo" name="registration[username]" required="required" maxlength="255" >
-                        <input id="mdp" type="text" placeholder="Adresse email " name="registration[email]" required="required" maxlength="255">
-                        <input id="mdpplus" type="password" placeholder="Mot de passe " name="registration[password]" required="required" maxlength="255">
-                        {{ form_row(form._token) }}
-                        <input type="submit" value="Inscription">
+                    <div id="inscription" class="col-12 text-center">
+                        <div class="fond">
+                            <h2>Inscription</h2>
+                            <input id="pseudo" type="text" placeholder="Pseudo" name="registration[username]" required="required"
+                                maxlength="255">
+                            <input id="mdp" type="text" placeholder="Adresse email " name="registration[email]"
+                                required="required" maxlength="255">
+                            <input id="mdpplus" type="password" placeholder="Mot de passe " name="registration[password]"
+                                required="required" maxlength="255">
+                            {{ form_row(form._token) }}
+                            <input type="submit"  value="Inscription">
+                        </div>
                     </div>
-                </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script>
+    // A $( document ).ready() block.
+    $(document).ready(function () {
+        $('[type="submit"]').on("click", function () {
+             pseudo = $('input#pseudo').val() ; 
+             email = $('input#mdp').val() ; 
+             mdp = $('input#mdpplus').val() ; 
+            if(pseudo != "" && email != "" && mdp != "" ){
+                $(this).css("pointer-events","none");
+            }
+        });
+    });
+</script>
 
 {% endblock %}

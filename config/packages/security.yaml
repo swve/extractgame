@@ -40,7 +40,7 @@ security:
     access_control:
 
        
-        - { path: ^/home/, roles: [ROLE_USER , ROLE_BANNED] }
+        - { path: ^/home, roles: [ROLE_USER , ROLE_BANNED] }
       
         - { path: ^/banned/, roles: ROLE_BANNED }
         
