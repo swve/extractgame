@@ -1,0 +1,45 @@
+
+{% extends 'back_base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <h1>Ban user list</h1>
+<br>
+<div class="alert alert-primary" role="alert">
+   <b>ROLE_BANNED : </b> "Utilisateur Banni " | <b>ROLE_USER </b> :  "Utilisateur Normal " 
+</div>
+<br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Etat actuel</th>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.roles ? user.roles|join(', ') : '' }}</td>
+                
+               
+                <td>
+                    <a href="{{ path('ban_user', {'id': user.id}) }}">Bannir 💥</a>
+                    <a href="{{ path('deban_user', {'id': user.id}) }}">Débannir ✔</a>
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

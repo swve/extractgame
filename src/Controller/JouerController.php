@@ -123,7 +123,7 @@ class JouerController extends AbstractController
      */
     public function afficherPartie(Partie $partie)
     {
-
+        
         return $this->render('jouer/afficher_partie.html.twig',
             [
                 'partie' => $partie,

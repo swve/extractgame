@@ -1,4 +1,7 @@
 security:
+    always_authenticate_before_granting: true
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
     access_denied_url: /
     encoders:
         App\Entity\User:
@@ -36,11 +39,18 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
 
-        - { path: ^/home, roles: IS_AUTHENTICATED_FULLY  }
        
-        - { path: ^/creer-partie, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/afficher-partie, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/home/, roles: [ROLE_USER , ROLE_BANNED] }
+      
+        - { path: ^/banned/, roles: ROLE_BANNED }
+        
+        - { path: ^/creer-partie, roles: ROLE_USER }
+        - { path: ^/actualise-plateau, roles: ROLE_USER }
+        - { path: ^/afficher-partie, roles: ROLE_USER }
         - { path: ^/admin, roles: ROLE_ADMIN }
+        
   
         - { path: ^/back, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+
+        

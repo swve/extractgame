@@ -16,14 +16,20 @@ class DefaultController extends AbstractController
         if (true === $authChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('home_route');
         }
+     
+        
         return $this->render('default/index.html.twig');
     }
 
      /**
      * @Route("/home", name="home_route")
      */
-    public function home()
+    public function home(AuthorizationCheckerInterface $authChecker)
     {
+        if (true === $authChecker->isGranted('ROLE_BANNED')) {
+            return $this->redirectToRoute('banned');
+        }
+
         return $this->render('default/home.html.twig');
     }
 }

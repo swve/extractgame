@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    {% block header %} {% endblock %}
+{% block header %} {% endblock %}
 <div class="container">
     <br>
     <br>
@@ -18,25 +18,29 @@
     <p><a href="{{ path('security_logout') }}">Se déconnecter </a></p>
 
     <br><br>
-  
+
     <a name="" id="" class="btn btn-success" href="{{ path('partie_creer') }}" role="button">Créer une partie</a>
 
     <br>
     <br><br>
+    {% if is_granted('ROLE_ADMIN') %}
+
+
     <h3>Administration</h3>
     <br>
-  
+
     <a name="" id="" class="btn btn-warning" href="{{ path('carte_index') }}" role="button">Gerer les cartes</a>
 
     <br><br>
-  
+
     <a name="" id="" class="btn btn-warning" href="{{ path('jeton_index') }}" role="button">Gerer les jetons</a>
 
     <br><br>
-  
+
     <a name="" id="" class="btn btn-warning" href="" role="button">Gerer les utilisateurs</a>
     {% endif %}
+    {% endif %}
 
-  
+
 </div>
 {% endblock %}
