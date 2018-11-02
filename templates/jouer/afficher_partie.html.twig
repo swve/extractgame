@@ -2,6 +2,7 @@
 
 {% block stylesheets %}
 <link rel="stylesheet" href="../stylesheets/app.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css" />
 <style>
   .selected {
     border: 2px solid red;
@@ -20,7 +21,7 @@
 
 {% block body %}
 <h1>Partie entre {{ partie.joueur1.username }} et {{ partie.joueur2.username }}</h1>
-
+<input type="hidden" class="idPartie" value="{{partie.id}}">
 <div id="plateau">
   {{ render(controller(
   'App\\Controller\\JouerController::afficherPlateau',
@@ -38,6 +39,7 @@
 {% endblock %}
 
 {% block javascripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
 <script>
   var actualise = false;
   var cartesSelectedTerrain = Array();
@@ -179,7 +181,7 @@
 
           console.log('DEBUG')
           $('#bloc-action').hide('2000');
-          $('#bloc-suivant').show('2000');
+          ValideTour();
 
 
           var i;
@@ -189,7 +191,10 @@
             $('.box_chameaux_j1').append('<img style="margin-right: 25px;" src="../cartes/' + data[
               'carteschameaux'].fichier + '" class="cartemain new" height="70px" data-carte="' + data[
               'carteschameaux'].id + '" />').show('200');
-
+              iziToast.success({
+                title: 'Succès',
+                message: 'Vous avez pris la carte chameau  ' + cartesSelectedChameau[i] ,
+              });
           }
 
 
@@ -211,7 +216,7 @@
         success: function (data) {
           console.log('carte' + data['cartemain'].id);
           $('#bloc-action').hide('2000');
-          $('#bloc-suivant').show('2000');
+          ValideTour();
           $('#carte-' + data['cartemain'].id).hide('20');
           var chameau = '';
 
@@ -229,9 +234,17 @@
         },
         error: function (data) {
           if (data === 'erreur7') {
-            alert('Vous avez déjà 7 cartes en main. Vous ne pouvez pas jouer cette action.');
+            
+            iziToast.error({
+                title: 'Erreur',
+                message: 'Vous avez deja 7 cartes en main  ',
+              });
+
           } else {
-            alert('erreur action prendre');
+            iziToast.error({
+                title: 'Erreur',
+                message: 'Action prendre',
+              });
           }
         }
       })
@@ -253,7 +266,7 @@
 
         success: function (data) {
           $('#bloc-action').hide('2000');
-          $('#bloc-suivant').show('2000');
+          ValideTour();
 
           var i;
           for (i = 0; i < cartesSelectedMain.length; ++i) {
@@ -262,7 +275,10 @@
             $('#terrain').append('<img style="margin-right: 25px;" src="../cartes/' + data[
               'cartemain'].fichier + '" class="cartemain new" height="70px" data-carte="' + data[
               'cartemain'].id + '" />').show('200');
-
+              iziToast.success({
+                title: 'Succès',
+                message: 'Vous avez vendu la carte  ' + cartesSelectedMain[i] ,
+              });
           }
 
         },
@@ -286,7 +302,7 @@ $(document).on('click', '#action-troquer', function () {
 
         success: function (data) {
           $('#bloc-action').hide('2000');
-          $('#bloc-suivant').show('2000');
+          ValideTour();
 
           var i;
           
@@ -307,10 +323,16 @@ $(document).on('click', '#action-troquer', function () {
                 'carteterrain'].fichier + '" class="carteterrain new" height="70px" data-carte="' + data[
                 'carteterrain'].id + '" />').show('200');
             }
-            console.log('done')
+            iziToast.success({
+                title: 'Succès',
+                message: 'Vous avez troqué ',
+              });
           }
           else{
-            console.log('ERREUR LENGTH');
+            iziToast.error({
+                title: 'Erreur',
+                message: 'Selectionnez la meme quantité de cartes ',
+              });
           }
 
         },
@@ -319,11 +341,66 @@ $(document).on('click', '#action-troquer', function () {
     }
   })
 
+var partieID = $('input[type=hidden].idPartie').val(); 
+function ValideTour(){
+  iziToast.question({
+    timeout: 5000000,
+    close: false,
+    overlay: true,
+    displayMode: 'once',
+    id: 'question',
+    zindex: 999,
+    title: 'Extract',
+    message: 'Voulez vous terminer votre tour',
+    position: 'center',
+    buttons: [
+        ['<button><b>Oui</b></button>', function (instance, toast) {
+ 
+            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+            $.ajax({
+              url: ('/jouer-action/suivant/'+partieID) ,
+              method: 'POST'
+            });
+              
+    iziToast.show({
+        id: 'haduken',
+        timeout: 10000,
+        close: true,
+        overlay: true,
+        theme: 'dark',
+        icon: 'icon-contacts',
+        title: 'Veuillez attendre votre tour ',
+        displayMode: 2,
+        message: 'La main vous sera donnée une fois que le joueur 2 finira son tour',
+        position: 'topCenter',
+        transitionIn: 'flipInX',
+        transitionOut: 'flipOutX',
+        progressBarColor: 'rgb(0, 255, 184)',
+        image: '/img/promo.png',
+        imageWidth: 100,
+        layout: 2,
+        iconColor: 'rgb(0, 255, 184)'
+    });
+           
+
+ 
+        }, true]
+       
+    ],
+   
+});
+}
+
+
   $(document).on('click', '#action-terminer', function () {
     $.ajax({
       url: "{{ path('jouer_action_suivant', {partie: partie.id}) }}",
       method: 'POST'
     });
+
+
+  
+
     location.reload();
   });
 </script>
