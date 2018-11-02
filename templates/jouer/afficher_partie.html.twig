@@ -2,6 +2,7 @@
 
 {% block stylesheets %}
 <link rel="stylesheet" href="../stylesheets/app.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tuesday/1.1.0/tuesday.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css" />
 <style>
   .selected {
@@ -22,16 +23,18 @@
 {% block body %}
 <h1>Partie entre {{ partie.joueur1.username }} et {{ partie.joueur2.username }}</h1>
 <input type="hidden" class="idPartie" value="{{partie.id}}">
-<div id="plateau">
+<div id="plateau" class="animated tdExpandIn">
   {{ render(controller(
   'App\\Controller\\JouerController::afficherPlateau',
   { 'partie': partie.id }
   )) }}
 </div>
 
-<div id="attentejoueur" style="position:fixed; top:0; left:0; height: 100%; width: 100%; background-color: darkgray; opacity: 0.8;font-size: 60px; display:none">
-  Attente du joueur
-</div>
+<div id="attentejoueur" class="animated tdExpandIn" style="position: fixed;top: -4px;left: 0px;height: 100%;padding: 160px;text-align: center;width: 100%;transition: all 0.2s ease 0s;background-color: #ffffffe0;opacity: 0.8;font-size: 60px;font-weight: bold;">
+   <br> Attente du joueur <br>
+    <center><div class="lds-ripple"><div></div><div></div></div></center>
+    
+  </div>
 {% endblock %}
 
 {% block title %}
@@ -41,6 +44,7 @@
 {% block javascripts %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
 <script>
+  $('#attentejoueur').hide();
   var actualise = false;
   var cartesSelectedTerrain = Array();
   var cartesSelectedChameau = Array();
@@ -364,7 +368,7 @@ function ValideTour(){
               
     iziToast.show({
         id: 'haduken',
-        timeout: 10000,
+        timeout: 50000,
         close: true,
         overlay: true,
         theme: 'dark',
@@ -372,7 +376,7 @@ function ValideTour(){
         title: 'Veuillez attendre votre tour ',
         displayMode: 2,
         message: 'La main vous sera donnée une fois que le joueur 2 finira son tour',
-        position: 'topCenter',
+        position: 'center',
         transitionIn: 'flipInX',
         transitionOut: 'flipOutX',
         progressBarColor: 'rgb(0, 255, 184)',

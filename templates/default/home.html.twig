@@ -14,7 +14,7 @@
 
     {% if app.user %}
 
-    <h3>Bienvenue à toi cher : {{ app.user.username }}</h3>
+    <h3>Bienvenue à toi : {{ app.user.username }}</h3>
     <p><a href="{{ path('security_logout') }}">Se déconnecter </a></p>
 
     <br>
@@ -56,15 +56,9 @@
     <h3>Administration</h3>
     <br>
 
-    <a name="" id="" class="btn btn-warning" href="{{ path('carte_index') }}" role="button">Gerer les cartes</a>
-
+    <a name="" id="" class="btn btn-warning" href="{{ path('back') }}" role="button">Backoffice</a>
     <br><br>
 
-    <a name="" id="" class="btn btn-warning" href="{{ path('jeton_index') }}" role="button">Gerer les jetons</a>
-
-    <br><br>
-
-    <a name="" id="" class="btn btn-warning" href="" role="button">Gerer les utilisateurs</a>
     {% endif %}
     {% endif %}
 
