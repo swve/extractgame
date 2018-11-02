@@ -17,8 +17,35 @@
     <h3>Bienvenue à toi cher : {{ app.user.username }}</h3>
     <p><a href="{{ path('security_logout') }}">Se déconnecter </a></p>
 
-    <br><br>
+    <br>
+  <div class="row">
+      <div class="col-6"> <h3>Mes parties : </h3>
+        
+        {% for partie in mesparties %}
+        <br>
 
+
+        <a class="btn btn-dark" href="{{ path('afficher_partie', {'partie': partie.id}) }}" role="button">Accéder à la
+            partie {{ partie.id }} </a>
+    
+    
+        {% endfor %}</div>
+      <div class="col-6"> 
+            <h3>Parties invités : </h3> 
+            <br>
+        {% for partie in invparties %}
+
+
+        <a class="btn btn-dark" href="{{ path('afficher_partie', {'partie': partie.id}) }}" role="button">Accéder à la
+            partie {{ partie.id }} </a>
+    
+    
+        {% endfor %}</div>
+  </div>
+
+    <br><br>
+    <h3>Nouvelle partie : </h3>
+    <br><br>
     <a name="" id="" class="btn btn-success" href="{{ path('partie_creer') }}" role="button">Créer une partie</a>
 
     <br>
@@ -40,6 +67,8 @@
     <a name="" id="" class="btn btn-warning" href="" role="button">Gerer les utilisateurs</a>
     {% endif %}
     {% endif %}
+
+
 
 
 </div>

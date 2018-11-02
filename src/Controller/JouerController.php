@@ -3,13 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Partie;
+use App\Repository\UserRepository;
 use App\Repository\CarteRepository;
 use App\Repository\JetonRepository;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class JouerController extends AbstractController
 {
@@ -30,11 +31,13 @@ class JouerController extends AbstractController
         UserRepository $userRepository,
         CarteRepository $carteRepository,
         JetonRepository $jetonRepository,
-        Request $request
+        Request $request,
+        UserInterface $user
     ) {
+        $userId = $user->getId();
 
         if ($request->getMethod() == 'POST') {
-            $j1 = $userRepository->find($request->request->get('joueur1'));
+            $j1 = $userRepository->find($userId);
             $j2 = $userRepository->find($request->request->get('joueur2'));
 
             $partie = new Partie();

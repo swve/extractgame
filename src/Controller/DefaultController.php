@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+use App\Repository\PartieRepository;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,12 +25,17 @@ class DefaultController extends AbstractController
      /**
      * @Route("/home", name="home_route")
      */
-    public function home(AuthorizationCheckerInterface $authChecker)
+    public function home(AuthorizationCheckerInterface $authChecker , PartieRepository $PartieRepository)
     {
         if (true === $authChecker->isGranted('ROLE_BANNED')) {
             return $this->redirectToRoute('banned');
         }
-
-        return $this->render('default/home.html.twig');
+        $user = $this->getUser();
+        return $this->render('default/home.html.twig' , 
+        ['mesparties' => $PartieRepository->findBy(['joueur1' => $user->getId() ]) , 
+        'invparties' => $PartieRepository->findBy(['joueur2' => $user->getId() ])
+        ]
+    
+    );
     }
 }
