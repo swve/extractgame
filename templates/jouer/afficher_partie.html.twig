@@ -262,6 +262,8 @@
             '" class="cartemain new" height="70px" data-carte="' + data['cartemain'].id + '" />');
         },
         error: function (data) {
+
+          
           if (data === 'erreur7') {
 
             iziToast.error({
@@ -269,13 +271,17 @@
               message: 'Vous avez deja 7 cartes en main  ',
             });
 
-          } else {
+          }
+          
+           else {
             iziToast.error({
               title: 'Erreur',
               message: 'Action prendre',
             });
           }
         }
+
+        
       })
     }
   })
@@ -365,6 +371,19 @@
           }
 
         },
+        error: function (data) {
+
+          
+if (data === 'ERREUR_NB7') {
+
+  iziToast.error({
+    title: 'Erreur',
+    message: 'Vous ne pouvez pas avoir plus de 7 cartes ',
+  });
+
+}
+
+}
 
       })
     }

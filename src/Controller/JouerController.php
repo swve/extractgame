@@ -305,7 +305,7 @@ class JouerController extends AbstractController
         Request $request,
         Partie $partie
     ) {
-
+        $main = $partie->getMainJ1();
         $idcarteMain = null;
         if ($request->request->get('main') !== null) {
             $idcarteMain = $request->request->get('main');
@@ -317,7 +317,17 @@ class JouerController extends AbstractController
         if ($request->request->get('chameaux_main') !== null) {
         $idcarteMainChameau = $request->request->get('chameaux_main');
         }
+        $nbMain = count($main) ; 
+        if ($idcarteMain !== null) {
+            $nbCarteMain = count($idcarteMain); 
+        }
+        else{
+            $nbCarteMain = 0  ; 
+        }
+        $nbCarteTerrain = count($idcarteTerrain)  ; 
+        $calculMain = $nbMain - $nbCarteMain  + $nbCarteTerrain ; 
 
+        if ( $calculMain < 7) {
         if ($idcarteMain !== null || $idcarteMainChameau !== null) {
 
             $carteMain = null;
@@ -396,6 +406,10 @@ class JouerController extends AbstractController
             }
 
         }
+    }
+    else{
+        return $this->json('ERREUR_NB7 ' ,500 );
+    }
     }
 
     /**
