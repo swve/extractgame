@@ -3,14 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Partie;
-use App\Repository\UserRepository;
 use App\Repository\CarteRepository;
 use App\Repository\JetonRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class JouerController extends AbstractController
 {
@@ -126,7 +126,7 @@ class JouerController extends AbstractController
      */
     public function afficherPartie(Partie $partie)
     {
-        
+
         return $this->render('jouer/afficher_partie.html.twig',
             [
                 'partie' => $partie,
@@ -296,7 +296,7 @@ class JouerController extends AbstractController
         }
     }
 
- /**
+    /**
      * @Route("/jouer-action/troc/{partie}", name="jouer_action_troc")
      */
     public function jouerActionTroc(
@@ -307,24 +307,23 @@ class JouerController extends AbstractController
     ) {
 
         $idcarteMain = null;
-        if ($request->request->get('main') !== null ) {
+        if ($request->request->get('main') !== null) {
             $idcarteMain = $request->request->get('main');
         }
-      
+
         $idcarteTerrain = $request->request->get('terrain');
         $idcarteMainChameau = $request->request->get('chameaux_main');
 
         if ($idcarteMain !== null || $idcarteMainChameau !== null) {
-            
-            $carteMain = null ; 
-            if ($idcarteMain !== null ) {
+
+            $carteMain = null;
+            if ($idcarteMain !== null) {
                 $carteMain = $carteRepository->find($idcarteMain[0]);
             }
             $carteTerrain = $carteRepository->find($idcarteTerrain[0]);
             $carteMainChameau = $carteRepository->find($idcarteMainChameau[0]);
 
             $terrain = $partie->getTerrain();
-            
 
             if (count($terrain) <= 6) {
                 //je considére que je suis j1.
@@ -335,43 +334,42 @@ class JouerController extends AbstractController
 
                 if (isset($idcarteMain)) {
                     # code...
-                    // Retirer de la main & ID de la carte retirée 1 
-                for ($i = 0; $i < count($idcarteMain); $i++) {
-                    $index = array_search($idcarteMain[$i], $main);
-                    unset($main[$index]); 
+                    // Retirer de la main & ID de la carte retirée 1
+                    for ($i = 0; $i < count($idcarteMain); $i++) {
+                        $index = array_search($idcarteMain[$i], $main);
+                        unset($main[$index]);
                     }
                 }
-                
-                // Retirer du terrain & ID de la carte retirée 2 
+
+                // Retirer du terrain & ID de la carte retirée 2
                 for ($i = 0; $i < count($idcarteTerrain); $i++) {
-                $index = array_search($idcarteTerrain[$i], $terrain);
-                unset($terrain[$index]); 
+                    $index = array_search($idcarteTerrain[$i], $terrain);
+                    unset($terrain[$index]);
                 }
 
                 // Retirer du chameaux & ID de la carte retirée 3
                 for ($i = 0; $i < count($idcarteMainChameau); $i++) {
                     $index = array_search($idcarteMainChameau[$i], $main_chameaux);
-                    unset($main_chameaux[$index]); 
+                    unset($main_chameaux[$index]);
                 }
 
                 if (isset($idcarteMain)) {
-                // Ajoutes les cartes 
-                for ($i = 0; $i < count($idcarteMain); $i++) {
-                $terrain[] = $idcarteMain[$i];
+                    // Ajoutes les cartes
+                    for ($i = 0; $i < count($idcarteMain); $i++) {
+                        $terrain[] = $idcarteMain[$i];
+                    }
                 }
-            }
-                
+
                 // Ajouter les cartes
                 for ($i = 0; $i < count($idcarteTerrain); $i++) {
-                $main[] = $idcarteTerrain[$i];
+                    $main[] = $idcarteTerrain[$i];
                 }
 
-                   // Ajouter les cartes
-                   for ($i = 0; $i < count($idcarteMainChameau); $i++) {
+                // Ajouter les cartes
+                for ($i = 0; $i < count($idcarteMainChameau); $i++) {
                     $terrain[] = $idcarteMainChameau[$i];
-                    }
+                }
 
-                
                 // Appliquer les changements
                 $partie->setMainJ1($main);
                 $partie->setTerrain($terrain);
@@ -379,16 +377,13 @@ class JouerController extends AbstractController
 
                 $entityManager->flush();
 
-                return $this->json([ 'main' => $main, 'terrain' => $terrain , 'carteterrain' => $carteTerrain->getJson() ], 200);
+                return $this->json(['main' => $main, 'terrain' => $terrain, 'carteterrain' => $carteTerrain->getJson()], 200);
             } else {
                 return $this->json('Erreur action vendre ', 500);
             }
 
         }
     }
-
-
-
 
     /**
      * @Route("/jouer-action/suivant/{partie}", name="jouer_action_suivant")

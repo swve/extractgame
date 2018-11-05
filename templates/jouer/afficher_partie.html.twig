@@ -31,10 +31,15 @@
 </div>
 
 <div id="attentejoueur" class="animated tdExpandIn" style="position: fixed;top: -4px;left: 0px;height: 100%;padding: 160px;text-align: center;width: 100%;transition: all 0.2s ease 0s;background-color: #ffffffe0;opacity: 0.8;font-size: 60px;font-weight: bold;">
-   <br> Attente du joueur {{ partie.joueur2.username }} <br>
-    <center><div class="lds-ripple"><div></div><div></div></div></center>
-    
-  </div>
+  <br> Attente du joueur {{ partie.joueur2.username }} <br>
+  <center>
+    <div class="lds-ripple">
+      <div></div>
+      <div></div>
+    </div>
+  </center>
+
+</div>
 {% endblock %}
 
 {% block title %}
@@ -53,7 +58,7 @@
   var carteType = "default";
 
   //$(document).ready(function () {
-    //setInterval(actualisePlateau, 2000);
+  //setInterval(actualisePlateau, 2000);
 
   //})
 
@@ -148,7 +153,7 @@
     } else {
       $(this).addClass('selected');
       carteType = "main";
-      TrocChameau = true ; 
+      TrocChameau = true;
 
       //ajouter dans un tableau
       cartesSelectedMain.push($(this).data('carte'));
@@ -156,7 +161,7 @@
     }
   })
 
-   $(document).on('click', '.carteMain_chameau', function () {
+  $(document).on('click', '.carteMain_chameau', function () {
     if ($(this).hasClass('selected')) {
       $(this).removeClass('selected');
 
@@ -215,10 +220,10 @@
             $('.box_chameaux_j1').append('<img style="margin-right: 25px;" src="../cartes/' + data[
               'carteschameaux'].fichier + '" class="cartemain new" height="70px" data-carte="' + data[
               'carteschameaux'].id + '" />').show('200');
-              iziToast.success({
-                title: 'Succès',
-                message: 'Vous avez pris la carte chameau  ' + cartesSelectedChameau[i] ,
-              });
+            iziToast.success({
+              title: 'Succès',
+              message: 'Vous avez pris la carte chameau  ' + cartesSelectedChameau[i],
+            });
           }
 
 
@@ -258,17 +263,17 @@
         },
         error: function (data) {
           if (data === 'erreur7') {
-            
+
             iziToast.error({
-                title: 'Erreur',
-                message: 'Vous avez deja 7 cartes en main  ',
-              });
+              title: 'Erreur',
+              message: 'Vous avez deja 7 cartes en main  ',
+            });
 
           } else {
             iziToast.error({
-                title: 'Erreur',
-                message: 'Action prendre',
-              });
+              title: 'Erreur',
+              message: 'Action prendre',
+            });
           }
         }
       })
@@ -280,7 +285,7 @@
     // Envoi des cartes en Main
     if (carteType == "main") {
       console.log('Envoi des cartes main :D ');
-      
+
       $.ajax({
         url: "{{ path('jouer_action_vendre', {partie: partie.id}) }}",
         data: {
@@ -299,10 +304,10 @@
             $('#terrain').append('<img style="margin-right: 25px;" src="../cartes/' + data[
               'cartemain'].fichier + '" class="cartemain new" height="70px" data-carte="' + data[
               'cartemain'].id + '" />').show('200');
-              iziToast.success({
-                title: 'Succès',
-                message: 'Vous avez vendu la carte  ' + cartesSelectedMain[i] ,
-              });
+            iziToast.success({
+              title: 'Succès',
+              message: 'Vous avez vendu la carte  ' + cartesSelectedMain[i],
+            });
           }
 
         },
@@ -311,16 +316,16 @@
     }
   })
 
-$(document).on('click', '#action-troquer', function () {
+  $(document).on('click', '#action-troquer', function () {
     // Envoi des cartes en Main
     if (carteType == "main") {
       console.log('Envoi des cartes main :D ');
-      
+
       $.ajax({
         url: "{{ path('jouer_action_troc', {partie: partie.id}) }}",
         data: {
-          main: cartesSelectedMain , 
-          chameaux_main : cartesSelectedMainChameau , 
+          main: cartesSelectedMain,
+          chameaux_main: cartesSelectedMainChameau,
           terrain: cartesSelectedTerrain
         },
         method: 'POST',
@@ -330,10 +335,10 @@ $(document).on('click', '#action-troquer', function () {
           ValideTour();
 
           var i;
-          
-          if(cartesSelectedMain.length == cartesSelectedTerrain.length && TrocChameau != true ){
 
-              for (i = 0; i < cartesSelectedMain.length; ++i) {
+          if (cartesSelectedMain.length == cartesSelectedTerrain.length && TrocChameau != true) {
+
+            for (i = 0; i < cartesSelectedMain.length; ++i) {
               // do something with `substr[i]`
               $('.carteMain_' + cartesSelectedMain[i]).hide('20000');
               $('#terrain').append('<img style="margin-right: 25px;" src="../cartes/' + data[
@@ -341,7 +346,7 @@ $(document).on('click', '#action-troquer', function () {
                 'cartemain'].id + '" />').show('200');
             }
 
-             for (i = 0; i < cartesSelectedTerrain.length; ++i) {
+            for (i = 0; i < cartesSelectedTerrain.length; ++i) {
               // do something with `substr[i]`
               $('.terrain_' + cartesSelectedTerrain[i]).hide('20000');
               $('#main').append('<img style="margin-right: 25px;" src="../cartes/' + data[
@@ -349,15 +354,14 @@ $(document).on('click', '#action-troquer', function () {
                 'carteterrain'].id + '" />').show('200');
             }
             iziToast.success({
-                title: 'Succès',
-                message: 'Vous avez troqué ',
-              });
-          }
-          else{
+              title: 'Succès',
+              message: 'Vous avez troqué ',
+            });
+          } else {
             iziToast.error({
-                title: 'Erreur',
-                message: 'Selectionnez la meme quantité de cartes ',
-              });
+              title: 'Erreur',
+              message: 'Selectionnez la meme quantité de cartes ',
+            });
           }
 
         },
@@ -366,55 +370,58 @@ $(document).on('click', '#action-troquer', function () {
     }
   })
 
-var partieID = $('input[type=hidden].idPartie').val(); 
-function ValideTour(){
-  iziToast.question({
-    timeout: 5000000,
-    close: false,
-    overlay: true,
-    displayMode: 'once',
-    id: 'question',
-    zindex: 999,
-    title: 'Extract',
-    message: 'Voulez vous terminer votre tour',
-    position: 'center',
-    buttons: [
-        ['<button><b>Oui</b></button>', function (instance, toast) {
- 
-            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
-            $.ajax({
-              url: ('/jouer-action/suivant/'+partieID) ,
-              method: 'POST'
-            });
-              
-    iziToast.show({
-        id: 'haduken',
-        timeout: 50000,
-        close: true,
-        overlay: true,
-        theme: 'dark',
-        icon: 'icon-contacts',
-        title: 'Veuillez attendre votre tour ',
-        displayMode: 2,
-        message: 'La main vous sera donnée une fois que le joueur 2 finira son tour',
-        position: 'center',
-        transitionIn: 'flipInX',
-        transitionOut: 'flipOutX',
-        progressBarColor: 'rgb(0, 255, 184)',
-        image: '/img/promo.png',
-        imageWidth: 100,
-        layout: 2,
-        iconColor: 'rgb(0, 255, 184)'
-    });
-           
+  var partieID = $('input[type=hidden].idPartie').val();
 
- 
+  function ValideTour() {
+    iziToast.question({
+      timeout: 5000000,
+      close: false,
+      overlay: true,
+      displayMode: 'once',
+      id: 'question',
+      zindex: 999,
+      title: 'Extract',
+      message: 'Voulez vous terminer votre tour',
+      position: 'center',
+      buttons: [
+        ['<button><b>Oui</b></button>', function (instance, toast) {
+
+          instance.hide({
+            transitionOut: 'fadeOut'
+          }, toast, 'button');
+          $.ajax({
+            url: ('/jouer-action/suivant/' + partieID),
+            method: 'POST'
+          });
+
+          iziToast.show({
+            id: 'haduken',
+            timeout: 50000,
+            close: true,
+            overlay: true,
+            theme: 'dark',
+            icon: 'icon-contacts',
+            title: 'Veuillez attendre votre tour ',
+            displayMode: 2,
+            message: 'La main vous sera donnée une fois que le joueur 2 finira son tour',
+            position: 'center',
+            transitionIn: 'flipInX',
+            transitionOut: 'flipOutX',
+            progressBarColor: 'rgb(0, 255, 184)',
+            image: '/img/promo.png',
+            imageWidth: 100,
+            layout: 2,
+            iconColor: 'rgb(0, 255, 184)'
+          });
+
+
+
         }, true]
-       
-    ],
-   
-});
-}
+
+      ],
+
+    });
+  }
 
 
   $(document).on('click', '#action-terminer', function () {
@@ -424,7 +431,7 @@ function ValideTour(){
     });
 
 
-  
+
 
     location.reload();
   });

@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\UserRepository;
 
 class BackController extends AbstractController
 {
@@ -17,6 +16,5 @@ class BackController extends AbstractController
             'controller_name' => 'BackController',
         ]);
     }
-
 
 }

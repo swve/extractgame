@@ -5,29 +5,29 @@
 {% block body %}
 
 
-    <div class="main">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 embed-responsive" id="intro">
-                    <video autoplay loop muted>
-                        <source src="video/animation.mp4" type="video/mp4">
-                    </video>
-                    <div id="welcome" class="col-12 text-center">
-                        <img class="img-responsive"src="img/logo.svg">
-                    </div>
-                    <div id="bouton" class="col-12 text-center">
-                        <a href="{{ path('security_login') }}">Se connecter</a>
-                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                         <a href="{{ path('security_register') }}">S'inscrire</a>
-                        
-                    </div>
-                    
+<div class="main">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 embed-responsive" id="intro">
+                <video autoplay loop muted>
+                    <source src="video/animation.mp4" type="video/mp4">
+                </video>
+                <div id="welcome" class="col-12 text-center">
+                    <img class="img-responsive" src="img/logo.svg">
                 </div>
+                <div id="bouton" class="col-12 text-center">
+                    <a href="{{ path('security_login') }}">Se connecter</a>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <a href="{{ path('security_register') }}">S'inscrire</a>
+
+                </div>
+
             </div>
         </div>
     </div>
-    
+</div>
+
 </body>
 
 

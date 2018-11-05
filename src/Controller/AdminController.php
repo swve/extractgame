@@ -12,8 +12,8 @@ class AdminController extends AbstractController
      */
     public function index()
     {
-        
-        if (true !== $this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN') ) {
+
+        if (true !== $this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('home_route');
         }
         return $this->render('admin/index.html.twig', [

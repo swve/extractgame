@@ -16,19 +16,24 @@
                 </video>
                 <div class="col-12 nav">
                     <ul>
-                            {% if is_granted('ROLE_ADMIN') %}
+                        {% if is_granted('ROLE_ADMIN') %}
 
 
-                      
-                    
-                            <a name="" id="" style="margin-right:20px;" class="btn btn-danger" href="{{ path('back') }}" role="button">Administration</a>
-                            
-                        
-                            {% endif %}
-                        <a href="#"><li> {{ app.user.username }}</li></a>
+
+
+                        <a name="" id="" style="margin-right:20px;" class="btn btn-danger" href="{{ path('back') }}"
+                            role="button">Administration</a>
+
+
+                        {% endif %}
+                        <a href="#">
+                            <li> {{ app.user.username }}</li>
+                        </a>
                         <li class="sepa">|</li>
-                      
-                        <a href="{{ path('security_logout') }}"><li>Déconnexion</li></a>
+
+                        <a href="{{ path('security_logout') }}">
+                            <li>Déconnexion</li>
+                        </a>
                     </ul>
                 </div>
                 <div class="menus col-12 text-center text-white">
@@ -72,30 +77,35 @@
     <p><a href="{{ path('security_logout') }}">Se déconnecter </a></p>
 
     <br>
-  <div class="row">
-      <div class="col-6"> <h3>Mes parties : </h3>
-        
-        {% for partie in mesparties %}
-        <br>
+    <div class="row">
+        <div class="col-6">
+            <h3>Mes parties : </h3>
 
-
-        <a class="btn btn-dark" href="{{ path('afficher_partie', {'partie': partie.id}) }}" role="button">Accéder à la
-            partie {{ partie.id }} </a>
-    
-    
-        {% endfor %}</div>
-      <div class="col-6"> 
-            <h3>Parties invités : </h3> 
+            {% for partie in mesparties %}
             <br>
-        {% for partie in invparties %}
 
 
-        <a class="btn btn-dark" href="{{ path('afficher_partie', {'partie': partie.id}) }}" role="button">Accéder à la
-            partie {{ partie.id }} </a>
-    
-    
-        {% endfor %}</div>
-  </div>
+            <a class="btn btn-dark" href="{{ path('afficher_partie', {'partie': partie.id}) }}" role="button">Accéder à
+                la
+                partie {{ partie.id }} </a>
+
+
+            {% endfor %}
+        </div>
+        <div class="col-6">
+            <h3>Parties invités : </h3>
+            <br>
+            {% for partie in invparties %}
+
+
+            <a class="btn btn-dark" href="{{ path('afficher_partie', {'partie': partie.id}) }}" role="button">Accéder à
+                la
+                partie {{ partie.id }} </a>
+
+
+            {% endfor %}
+        </div>
+    </div>
 
     <br><br>
     <h3>Nouvelle partie : </h3>

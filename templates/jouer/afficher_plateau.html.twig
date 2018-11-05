@@ -1,5 +1,5 @@
 <div class="row">
-   
+
     <div class="col-sm-4">
         <div class="row">
             <div class="col-sm-9 jeton_div">
@@ -110,7 +110,8 @@
             <div class="col-sm-12 box_main_J1" style="height: 100px">Mes cartes<br>
                 <div id="main" class="row">
                     {% for carte in partie.mainJ1 %}
-                    <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="carteMain carteMain_{{ carte }}" height="70px" data-carte="{{ carte }}" />{{
+                    <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="carteMain carteMain_{{ carte }}"
+                        height="70px" data-carte="{{ carte }}" />{{
                     carte }}
                     {% endfor %}
                 </div>
