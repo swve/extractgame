@@ -49,6 +49,7 @@
   var cartesSelectedTerrain = Array();
   var cartesSelectedChameau = Array();
   var cartesSelectedMain = Array();
+  var cartesSelectedMainChameau = Array();
   var carteType = "default";
 
   //$(document).ready(function () {
@@ -147,10 +148,29 @@
     } else {
       $(this).addClass('selected');
       carteType = "main";
+      TrocChameau = true ; 
 
       //ajouter dans un tableau
       cartesSelectedMain.push($(this).data('carte'));
       console.log("Main :" + cartesSelectedMain)
+    }
+  })
+
+   $(document).on('click', '.carteMain_chameau', function () {
+    if ($(this).hasClass('selected')) {
+      $(this).removeClass('selected');
+
+      //retirer d'un tableau
+      $index = cartesSelectedMainChameau.indexOf($(this).data('carte'));
+      cartesSelectedMainChameau.splice($index, 1);
+      console.log("Main chameaux :" + cartesSelectedMainChameau)
+    } else {
+      $(this).addClass('selected');
+      carteType = "main";
+
+      //ajouter dans un tableau
+      cartesSelectedMainChameau.push($(this).data('carte'));
+      console.log("Main Chameaux :" + cartesSelectedMainChameau)
     }
   })
 
@@ -300,6 +320,7 @@ $(document).on('click', '#action-troquer', function () {
         url: "{{ path('jouer_action_troc', {partie: partie.id}) }}",
         data: {
           main: cartesSelectedMain , 
+          chameaux_main : cartesSelectedMainChameau , 
           terrain: cartesSelectedTerrain
         },
         method: 'POST',
@@ -310,7 +331,7 @@ $(document).on('click', '#action-troquer', function () {
 
           var i;
           
-          if(cartesSelectedMain.length == cartesSelectedTerrain.length ){
+          if(cartesSelectedMain.length == cartesSelectedTerrain.length && TrocChameau != true ){
 
               for (i = 0; i < cartesSelectedMain.length; ++i) {
               // do something with `substr[i]`
