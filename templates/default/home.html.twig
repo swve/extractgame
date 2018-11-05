@@ -4,7 +4,61 @@
 
 {% block body %}
 
-{% block header %} {% endblock %}
+{% block header %}
+<link rel="stylesheet" href="../stylesheets/home.css">
+{% endblock %}
+<div class="main">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 embed-responsive" id="intro">
+                <video autoplay loop muted>
+                    <source src="video/animation.mp4" type="video/mp4">
+                </video>
+                <div class="col-12 nav">
+                    <ul>
+                            {% if is_granted('ROLE_ADMIN') %}
+
+
+                      
+                    
+                            <a name="" id="" style="margin-right:20px;" class="btn btn-danger" href="{{ path('back') }}" role="button">Administration</a>
+                            
+                        
+                            {% endif %}
+                        <a href="#"><li> {{ app.user.username }}</li></a>
+                        <li class="sepa">|</li>
+                      
+                        <a href="{{ path('security_logout') }}"><li>Déconnexion</li></a>
+                    </ul>
+                </div>
+                <div class="menus col-12 text-center text-white">
+                    <div class="menu">
+                        <div id="menu1">
+                            <a href="#"><img src="img/regles.svg" alt=""></a>
+                            <a href="#">Règles</a>
+                        </div>
+                    </div>
+                    <div class="menu">
+                        <div id="menu2">
+                            <a href="plateau.html"><img src="img/jouer.svg" alt=""></a>
+                            <a href="plateau.html">Jouer</a>
+                        </div>
+                    </div>
+                    <div class="menu">
+                        <div id="menu3">
+                            <a href="#"><img src="img/classement.svg" alt=""></a>
+                            <a href="#">Classement</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 <div class="container">
     <br>
     <br>

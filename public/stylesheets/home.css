@@ -1,0 +1,316 @@
+@font-face {
+  font-family: "Leixo";
+  src: url("../img/LEIXO-DEMO.ttf") format("truetype");
+}
+/* line 6, ../sass/home.scss */
+body {
+  margin: 0 auto;
+}
+
+/* line 10, ../sass/home.scss */
+.main {
+  max-width: 100%;
+  width: 1920px;
+  margin: 0 auto;
+}
+
+/* line 16, ../sass/home.scss */
+#intro {
+  min-width: 100%;
+  min-height: 100vh;
+  background-position: center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+/* line 24, ../sass/home.scss */
+#intro video {
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+/* line 29, ../sass/home.scss */
+.sepa {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+/* line 34, ../sass/home.scss */
+.nav {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  text-align: right;
+  height: 10vh;
+}
+/* line 39, ../sass/home.scss */
+.nav ul {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0;
+}
+/* line 44, ../sass/home.scss */
+.nav ul a {
+  color: white;
+}
+/* line 46, ../sass/home.scss */
+.nav ul a:visited {
+  color: white;
+  text-decoration: none;
+}
+/* line 49, ../sass/home.scss */
+.nav ul a:hover {
+  text-decoration: underline;
+}
+/* line 51, ../sass/home.scss */
+.nav ul li {
+  display: inline-block;
+}
+
+/* line 57, ../sass/home.scss */
+.menus {
+  z-index: 2;
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
+  height: 90vh;
+}
+
+/* line 66, ../sass/home.scss */
+.menus > * {
+  padding: 10px;
+  flex: 1 auto;
+}
+
+/* line 71, ../sass/home.scss */
+#menu1 {
+  background-color: #071D25;
+  height: 300px;
+  width: 250px;
+  margin: 0 auto;
+  position: relative;
+  top: 25%;
+  text-align: center;
+  padding-top: 30px;
+  border-radius: 30px;
+  transition: all .3s ease-in-out;
+}
+/* line 82, ../sass/home.scss */
+#menu1 a {
+  display: block;
+}
+/* line 85, ../sass/home.scss */
+#menu1 img {
+  padding-left: 5px;
+  max-width: 100%;
+  width: 200px;
+}
+/* line 89, ../sass/home.scss */
+#menu1 a {
+  margin-top: 15px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 2rem;
+}
+/* line 95, ../sass/home.scss */
+#menu1 a:hover {
+  text-decoration: none;
+}
+
+/* line 98, ../sass/home.scss */
+#menu1:hover {
+  transform: scale(1.1);
+}
+
+/* line 102, ../sass/home.scss */
+#menu2 {
+  background-color: #071D25;
+  height: 300px;
+  width: 250px;
+  margin: 0 auto;
+  position: relative;
+  top: 25%;
+  padding-top: 25px;
+  border-radius: 30px;
+  transition: all .3s ease-in-out;
+}
+/* line 112, ../sass/home.scss */
+#menu2 a {
+  display: block;
+}
+/* line 115, ../sass/home.scss */
+#menu2 img {
+  padding-left: 5px;
+  max-width: 100%;
+  width: 200px;
+}
+/* line 120, ../sass/home.scss */
+#menu2 a {
+  margin-top: 10px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 2rem;
+}
+/* line 126, ../sass/home.scss */
+#menu2 a:hover {
+  text-decoration: none;
+}
+
+/* line 129, ../sass/home.scss */
+#menu2:hover {
+  transform: scale(1.1);
+}
+
+/* line 133, ../sass/home.scss */
+#menu3 {
+  background-color: #071D25;
+  height: 300px;
+  width: 250px;
+  margin: 0 auto;
+  position: relative;
+  top: 25%;
+  padding-top: 25px;
+  border-radius: 30px;
+  transition: all .3s ease-in-out;
+}
+/* line 143, ../sass/home.scss */
+#menu3 a {
+  display: block;
+}
+/* line 146, ../sass/home.scss */
+#menu3 img {
+  padding-left: 5px;
+  max-width: 100%;
+  width: 200px;
+}
+/* line 150, ../sass/home.scss */
+#menu3 a {
+  margin-top: 10px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 2rem;
+}
+/* line 156, ../sass/home.scss */
+#menu3 a:hover {
+  text-decoration: none;
+}
+
+/* line 159, ../sass/home.scss */
+#menu3:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 1000px) {
+  /* line 164, ../sass/home.scss */
+  #menu1,
+  #menu2,
+  #menu3 {
+    height: 250px;
+    width: 200px;
+    padding-top: 20px;
+  }
+  /* line 170, ../sass/home.scss */
+  #menu1 img,
+  #menu2 img,
+  #menu3 img {
+    width: 150px;
+  }
+  /* line 172, ../sass/home.scss */
+  #menu1 a,
+  #menu2 a,
+  #menu3 a {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 750px) {
+  /* line 179, ../sass/home.scss */
+  .nav {
+    height: 5vh;
+  }
+
+  /* line 182, ../sass/home.scss */
+  .menus {
+    height: 95vh;
+  }
+
+  /* line 185, ../sass/home.scss */
+  .menus {
+    flex-flow: column;
+  }
+
+  /* line 188, ../sass/home.scss */
+  .menu {
+    height: 15px;
+  }
+
+  /* line 191, ../sass/home.scss */
+  #menu1,
+  #menu2,
+  #menu3 {
+    position: relative;
+    top: 15%;
+    height: 180px;
+    width: 150px;
+  }
+  /* line 198, ../sass/home.scss */
+  #menu1 img,
+  #menu2 img,
+  #menu3 img {
+    width: 100px;
+  }
+  /* line 200, ../sass/home.scss */
+  #menu1 a,
+  #menu2 a,
+  #menu3 a {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 550px) {
+  /* line 207, ../sass/home.scss */
+  video {
+    display: none;
+  }
+
+  /* line 210, ../sass/home.scss */
+  body {
+    background-color: #010f13;
+  }
+
+  /* line 213, ../sass/home.scss */
+  .main {
+    background-color: #010f13;
+  }
+
+  /* line 216, ../sass/home.scss */
+  .col-12 {
+    background-color: #010f13;
+  }
+}
+@media screen and (max-width: 400px) {
+  /* line 222, ../sass/home.scss */
+  #menu1,
+  #menu2,
+  #menu3 {
+    padding-top: 10px;
+    position: relative;
+    top: 10%;
+    height: 135px;
+    width: 125px;
+  }
+  /* line 230, ../sass/home.scss */
+  #menu1 img,
+  #menu2 img,
+  #menu3 img {
+    width: 75px;
+  }
+  /* line 232, ../sass/home.scss */
+  #menu1 a,
+  #menu2 a,
+  #menu3 a {
+    font-size: 1rem;
+  }
+}

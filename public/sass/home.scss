@@ -1,0 +1,236 @@
+@font-face {
+    font-family:"Leixo";
+    src: url("../img/LEIXO-DEMO.ttf") format("truetype");
+}
+
+body {
+    margin: 0 auto;
+}
+
+.main {
+    max-width: 100%;
+    width: 1920px;
+    margin: 0 auto;
+}
+
+#intro {
+    min-width: 100%;
+    min-height: 100vh;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+#intro video {
+    object-fit: cover;
+    filter: brightness(50%);
+}
+
+.sepa {
+    margin-right:10px;
+    margin-left:10px;
+}
+
+.nav {
+    color:white;
+    font-family: 'Roboto', sans-serif;
+    text-align:right;
+    height:10vh;
+    ul {
+        position: absolute;
+        top:10px;
+        right:10px;
+        padding:0;
+        a {
+            color:white;
+        } a:visited {
+            color:white;
+            text-decoration:none;
+        } a:hover {
+            text-decoration:underline;
+        } li {
+            display:inline-block;
+        }
+    }
+}
+
+.menus {
+    z-index:2;
+    display: flex;  
+    flex-flow: row wrap;
+    font-weight: bold;
+    text-align: center;
+    height:90vh;
+}
+
+.menus > * {
+    padding: 10px;
+    flex: 1 auto;
+}
+
+#menu1 {
+    background-color:#071D25;
+    height:300px;
+    width:250px;
+    margin:0 auto;
+    position:relative;
+    top:25%;
+    text-align:center;
+    padding-top:30px;
+    border-radius:30px;
+    transition: all .3s ease-in-out;
+    a {
+        display:block; 
+     }
+    img {
+        padding-left:5px;
+        max-width:100%;
+        width:200px;
+    } a {
+        margin-top:15px;
+        color:white;
+        font-family:'Roboto', sans-serif;
+        font-weight:300;
+        font-size:2rem;
+    } a:hover {
+        text-decoration:none;
+    }
+} #menu1:hover {
+    transform:scale(1.1);
+}
+
+#menu2 {
+    background-color:#071D25;
+    height:300px;
+    width:250px;
+    margin:0 auto;
+    position:relative;
+    top:25%;
+    padding-top:25px;
+    border-radius:30px;
+    transition: all .3s ease-in-out;
+    a {
+       display:block; 
+    }
+    img {
+        padding-left:5px;
+        max-width:100%;
+        width:200px;
+    }
+    a {
+        margin-top:10px;
+        color:white;
+        font-family:'Roboto', sans-serif;
+        font-weight:300;
+        font-size:2rem;
+    } a:hover {
+        text-decoration:none;
+    }
+} #menu2:hover {
+    transform:scale(1.1);
+}
+
+#menu3 {
+    background-color:#071D25;
+    height:300px;
+    width:250px;
+    margin:0 auto;
+    position:relative;
+    top:25%;
+    padding-top:25px;
+    border-radius:30px;
+    transition: all .3s ease-in-out;
+    a {
+        display:block; 
+     }
+    img {
+        padding-left:5px;
+        max-width:100%;
+        width:200px;
+    } a {
+        margin-top:10px;
+        color:white;
+        font-family:'Roboto', sans-serif;
+        font-weight:300;
+        font-size:2rem;
+    } a:hover {
+        text-decoration:none;
+    }
+} #menu3:hover {
+    transform:scale(1.1);
+}
+
+@media screen and (max-width:1000px) {
+    #menu1,
+    #menu2,
+    #menu3 {
+        height: 250px;
+        width:200px;
+        padding-top:20px;
+        img {
+            width:150px;
+        } a {
+            font-size:1.5rem;
+        }
+    }
+}
+
+@media screen and (max-width:750px) {
+    .nav {
+        height:5vh;
+    }
+    .menus {
+        height:95vh;
+    }
+    .menus {
+        flex-flow:column;
+    }
+    .menu {
+        height:15px;
+    }
+    #menu1,
+    #menu2,
+    #menu3 {
+        position:relative;
+        top:15%;
+        height:180px;
+        width:150px;
+        img {
+            width:100px;
+        } a {
+            font-size:1.2rem;
+        }
+    } 
+}
+
+@media screen and (max-width:550px) {
+    video {
+        display:none;
+    }
+    body {
+        background-color:rgb(1, 15, 19);
+    }
+    .main {
+        background-color:rgb(1, 15, 19);
+    }
+    .col-12 {
+        background-color:rgb(1, 15, 19);
+    }
+}
+
+@media screen and (max-width:400px) {
+    #menu1,
+    #menu2,
+    #menu3 {
+        padding-top:10px;
+        position:relative;
+        top:10%;
+        height:135px;
+        width:125px;
+        img {
+            width:75px;
+        } a {
+            font-size:1rem;
+        }
+    } 
+}
