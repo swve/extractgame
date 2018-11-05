@@ -322,16 +322,25 @@ class JouerController extends AbstractController
                 $terrain = $partie->getTerrain();
 
                 // Retirer de la main & ID de la carte retirée
-                $index = array_search($carteMain->getId(), $main);
+                for ($i = 0; $i < count($idcarteMain); $i++) {
+                $index = array_search($idcarteMain[$i], $main);
                 unset($main[$index]); 
+                }
                 
                 // Retirer du terrain & ID de la carte retirée
-                $index = array_search($carteTerrain->getId(), $terrain);
+                for ($i = 0; $i < count($idcarteTerrain); $i++) {
+                $index = array_search($idcarteTerrain[$i], $terrain);
                 unset($terrain[$index]); 
+                }
                
                 // Ajoutes les cartes 
-                $terrain[] = $carteMain->getId();
-                $main[] = $carteTerrain->getId();
+                for ($i = 0; $i < count($idcarteMain); $i++) {
+                $terrain[] = $idcarteMain[$i];
+                }
+                
+                for ($i = 0; $i < count($idcarteTerrain); $i++) {
+                $main[] = $idcarteTerrain[$i];
+                }
 
                 
                 // Appliquer les changements
