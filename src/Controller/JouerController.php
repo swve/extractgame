@@ -312,7 +312,11 @@ class JouerController extends AbstractController
         }
 
         $idcarteTerrain = $request->request->get('terrain');
+        $idcarteMainChameau = null ; 
+
+        if ($request->request->get('chameaux_main') !== null) {
         $idcarteMainChameau = $request->request->get('chameaux_main');
+        }
 
         if ($idcarteMain !== null || $idcarteMainChameau !== null) {
 
@@ -320,12 +324,17 @@ class JouerController extends AbstractController
             if ($idcarteMain !== null) {
                 $carteMain = $carteRepository->find($idcarteMain[0]);
             }
+
             $carteTerrain = $carteRepository->find($idcarteTerrain[0]);
+
+            if ($idcarteMainChameau !== null) {
             $carteMainChameau = $carteRepository->find($idcarteMainChameau[0]);
+            }
 
             $terrain = $partie->getTerrain();
 
-            if (count($terrain) <= 6) {
+            if (count($terrain) <= 5) {
+                
                 //je considére que je suis j1.
 
                 $main = $partie->getMainJ1();
@@ -348,10 +357,12 @@ class JouerController extends AbstractController
                 }
 
                 // Retirer du chameaux & ID de la carte retirée 3
+                if (isset($idcarteMainChameau)) {
                 for ($i = 0; $i < count($idcarteMainChameau); $i++) {
                     $index = array_search($idcarteMainChameau[$i], $main_chameaux);
                     unset($main_chameaux[$index]);
                 }
+            }
 
                 if (isset($idcarteMain)) {
                     // Ajoutes les cartes
@@ -366,9 +377,11 @@ class JouerController extends AbstractController
                 }
 
                 // Ajouter les cartes
+                if (isset($idcarteMainChameau)) {
                 for ($i = 0; $i < count($idcarteMainChameau); $i++) {
                     $terrain[] = $idcarteMainChameau[$i];
                 }
+            }
 
                 // Appliquer les changements
                 $partie->setMainJ1($main);
