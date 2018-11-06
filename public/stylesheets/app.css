@@ -15,9 +15,10 @@ body {
 /* line 14, ../sass/app.scss */
 .jeton_div img {
   padding-right: 10px;
+  margin-right: -27px;
 }
 
-/* line 19, ../sass/app.scss */
+/* line 20, ../sass/app.scss */
 .box_chameaux_j1, .box_chameaux_j2 {
   border-radius: 10px;
   padding: 10px;
@@ -25,7 +26,7 @@ body {
   margin-bottom: 10px;
 }
 
-/* line 28, ../sass/app.scss */
+/* line 29, ../sass/app.scss */
 .lds-ripple {
   display: inline-block;
   position: relative;
@@ -33,7 +34,7 @@ body {
   height: 64px;
 }
 
-/* line 34, ../sass/app.scss */
+/* line 35, ../sass/app.scss */
 .lds-ripple div {
   position: absolute;
   border: 4px solid black;
@@ -42,7 +43,7 @@ body {
   animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
 
-/* line 41, ../sass/app.scss */
+/* line 42, ../sass/app.scss */
 .lds-ripple div:nth-child(2) {
   animation-delay: -0.5s;
 }
@@ -63,31 +64,31 @@ body {
     opacity: 0;
   }
 }
-/* line 62, ../sass/app.scss */
+/* line 63, ../sass/app.scss */
 .box_main_j2 {
   margin-top: 10px;
   background-color: #071d25;
   margin-bottom: 10px;
 }
 
-/* line 67, ../sass/app.scss */
+/* line 68, ../sass/app.scss */
 .box_main_J1 {
   margin-top: 10px;
   background-color: #071d25;
   margin-bottom: 10px;
 }
-/* line 72, ../sass/app.scss */
+/* line 73, ../sass/app.scss */
 .box_main_J1 img {
   margin-left: 10px;
 }
 
-/* line 76, ../sass/app.scss */
+/* line 77, ../sass/app.scss */
 .box_chameaux_j2 {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-/* line 81, ../sass/app.scss */
+/* line 82, ../sass/app.scss */
 .box_pioche {
   margin-top: 20px;
   background-color: #071d25;

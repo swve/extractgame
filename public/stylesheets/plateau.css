@@ -96,14 +96,15 @@ body {
 
 /* line 78, ../sass/plateau.scss */
 .plateau {
+  width: 1000px;
+  height: 750px;
   position: relative;
   top: 10%;
-  padding: 19px;
-  margin: 19px;
-  color: white;
+  margin: auto auto;
+  /*background-color:#071D25;*/
   display: flex;
   border: 2px solid white;
-  background-image: url(../img/plateau.png);
+  background-image: url("../img/plateau.png");
   background-position: center;
   background-size: cover;
   border-radius: 25px;
@@ -134,111 +135,132 @@ body {
 }
 /* line 107, ../sass/plateau.scss */
 .plateau .jetons .bonus {
-  display: flex;
   height: 150px;
   width: 100%;
   /*background-color: cyan;*/
 }
-/* line 112, ../sass/plateau.scss */
-.plateau .jetons .bonus .bonus3 {
-  flex: 1 auto;
-  padding-top: 50px;
+/* line 111, ../sass/plateau.scss */
+.plateau .jetons .bonus .colo1 {
+  background-color: yellow;
+  display: flex;
+  width: 100%;
 }
 /* line 115, ../sass/plateau.scss */
-.plateau .jetons .bonus .bonus3 img {
+.plateau .jetons .bonus .colo1 .bonus3 {
+  flex: 1 auto;
+  padding-top: 25px;
+}
+/* line 118, ../sass/plateau.scss */
+.plateau .jetons .bonus .colo1 .bonus3 img {
   display: block;
   margin: 0 auto;
-}
-/* line 119, ../sass/plateau.scss */
-.plateau .jetons .bonus .bonus4 {
-  flex: 1 auto;
-  padding-top: 50px;
 }
 /* line 122, ../sass/plateau.scss */
-.plateau .jetons .bonus .bonus4 img {
-  display: block;
-  margin: 0 auto;
-}
-/* line 126, ../sass/plateau.scss */
-.plateau .jetons .bonus .bonus5 {
+.plateau .jetons .bonus .colo1 .bonus4 {
   flex: 1 auto;
-  padding-top: 50px;
+  padding-top: 25px;
 }
-/* line 129, ../sass/plateau.scss */
-.plateau .jetons .bonus .bonus5 img {
+/* line 125, ../sass/plateau.scss */
+.plateau .jetons .bonus .colo1 .bonus4 img {
   display: block;
   margin: 0 auto;
+}
+/* line 130, ../sass/plateau.scss */
+.plateau .jetons .bonus .colo2 {
+  background-color: orange;
+  width: 100%;
+  display: flex;
 }
 /* line 134, ../sass/plateau.scss */
+.plateau .jetons .bonus .colo2 .bonus5 {
+  flex: 1 auto;
+  padding-top: 25px;
+}
+/* line 137, ../sass/plateau.scss */
+.plateau .jetons .bonus .colo2 .bonus5 img {
+  display: block;
+  margin: 0 auto;
+}
+/* line 141, ../sass/plateau.scss */
+.plateau .jetons .bonus .colo2 .chameau {
+  flex: 1 auto;
+  padding-top: 25px;
+}
+/* line 144, ../sass/plateau.scss */
+.plateau .jetons .bonus .colo2 .chameau img {
+  display: block;
+  margin: 0 auto;
+}
+/* line 150, ../sass/plateau.scss */
 .plateau .jetons .appareil {
   height: 100px;
   width: 100%;
   /*background-color:lightblue;*/
 }
-/* line 138, ../sass/plateau.scss */
+/* line 154, ../sass/plateau.scss */
 .plateau .jetons .audio {
   height: 100px;
   width: 100%;
   /*background-color:lightblue;*/
 }
-/* line 142, ../sass/plateau.scss */
+/* line 158, ../sass/plateau.scss */
 .plateau .jetons .disque {
   height: 100px;
   width: 100%;
   /*background-color:lightblue;*/
 }
-/* line 147, ../sass/plateau.scss */
+/* line 163, ../sass/plateau.scss */
 .plateau .jeu {
   width: 700px;
 }
-/* line 149, ../sass/plateau.scss */
+/* line 165, ../sass/plateau.scss */
 .plateau .jeu .J2 {
   width: 100%;
   height: 300px;
   /*background-color:rgb(247, 244, 247);*/
 }
-/* line 153, ../sass/plateau.scss */
+/* line 169, ../sass/plateau.scss */
 .plateau .jeu .J2 .mainJ2 {
   width: 700px;
   height: 50%;
   /*background-color:turquoise;*/
 }
-/* line 157, ../sass/plateau.scss */
+/* line 173, ../sass/plateau.scss */
 .plateau .jeu .J2 .maletteJ2 {
   width: 700px;
   height: 50%;
   /*background-color:rgb(102, 167, 161);*/
 }
-/* line 162, ../sass/plateau.scss */
+/* line 178, ../sass/plateau.scss */
 .plateau .jeu .terrain {
   width: 100%;
   height: 150px;
   /*background-color:rgb(250, 192, 250);*/
   display: flex;
 }
-/* line 167, ../sass/plateau.scss */
+/* line 183, ../sass/plateau.scss */
 .plateau .jeu .terrain .milieu {
   width: 500px;
   height: 100%;
   /*background-color:orangered;*/
 }
-/* line 171, ../sass/plateau.scss */
+/* line 187, ../sass/plateau.scss */
 .plateau .jeu .terrain .milieu .containt {
   display: flex;
 }
-/* line 174, ../sass/plateau.scss */
+/* line 190, ../sass/plateau.scss */
 .plateau .jeu .terrain .pioche {
   width: 200px;
   height: 100%;
   /*background-color:orange;*/
 }
-/* line 179, ../sass/plateau.scss */
+/* line 195, ../sass/plateau.scss */
 .plateau .jeu .J1 {
   width: 100%;
   height: 300px;
   /*background-color:rgb(249, 149, 249);*/
 }
-/* line 183, ../sass/plateau.scss */
+/* line 199, ../sass/plateau.scss */
 .plateau .jeu .J1 .maletteJ1 {
   width: 100%;
   height: 50%;
@@ -246,20 +268,20 @@ body {
   display: flex;
   justify-content: flex-start;
 }
-/* line 192, ../sass/plateau.scss */
+/* line 208, ../sass/plateau.scss */
 .plateau .jeu .J1 .mainJ1 {
   /*background-color:grey;*/
   width: 100%;
   height: 50%;
 }
 
-/* line 201, ../sass/plateau.scss */
+/* line 217, ../sass/plateau.scss */
 .containc2 {
   display: flex;
   padding-top: 20px;
   padding-left: 20px;
 }
-/* line 205, ../sass/plateau.scss */
+/* line 221, ../sass/plateau.scss */
 .containc2 .carteJ2 {
   max-width: 100%;
   width: 80px;
@@ -269,13 +291,13 @@ body {
   margin-right: 10px;
 }
 
-/* line 215, ../sass/plateau.scss */
+/* line 231, ../sass/plateau.scss */
 .containc1 {
   display: flex;
   padding-top: 10px;
   padding-left: 20px;
 }
-/* line 219, ../sass/plateau.scss */
+/* line 235, ../sass/plateau.scss */
 .containc1 .carteJ1 {
   max-width: 100%;
   width: 80px;
@@ -284,81 +306,81 @@ body {
   margin-right: 10px;
 }
 
-/* line 228, ../sass/plateau.scss */
+/* line 244, ../sass/plateau.scss */
 .containv1 {
   display: flex;
   justify-content: flex-end;
   margin-top: 15px;
   margin-right: 30px;
 }
-/* line 233, ../sass/plateau.scss */
+/* line 249, ../sass/plateau.scss */
 .containv1 .carteJ1 {
   max-width: 100%;
   width: 80px;
   height: 110px;
   max-height: 100%;
 }
-/* line 238, ../sass/plateau.scss */
+/* line 254, ../sass/plateau.scss */
 .containv1 .un {
   z-index: 11;
   position: relative;
   right: -500px;
 }
-/* line 242, ../sass/plateau.scss */
+/* line 258, ../sass/plateau.scss */
 .containv1 .deux {
   z-index: 10;
   position: relative;
   right: -450px;
 }
-/* line 246, ../sass/plateau.scss */
+/* line 262, ../sass/plateau.scss */
 .containv1 .trois {
   z-index: 9;
   position: relative;
   right: -400px;
 }
-/* line 250, ../sass/plateau.scss */
+/* line 266, ../sass/plateau.scss */
 .containv1 .quatre {
   z-index: 8;
   position: relative;
   right: -350px;
 }
-/* line 254, ../sass/plateau.scss */
+/* line 270, ../sass/plateau.scss */
 .containv1 .cinq {
   z-index: 7;
   position: relative;
   right: -300px;
 }
-/* line 258, ../sass/plateau.scss */
+/* line 274, ../sass/plateau.scss */
 .containv1 .six {
   z-index: 6;
   position: relative;
   right: -250px;
 }
-/* line 262, ../sass/plateau.scss */
+/* line 278, ../sass/plateau.scss */
 .containv1 .sept {
   z-index: 5;
   position: relative;
   right: -200px;
 }
-/* line 266, ../sass/plateau.scss */
+/* line 282, ../sass/plateau.scss */
 .containv1 .huit {
   z-index: 4;
   position: relative;
   right: -150px;
 }
-/* line 270, ../sass/plateau.scss */
+/* line 286, ../sass/plateau.scss */
 .containv1 .neuf {
   z-index: 3;
   position: relative;
   right: -100px;
 }
-/* line 274, ../sass/plateau.scss */
+/* line 290, ../sass/plateau.scss */
 .containv1 .dix {
   z-index: 2;
   position: relative;
   right: -50px;
 }
-/* line 278, ../sass/plateau.scss */
+/* line 294, ../sass/plateau.scss */
 .containv1 .onze {
   z-index: 1;
   position: relative;
@@ -366,14 +388,14 @@ body {
   right: 0px;
 }
 
-/* line 286, ../sass/plateau.scss */
+/* line 302, ../sass/plateau.scss */
 .containv2 {
   display: flex;
   justify-content: flex-start;
   padding-top: 15px;
   padding-left: 30px;
 }
-/* line 291, ../sass/plateau.scss */
+/* line 307, ../sass/plateau.scss */
 .containv2 .carteJ2 {
   max-width: 100%;
   width: 80px;
@@ -381,67 +403,67 @@ body {
   max-height: 100%;
   transform: rotate(180deg);
 }
-/* line 297, ../sass/plateau.scss */
+/* line 313, ../sass/plateau.scss */
 .containv2 .un {
   z-index: 1;
   position: relative;
   left: 0;
 }
-/* line 301, ../sass/plateau.scss */
+/* line 317, ../sass/plateau.scss */
 .containv2 .deux {
   z-index: 2;
   position: relative;
   left: -80px;
 }
-/* line 305, ../sass/plateau.scss */
+/* line 321, ../sass/plateau.scss */
 .containv2 .trois {
   z-index: 3;
   position: relative;
   left: -160px;
 }
-/* line 309, ../sass/plateau.scss */
+/* line 325, ../sass/plateau.scss */
 .containv2 .quatre {
   z-index: 4;
   position: relative;
   left: -240px;
 }
-/* line 313, ../sass/plateau.scss */
+/* line 329, ../sass/plateau.scss */
 .containv2 .cinq {
   z-index: 5;
   position: relative;
   left: -320px;
 }
-/* line 317, ../sass/plateau.scss */
+/* line 333, ../sass/plateau.scss */
 .containv2 .six {
   z-index: 6;
   position: relative;
   left: -400px;
 }
-/* line 321, ../sass/plateau.scss */
+/* line 337, ../sass/plateau.scss */
 .containv2 .sept {
   z-index: 7;
   position: relative;
   left: -480px;
 }
-/* line 325, ../sass/plateau.scss */
+/* line 341, ../sass/plateau.scss */
 .containv2 .huit {
   z-index: 8;
   position: relative;
   left: -560px;
 }
-/* line 329, ../sass/plateau.scss */
+/* line 345, ../sass/plateau.scss */
 .containv2 .neuf {
   z-index: 9;
   position: relative;
   left: -640px;
 }
-/* line 333, ../sass/plateau.scss */
+/* line 349, ../sass/plateau.scss */
 .containv2 .dix {
   z-index: 10;
   position: relative;
   left: -720px;
 }
-/* line 337, ../sass/plateau.scss */
+/* line 353, ../sass/plateau.scss */
 .containv2 .onze {
   z-index: 11;
   position: relative;
@@ -449,12 +471,12 @@ body {
   left: -800px;
 }
 
-/* line 345, ../sass/plateau.scss */
+/* line 361, ../sass/plateau.scss */
 .containt {
   padding-top: 15px;
   padding-left: 50px;
 }
-/* line 348, ../sass/plateau.scss */
+/* line 364, ../sass/plateau.scss */
 .containt .carteJ1 {
   max-width: 100%;
   width: 80px;
@@ -463,11 +485,11 @@ body {
   margin-right: 10px;
 }
 
-/* line 357, ../sass/plateau.scss */
+/* line 373, ../sass/plateau.scss */
 .containp {
   padding-top: 15px;
 }
-/* line 359, ../sass/plateau.scss */
+/* line 375, ../sass/plateau.scss */
 .containp .carteJ1 {
   padding-left: 65px;
   max-width: 100%;
@@ -476,15 +498,15 @@ body {
   max-height: 100%;
 }
 
-/* line 368, ../sass/plateau.scss */
+/* line 384, ../sass/plateau.scss */
 .sidebar {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   max-width: 100%;
   width: 20%;
-  margin-top: 2vh;
-  height: 93vh;
+  margin-top: 5vh;
+  height: 90vh;
   margin-bottom: 5vh;
   background-color: #071D25;
   border: 2px white solid;
@@ -492,7 +514,7 @@ body {
   font-family: 'Roboto', sans-serif;
   color: white;
 }
-/* line 382, ../sass/plateau.scss */
+/* line 398, ../sass/plateau.scss */
 .sidebar .proJ1 {
   width: 100%;
   height: 20%;
@@ -500,7 +522,7 @@ body {
   border-bottom: 2px solid white;
   overflow: hidden;
 }
-/* line 388, ../sass/plateau.scss */
+/* line 404, ../sass/plateau.scss */
 .sidebar .proJ1 .pseudo {
   display: block;
   width: 70%;
@@ -509,7 +531,7 @@ body {
   margin: 0;
   font-weight: 900;
 }
-/* line 395, ../sass/plateau.scss */
+/* line 411, ../sass/plateau.scss */
 .sidebar .proJ1 .points {
   padding-left: 40px;
   display: block;
@@ -517,7 +539,7 @@ body {
   padding-top: 5px;
   margin: 0;
 }
-/* line 401, ../sass/plateau.scss */
+/* line 417, ../sass/plateau.scss */
 .sidebar .proJ1 .win {
   padding-left: 40px;
   display: block;
@@ -525,18 +547,18 @@ body {
   padding-top: 20px;
   margin: 0;
 }
-/* line 407, ../sass/plateau.scss */
+/* line 423, ../sass/plateau.scss */
 .sidebar .proJ1 .win li {
   display: inline-block;
 }
-/* line 411, ../sass/plateau.scss */
+/* line 427, ../sass/plateau.scss */
 .sidebar .proJ2 {
   width: 100%;
   height: 20%;
   /*background-color:rgb(18, 218, 0);*/
   border-bottom: 2px solid white;
 }
-/* line 416, ../sass/plateau.scss */
+/* line 432, ../sass/plateau.scss */
 .sidebar .proJ2 .pseudo {
   display: block;
   padding-left: 40px;
@@ -545,7 +567,7 @@ body {
   padding-top: 10px;
   font-weight: 900;
 }
-/* line 423, ../sass/plateau.scss */
+/* line 439, ../sass/plateau.scss */
 .sidebar .proJ2 .points {
   display: block;
   padding-left: 40px;
@@ -553,7 +575,7 @@ body {
   padding-top: 5px;
   margin: 0;
 }
-/* line 429, ../sass/plateau.scss */
+/* line 445, ../sass/plateau.scss */
 .sidebar .proJ2 .win {
   display: block;
   padding-left: 40px;
@@ -561,36 +583,38 @@ body {
   margin: 0;
   padding-top: 20px;
 }
-/* line 435, ../sass/plateau.scss */
+/* line 451, ../sass/plateau.scss */
 .sidebar .proJ2 .win li {
   display: inline-block;
 }
-/* line 439, ../sass/plateau.scss */
+/* line 455, ../sass/plateau.scss */
 .sidebar .chat {
   width: 100%;
   height: 20%;
   /*background-color:rgb(15, 186, 0);*/
   border-bottom: 2px solid white;
 }
-/* line 444, ../sass/plateau.scss */
+/* line 460, ../sass/plateau.scss */
 .sidebar .actions {
   width: 100%;
   height: 20%;
+  background-color: #0c9300;
 }
-/* line 448, ../sass/plateau.scss */
+/* line 464, ../sass/plateau.scss */
 .sidebar .autre {
   width: 100%;
   height: 20%;
+  background-color: #086300;
 }
 
 @media screen and (max-height: 850px) {
-  /* line 457, ../sass/plateau.scss */
+  /* line 473, ../sass/plateau.scss */
   .plateau {
     top: 5%;
   }
 }
 @media screen and (max-height: 805px) {
-  /* line 463, ../sass/plateau.scss */
+  /* line 479, ../sass/plateau.scss */
   .zonejeu {
     height: 850px;
   }

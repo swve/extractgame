@@ -76,18 +76,18 @@ body {
 }
 
 .plateau {
-    
-    position: relative;
-    top: 10%;
-    padding: 19px;
-    margin: 19px;
-    color: white;
-    display: flex;
-    border: 2px solid white;
-    background-image: url(../img/plateau.png);
-    background-position: center;
-    background-size: cover;
-    border-radius: 25px;
+    width:1000px;
+    height:750px;
+    position:relative;
+    top:10%;
+    margin: auto auto;
+    /*background-color:#071D25;*/
+    display:flex;
+    border:2px solid white;
+    background-image: url("../img/plateau.png");
+    background-position:center;
+    background-size:cover;
+    border-radius:25px;
     .jetons {
         width:300px;
         height:100%;
@@ -105,30 +105,46 @@ body {
             width:100%;
             /*background-color:lightblue;*/
         } .bonus {
-            display:flex;
             height:150px;
             width:100%;
             /*background-color: cyan;*/
-            .bonus3 {
-                flex:1 auto;
-                padding-top:50px;
-                img {
-                    display:block;
-                    margin: 0 auto;
-                }
-            } .bonus4 {
-                flex:1 auto;
-                padding-top:50px;
-                img {
-                    display:block;
-                    margin: 0 auto;
-                }
-            } .bonus5 {
-                flex:1 auto;
-                padding-top:50px;
-                img {
-                    display:block;
-                    margin: 0 auto;
+            .colo1 {
+                background-color:yellow;
+                display:flex;
+                width:100%;
+                .bonus3 {
+                    flex:1 auto;
+                    padding-top:25px;
+                    img {
+                        display:block;
+                        margin: 0 auto;
+                    }
+                } .bonus4 {
+                    flex:1 auto;
+                    padding-top:25px;
+                    img {
+                        display:block;
+                        margin: 0 auto;
+                    }
+                } 
+            } .colo2 {
+                background-color:orange;
+                width:100%;
+                display:flex;
+                .bonus5 {
+                    flex:1 auto;
+                    padding-top:25px;
+                    img {
+                        display:block;
+                        margin: 0 auto;
+                    }
+                } .chameau {
+                    flex:1 auto;
+                    padding-top:25px;
+                    img {
+                        display:block;
+                        margin: 0 auto;
+                    }
                 }
             }
         } .appareil {
@@ -366,19 +382,19 @@ body {
 }
 
 .sidebar {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    max-width: 100%;
-    width: 20%;
-    margin-top: 2vh;
-    height: 93vh;
-    margin-bottom: 5vh;
-    background-color: #071D25;
-    border: 2px white solid;
-    border-radius: 30px;
+    position:-webkit-sticky;
+    position:sticky;
+    top:0;
+    max-width:100%;
+    width:20%;
+    margin-top:5vh;
+    height:90vh;
+    margin-bottom:5vh;
+    background-color:#071D25;
+    border:2px white solid;
+    border-radius:30px;
     font-family: 'Roboto', sans-serif;
-    color: white;
+    color:white;
     .proJ1 {
         width:100%;
         height:20%;
@@ -444,11 +460,11 @@ body {
     } .actions {
         width:100%;
         height:20%;
-        
+        background-color:rgb(12, 147, 0);
     } .autre {
         width:100%;
         height:20%;
-       
+        background-color:rgb(8, 99, 0);
 
     }
 }

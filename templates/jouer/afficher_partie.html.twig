@@ -76,6 +76,7 @@
   var cartesSelectedChameau = Array();
   var cartesSelectedMain = Array();
   var cartesSelectedMainChameau = Array();
+  var valeurSelectedMain = Array();
   var carteType = "default";
 
   $(document).ready(function () {
@@ -176,10 +177,15 @@
     if ($(this).hasClass('selected')) {
       $(this).removeClass('selected');$(this).addClass('unselected');
 
+      $indexValeur = valeurSelectedMain.indexOf($(this).data('valeur'));
       //retirer d'un tableau
       $index = cartesSelectedMain.indexOf($(this).data('carte'));
+      
       cartesSelectedMain.splice($index, 1);
-      console.log("Main :" + cartesSelectedMain)
+      valeurSelectedMain.splice($indexValeur, 1);
+
+      console.log("ID Main :" + cartesSelectedMain);
+      console.log("Valeur Main :" + valeurSelectedMain);
     } else {
       $(this).addClass('selected');
       if ($(this).hasClass('unselected')) {
@@ -190,8 +196,10 @@
       TrocChameau = true;
 
       //ajouter dans un tableau
+      valeurSelectedMain.push($(this).data('valeur'));
       cartesSelectedMain.push($(this).data('carte'));
-      console.log("Main :" + cartesSelectedMain)
+      console.log("ID Main :" + cartesSelectedMain);
+      console.log("Valeur Main :" + valeurSelectedMain);
     }
   })
 
@@ -328,12 +336,45 @@
   $(document).on('click', '#action-vendre', function () {
     // Envoi des cartes en Main
     if (carteType == "main") {
+      
       console.log('Envoi des cartes main :D ');
+
+      valeurVerif = true;
+      vraivaleur = valeurSelectedMain[0];
+
+      for (let i = 0; i < valeurSelectedMain.length; i++) {
+
+        if (valeurVerif = true) {
+
+          if (valeurSelectedMain[i] ==   vraivaleur ) {
+
+           valeurVerif = true;
+           console.log('POSSIBLE');
+
+          }
+          else{
+           valeurVerif = false;
+            console.log('PAS POSSIBLE');
+            
+            break;
+          }
+        }
+        
+      }
+
+      if (valeurVerif== true ) {
+        
+        if (vraivaleur == ( 1 || 2 || 3 ) && vraivaleur.length >= 2) {
+          
+        }
+      }
+    
 
       $.ajax({
         url: "{{ path('jouer_action_vendre', {partie: partie.id}) }}",
         data: {
           main: cartesSelectedMain
+
         },
         method: 'POST',
 
@@ -345,9 +386,6 @@
           for (i = 0; i < cartesSelectedMain.length; ++i) {
             // do something with `substr[i]`
             $('.carteMain_' + cartesSelectedMain[i]).hide('20000');
-            $('#terrain').append('<img style="margin-right: 25px;" src="../cartes/' + data[
-              'cartemain'].fichier + '" class="cartemain new" height="70px" data-carte="' + data[
-              'cartemain'].id + '" />').show('200');
             iziToast.success({
               title: 'Succès',
               message: 'Vous avez vendu la carte  ' + cartesSelectedMain[i],

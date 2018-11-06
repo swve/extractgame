@@ -263,20 +263,27 @@ class JouerController extends AbstractController
         EntityManagerInterface $entityManager,
         CarteRepository $carteRepository,
         Request $request,
-        Partie $partie
+        Partie $partie,
+        JetonRepository $jetonRepository
     ) {
 
         $idcarteMain = $request->request->get('main');
 
+
+
+
+
+
+
+
+
         if ($idcarteMain !== null) {
             $carte = $carteRepository->find($idcarteMain[0]);
 
-            $terrain = $partie->getTerrain();
-            if ($carte !== null && count($terrain) <= 5) {
+            if ($carte !== null) {
                 //je considére que je suis j1.
 
                 $main = $partie->getMainJ1();
-                $terrain = $partie->getTerrain();
                 $index = array_search($carte->getId(), $main);
                 unset($main[$index]); // on retire du terrain
 
@@ -284,11 +291,10 @@ class JouerController extends AbstractController
                 $terrain[] = $carte->getId(); //piocher et mettre sur le terrain
 
                 $partie->setMainJ1($main);
-                $partie->setTerrain($terrain);
 
                 $entityManager->flush();
 
-                return $this->json(['cartemain' => $carte->getJson(), 'main' => $main, 'terrain' => $terrain, 'count' => count($terrain)], 200);
+                return $this->json(['cartemain' => $carte->getJson(), 'main' => $main], 200);
             } else {
                 return $this->json('Erreur action vendre ', 500);
             }
@@ -327,7 +333,7 @@ class JouerController extends AbstractController
         $nbCarteTerrain = count($idcarteTerrain)  ; 
         $calculMain = $nbMain - $nbCarteMain  + $nbCarteTerrain ; 
 
-        if ( $calculMain < 7) {
+        if ( $calculMain <= 7) {
         if ($idcarteMain !== null || $idcarteMainChameau !== null) {
 
             $carteMain = null;

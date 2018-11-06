@@ -29,14 +29,14 @@ class CarteRepository extends ServiceEntityRepository
     
     }
 
-//    /**
-//     * @return Carte[] Returns an array of Carte objects
-//     */
-    /*
-    public function findByExampleField($value)
+   /**
+    * @return Carte[] Returns an array of Carte objects
+     */
+    
+    public function RecupValeurCarte($value)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
+            ->andWhere('c.valeur = :val')
             ->setParameter('val', $value)
             ->orderBy('c.id', 'ASC')
             ->setMaxResults(10)
@@ -44,7 +44,7 @@ class CarteRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Carte
