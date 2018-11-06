@@ -3,14 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Partie;
+use App\Repository\UserRepository;
 use App\Repository\CarteRepository;
 use App\Repository\JetonRepository;
-use App\Repository\UserRepository;
+use App\Repository\PartieRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class JouerController extends AbstractController
 {
@@ -31,6 +32,7 @@ class JouerController extends AbstractController
         UserRepository $userRepository,
         CarteRepository $carteRepository,
         JetonRepository $jetonRepository,
+        PartieRepository $PartieRepository,
         Request $request,
         UserInterface $user
     ) {
@@ -118,6 +120,8 @@ class JouerController extends AbstractController
 
         return $this->render('jouer/creer-partie.html.twig', [
             'joueurs' => $userRepository->findAll(),
+            'mesparties' => $PartieRepository->findBy(['joueur1' => $userId]),
+            'invparties' => $PartieRepository->findBy(['joueur2' => $userId]),
         ]);
     }
 

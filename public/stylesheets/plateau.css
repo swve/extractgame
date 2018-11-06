@@ -598,13 +598,11 @@ body {
 .sidebar .actions {
   width: 100%;
   height: 20%;
-  background-color: #0c9300;
 }
 /* line 464, ../sass/plateau.scss */
 .sidebar .autre {
   width: 100%;
   height: 20%;
-  background-color: #086300;
 }
 
 @media screen and (max-height: 850px) {

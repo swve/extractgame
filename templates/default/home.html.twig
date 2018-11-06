@@ -1,3 +1,4 @@
+
 {% extends 'base.html.twig' %}
 
 {% block title %}Extract | Home {% endblock %}
@@ -47,8 +48,8 @@
                     </div>
                     <div class="menu">
                         <div id="menu2">
-                            <a href="plateau.html"><img src="img/jouer.svg" alt=""></a>
-                            <a href="plateau.html">Jouer</a>
+                            <a href="{{ path('partie_creer') }}"><img src="img/jouer.svg" alt=""></a>
+                            <a href="{{ path('partie_creer') }}">Jouer</a>
                         </div>
                     </div>
                     <div class="menu">
@@ -66,70 +67,5 @@
 
 
 
-<div class="container">
-    <br>
-    <br>
-    <br>
-    <h1>Home</h1>
-    <br><br>
 
-    {% if app.user %}
-
-    <h3>Bienvenue à toi : {{ app.user.username }}</h3>
-    <p><a href="{{ path('security_logout') }}">Se déconnecter </a></p>
-
-    <br>
-    <div class="row">
-        <div class="col-6">
-            <h3>Mes parties : </h3>
-
-            {% for partie in mesparties %}
-            <br>
-
-
-            <a class="btn btn-dark" href="{{ path('afficher_partie', {'partie': partie.id}) }}" role="button">Accéder à
-                la
-                partie {{ partie.id }} </a>
-
-
-            {% endfor %}
-        </div>
-        <div class="col-6">
-            <h3>Parties invités : </h3>
-            <br>
-            {% for partie in invparties %}
-
-
-            <a class="btn btn-dark" href="{{ path('afficher_partie', {'partie': partie.id}) }}" role="button">Accéder à
-                la
-                partie {{ partie.id }} </a>
-
-
-            {% endfor %}
-        </div>
-    </div>
-
-    <br><br>
-    <h3>Nouvelle partie : </h3>
-    <br><br>
-    <a name="" id="" class="btn btn-success" href="{{ path('partie_creer') }}" role="button">Créer une partie</a>
-
-    <br>
-    <br><br>
-    {% if is_granted('ROLE_ADMIN') %}
-
-
-    <h3>Administration</h3>
-    <br>
-
-    <a name="" id="" class="btn btn-warning" href="{{ path('back') }}" role="button">Backoffice</a>
-    <br><br>
-
-    {% endif %}
-    {% endif %}
-
-
-
-
-</div>
 {% endblock %}

@@ -1,0 +1,231 @@
+@font-face {
+  font-family: "Leixo";
+  src: url("../img/LEIXO-DEMO.ttf") format("truetype");
+}
+/* line 6, ../sass/partie.scss */
+body {
+  margin: 0 auto;
+}
+
+/* line 10, ../sass/partie.scss */
+.main {
+  max-width: 100%;
+  width: 1920px;
+  margin: 0 auto;
+}
+
+/* line 16, ../sass/partie.scss */
+#intro {
+  min-width: 100%;
+  min-height: 100vh;
+  background-position: center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+/* line 24, ../sass/partie.scss */
+#intro video {
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+/* line 29, ../sass/partie.scss */
+.nav {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  text-align: right;
+  height: 10vh;
+}
+/* line 34, ../sass/partie.scss */
+.nav ul {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0;
+}
+/* line 39, ../sass/partie.scss */
+.nav ul a {
+  color: white;
+}
+/* line 41, ../sass/partie.scss */
+.nav ul a:visited {
+  color: white;
+  text-decoration: none;
+}
+/* line 44, ../sass/partie.scss */
+.nav ul a:hover {
+  text-decoration: underline;
+}
+/* line 46, ../sass/partie.scss */
+.nav ul li {
+  display: inline-block;
+}
+/* line 49, ../sass/partie.scss */
+.nav .retour {
+  position: absolute;
+  display: block;
+  top: 10px;
+  left: 10px;
+  color: white;
+}
+
+/* line 58, ../sass/partie.scss */
+.creer {
+  width: 100vw;
+  display: flex;
+}
+/* line 61, ../sass/partie.scss */
+.creer .colo1 {
+  width: 50vw;
+}
+/* line 63, ../sass/partie.scss */
+.creer .colo1 .mesparties {
+  margin: 0 auto;
+  height: 350px;
+  width: 75%;
+  background-color: #071D25;
+  flex: 1 auto;
+  border-radius: 30px;
+}
+/* line 70, ../sass/partie.scss */
+.creer .colo1 .mesparties h2 {
+  padding-top: 10px;
+}
+/* line 72, ../sass/partie.scss */
+.creer .colo1 .mesparties .coucou {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 10px;
+  height: 50px;
+  background-color: #164657;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  color: white;
+}
+/* line 82, ../sass/partie.scss */
+.creer .colo1 .mesparties .coucou:hover {
+  text-decoration: none;
+}
+/* line 84, ../sass/partie.scss */
+.creer .colo1 .mesparties .coucou:visited {
+  color: white;
+}
+/* line 86, ../sass/partie.scss */
+.creer .colo1 .mesparties .coucou:active {
+  background-color: #2a6a82;
+}
+
+/* line 92, ../sass/partie.scss */
+.colo2 {
+  width: 50vw;
+}
+/* line 94, ../sass/partie.scss */
+.colo2 .invit {
+  margin: 0 auto;
+  height: 350px;
+  width: 75%;
+  background-color: #071D25;
+  flex: 1 auto;
+  border-radius: 30px;
+}
+/* line 101, ../sass/partie.scss */
+.colo2 .invit h2 {
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+/* line 104, ../sass/partie.scss */
+.colo2 .invit .coucou {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 10px;
+  height: 50px;
+  background-color: #164657;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  color: white;
+}
+/* line 114, ../sass/partie.scss */
+.colo2 .invit .coucou:hover {
+  text-decoration: none;
+}
+/* line 116, ../sass/partie.scss */
+.colo2 .invit .coucou:visited {
+  color: white;
+}
+/* line 118, ../sass/partie.scss */
+.colo2 .invit .coucou:active {
+  background-color: #2a6a82;
+}
+
+/* line 125, ../sass/partie.scss */
+.ok {
+  margin-top: 40px;
+}
+/* line 127, ../sass/partie.scss */
+.ok .creerpartie {
+  margin: 0 auto;
+  height: 175px;
+  width: 705px;
+  background-color: #071D25;
+  border-radius: 30px;
+}
+/* line 133, ../sass/partie.scss */
+.ok .creerpartie h2 {
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+/* line 137, ../sass/partie.scss */
+.ok .creerpartie .oip {
+  display: flex;
+  text-align: center;
+}
+/* line 140, ../sass/partie.scss */
+.ok .creerpartie .oip .cont {
+  margin: 0 auto;
+}
+/* line 143, ../sass/partie.scss */
+.ok .creerpartie .oip p {
+  display: block;
+}
+
+@media screen and (max-width: 780px) {
+  /* line 151, ../sass/partie.scss */
+  .creer {
+    display: block;
+  }
+  /* line 153, ../sass/partie.scss */
+  .creer .colo1 {
+    width: 100vw;
+    margin-bottom: 50px;
+  }
+  /* line 156, ../sass/partie.scss */
+  .creer .colo1 .mesparties {
+    width: 80vw;
+    margin-right: 10vw;
+    margin-left: 10vw;
+  }
+  /* line 161, ../sass/partie.scss */
+  .creer .colo2 {
+    width: 100vw;
+    margin-bottom: 0;
+  }
+  /* line 164, ../sass/partie.scss */
+  .creer .colo2 .invit {
+    width: 80vw;
+    margin-right: 10vw;
+    margin-left: 10vw;
+  }
+
+  /* line 171, ../sass/partie.scss */
+  .ok {
+    margin-top: 50px;
+  }
+  /* line 173, ../sass/partie.scss */
+  .ok .creerpartie {
+    width: 80vw;
+    margin-right: 10vw;
+    margin-left: 10vw;
+  }
+}

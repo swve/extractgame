@@ -1,0 +1,179 @@
+@font-face {
+    font-family:"Leixo";
+    src: url("../img/LEIXO-DEMO.ttf") format("truetype");
+}
+
+body {
+    margin: 0 auto;
+}
+
+.main {
+    max-width: 100%;
+    width: 1920px;
+    margin: 0 auto;
+}
+
+#intro {
+    min-width: 100%;
+    min-height: 100vh;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+#intro video {
+    object-fit: cover;
+    filter: brightness(50%);
+}
+
+.nav {
+    color:white;
+    font-family: 'Roboto', sans-serif;
+    text-align:right;
+    height:10vh;
+    ul {
+        position: absolute;
+        top:10px;
+        right:10px;
+        padding:0;
+        a {
+            color:white;
+        } a:visited {
+            color:white;
+            text-decoration:none;
+        } a:hover {
+            text-decoration:underline;
+        } li {
+            display:inline-block;
+        }
+    } .retour {
+        position: absolute;
+        display:block;
+        top:10px;
+        left:10px;
+        color:white;
+    }
+}
+
+.creer {
+    width:100vw;
+    display:flex;
+    .colo1 {
+        width:50vw;
+        .mesparties {
+            margin: 0 auto;
+            height: 350px;
+            width:75%;
+            background-color:#071D25;
+            flex: 1 auto;
+            border-radius: 30px;
+            h2 {
+                padding-top:10px;
+            } .coucou {
+                display:block;
+                width:80%;
+                margin:0 auto;
+                padding-top:10px;
+                height:50px;
+                background-color:rgb(22, 70, 87);
+                border-radius:20px;
+                margin-bottom:10px;
+                color:white;
+            } .coucou:hover {
+                text-decoration:none;
+            } .coucou:visited {
+                color:white;
+            } .coucou:active {
+                background-color:rgb(42, 106, 130);
+            }
+        }
+    }
+} 
+    .colo2 {
+        width:50vw;
+        .invit {
+            margin: 0 auto;
+            height:350px;
+            width:75%;
+            background-color:#071D25;
+            flex: 1 auto;
+            border-radius:30px;
+            h2 {
+                padding-top:10px;
+                margin-bottom:20px;
+            } .coucou {
+                display:block;
+                width:80%;
+                margin:0 auto;
+                padding-top:10px;
+                height:50px;
+                background-color:rgb(22, 70, 87);
+                border-radius:20px;
+                margin-bottom:10px;
+                color:white;
+            } .coucou:hover {
+                text-decoration:none;
+            } .coucou:visited {
+                color:white;
+            } .coucou:active {
+                background-color:rgb(42, 106, 130);
+            }
+        }
+    } 
+
+
+.ok {
+    margin-top:40px;
+    .creerpartie {
+        margin: 0 auto;
+        height:175px;
+        width:705px;
+        background-color:#071D25;
+        border-radius:30px;
+        h2 {
+            padding-top:10px;
+            margin-bottom:20px;
+        }
+        .oip {
+            display:flex;
+            text-align: center;
+            .cont {
+                margin: 0 auto;
+            }
+            p {
+                display:block;
+            }
+        }
+    }
+} 
+
+@media screen and (max-width:780px) {
+    .creer {
+        display: block;
+        .colo1 {
+            width:100vw;
+            margin-bottom:50px;
+            .mesparties {
+                width:80vw;
+                margin-right:10vw;
+                margin-left:10vw;
+            }
+        } .colo2 {
+            width:100vw;
+            margin-bottom:0;
+            .invit {
+                width:80vw;
+                margin-right:10vw;
+                margin-left:10vw;
+            }
+        }
+    }
+    .ok {
+        margin-top:50px;
+        .creerpartie {
+            width:80vw;
+            margin-right:10vw;
+            margin-left:10vw;
+        }
+    }
+}
