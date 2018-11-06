@@ -66,27 +66,31 @@ body {
 /* line 62, ../sass/app.scss */
 .box_main_j2 {
   margin-top: 10px;
+  background-color: #071d25;
   margin-bottom: 10px;
 }
 
-/* line 66, ../sass/app.scss */
+/* line 67, ../sass/app.scss */
 .box_main_J1 {
   margin-top: 10px;
+  background-color: #071d25;
   margin-bottom: 10px;
 }
-/* line 70, ../sass/app.scss */
+/* line 72, ../sass/app.scss */
 .box_main_J1 img {
   margin-left: 10px;
 }
 
-/* line 74, ../sass/app.scss */
+/* line 76, ../sass/app.scss */
 .box_chameaux_j2 {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-/* line 78, ../sass/app.scss */
+/* line 81, ../sass/app.scss */
 .box_pioche {
   margin-top: 20px;
+  background-color: #071d25;
   margin-bottom: 20px;
+  padding-top: 25px;
 }
