@@ -1,0 +1,182 @@
+<div class="main">
+        <div class="zonejeu">
+            <div class="plateau">
+            <div class="jetons">
+                <div class="data">
+                    <div class="containj">
+                            {% for jeton in partie.jetonsTerrain.data %}
+                            <img class="Twig ne peut pas avoir la valeur des classes" src="{{ asset('jetons/'~jetons[jeton].fichier) }}" height="35px" />
+                            {% endfor %}
+                    </div>
+                </div>
+                <div class="plan">
+                     <div class="containj">
+                        <img class="un jeton" src="../jetons/plan_5.png" alt="">
+                        <img class="deux jeton" src="../jetons/plan_5.png" alt="">
+                        <img class="trois jeton" src="../jetons/plan_5.png" alt="">
+                        <img class="quatre jeton" src="../jetons/plan_6.png" alt="">
+                        <img class="cinq jeton" src="../jetons/plan_6.png" alt="">
+                    </div>
+                </div>
+                <div class="video">
+                    <div class="containj">
+                        <img class="un jeton" src="../jetons/video_5.png" alt="">
+                        <img class="deux jeton" src="../jetons/video_5.png" alt="">
+                        <img class="trois jeton" src="../jetons/video_5.png" alt="">
+                        <img class="quatre jeton" src="../jetons/video_5.png" alt="">
+                        <img class="cinq jeton" src="../jetons/video_5.png" alt="">
+                        <img class="six jeton" src="../jetons/video_5.png" alt="">
+                    </div>
+                </div>
+                <div class="bonus">
+                    <div class="bonus3">
+                        <img class="jeton" src="../jetons/bonus_3.png" alt="">
+                    </div>
+                    <div class="bonus4">
+                        <img class="jeton" src="../jetons/bonus_4.png" alt="">
+                    </div>
+                    <div class="bonus5">
+                        <img class="jeton" src="../jetons/bonus_5.png" alt="">
+                    </div>
+                </div>
+                <div class="appareil">
+                    <div class="containj">
+                        <img class="un jeton" src="../jetons/app_1.png" alt="">
+                        <img class="deux jeton" src="../jetons/app_1.png" alt="">
+                        <img class="trois jeton" src="../jetons/app_2.png" alt="">
+                        <img class="quatre jeton" src="../jetons/app_2.png" alt="">
+                        <img class="cinq jeton" src="../jetons/app_3.png" alt="">
+                        <img class="six jeton" src="../jetons/app_3.png" alt="">
+                        <img class="sept jeton" src="../jetons/app_5.png" alt="">
+                    </div>
+                </div>
+                <div class="audio">
+                    <div class="containj">
+                        <img class="un jeton" src="../jetons/audio_1.png" alt="">
+                        <img class="deux jeton" src="../jetons/audio_1.png" alt="">
+                        <img class="trois jeton" src="../jetons/audio_2.png" alt="">
+                        <img class="quatre jeton" src="../jetons/audio_2.png" alt="">
+                        <img class="cinq jeton" src="../jetons/audio_3.png" alt="">
+                        <img class="six jeton" src="../jetons/audio_3.png" alt="">
+                        <img class="sept jeton" src="../jetons/audio_5.png" alt="">
+                    </div>
+                </div>
+                <div class="disque">
+                    <div class="containj">
+                        <img class="un jeton" src="../jetons/disque_1.png" alt="">
+                        <img class="deux jeton" src="../jetons/disque_1.png" alt="">
+                        <img class="trois jeton" src="../jetons/disque_1.png" alt="">
+                        <img class="quatre jeton" src="../jetons/disque_1.png" alt="">
+                        <img class="cinq jeton" src="../jetons/disque_1.png" alt="">
+                        <img class="six jeton" src="../jetons/disque_1.png" alt="">
+                        <img class="sept jeton" src="../jetons/disque_2.png" alt="">
+                        <img class="huit jeton" src="../jetons/disque_3.png" alt="">
+                        <img class="neuf jeton" src="../jetons/disque_4.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="jeu">
+                <div class="J2">
+                    <div class="mainJ2">
+                        <div class="containc2">
+                            <img class="carteJ2" src="../cartes/dos.png" alt="">
+                            <img class="carteJ2" src="../cartes/dos.png" alt="">
+                            <img class="carteJ2" src="../cartes/dos.png" alt="">
+                            <img class="carteJ2" src="../cartes/dos.png" alt="">
+                            <img class="carteJ2" src="../cartes/dos.png" alt="">
+                            <img class="carteJ2" src="../cartes/dos.png" alt="">
+                            <img class="carteJ2" src="../cartes/dos.png" alt="">
+                        </div>
+                    </div>
+                    <div class="maletteJ2">
+                        <div class="containv2">
+                            <img class="un carteJ2" src="../cartes/malette.png" alt="">
+                            <img class="deux carteJ2" src="../cartes/malette.png" alt="">
+                            <img class="trois carteJ2" src="../cartes/malette.png" alt="">
+                            <img class="quatre carteJ2" src="../cartes/malette.png" alt="">
+                            <img class="cinq carteJ2" src="../cartes/malette.png" alt="">
+                            <img class="six carteJ2" src="../cartes/malette.png" alt="">
+                            <img class="sept carteJ2" src="../cartes/malette.png" alt="">
+                            <img class="huit carteJ2" src="../cartes/malette.png" alt="">
+                            <img class="neuf carteJ2" src="../cartes/malette.png" alt="">
+                            <img class="dix carteJ2" src="../cartes/malette.png" alt="">
+                            <img class="onze carteJ2" src="../cartes/malette.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="terrain">
+                    <div class="milieu">
+                        <div class="containt">
+                            <img class="carteJ1" src="../cartes/app.png" alt="">
+                            <img class="carteJ1" src="../cartes/audio.png" alt="">
+                            <img class="carteJ1" src="../cartes/datas.png" alt="">
+                            <img class="carteJ1" src="../cartes/disque.png" alt="">
+                            <img class="carteJ1" src="../cartes/plans.png" alt="">
+                        </div>
+                    </div>
+                    <div class="pioche">
+                        <div class="containp">
+                            <img  class="carteJ1" src="../cartes/dos.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="J1">
+                    <div class="maletteJ1">
+                        <div class="containv1">
+                            <img class="un carteJ1" src="../cartes/malette.png" alt="">
+                            <img class="deux carteJ1" src="../cartes/malette.png" alt="">
+                            <img class="trois carteJ1" src="../cartes/malette.png" alt="">
+                            <img class="quatre carteJ1" src="../cartes/malette.png" alt="">
+                            <img class="cinq carteJ1" src="../cartes/malette.png" alt="">
+                            <img class="six carteJ1" src="../cartes/malette.png" alt="">
+                            <img class="sept carteJ1" src="../cartes/malette.png" alt="">
+                            <img class="huit carteJ1" src="../cartes/malette.png" alt="">
+                            <img class="neuf carteJ1" src="../cartes/malette.png" alt="">
+                            <img class="dix carteJ1" src="../cartes/malette.png" alt="">
+                            <img class="onze carteJ1" src="../cartes/malette.png" alt="">
+                        </div>
+                    </div>
+                    <div class="mainJ1">
+                        <div class="containc1">
+                            <img class="carteJ1" src="../cartes/dos.png" alt="">
+                            <img class="carteJ1" src="../cartes/dos.png" alt="">
+                            <img class="carteJ1" src="../cartes/dos.png" alt="">
+                            <img class="carteJ1" src="../cartes/dos.png" alt="">
+                            <img class="carteJ1" src="../cartes/dos.png" alt="">
+                            <img class="carteJ1" src="../cartes/dos.png" alt="">
+                            <img class="carteJ1" src="../cartes/dos.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="proJ1">
+                <p class="pseudo">PSEUDOJ1</p>
+                <p class="points">0 points</p> <!--Changement des points en temps réel pour le J1-->
+                <ul class="win">
+                    <li><img src="../jetons/win.png" class="jeton"></li> <!--Mettre le jeton quand un joueur gagne une manche-->
+                    <li><img src="../jetons/win.png" class="jeton"></li> <!--Mettre le jeton quand un joueur gagne une manche-->
+                </ul>
+            </div>
+            <div class="proJ2">
+                <p class="pseudo">PSEUDOJ2</p>
+                <p class="points">? points</p> <!--Durant la partie le score du J2 reste caché mais s'affiche à la fin de la manche-->
+                <ul class="win">
+                    <li><img src="../jetons/win.png" class="jeton"></li> <!--Mettre le jeton quand un joueur gagne une manche-->
+                    <li><img src="../jetons/win.png" class="jeton"></li> <!--Mettre le jeton quand un joueur gagne une manche-->
+                </ul>
+            </div>
+            <div class="chat">
+
+            </div>
+            <div class="actions">
+
+            </div>
+            <div class="autre">
+
+            </div>
+        </div>
+    </div>

@@ -4,15 +4,12 @@ body{
 }
 
 .jeton_div{
-    margin: 10px; 
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding:10px;
-    background-color: #a9a9a961;
-    
-    padding-left: 10px;
-    
-    border-radius: 70px;
+  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  padding-left: 10px;
+  border-radius: 70px;
 
     img{
         padding-right: 10px;
@@ -59,4 +56,26 @@ body{
       height: 58px;
       opacity: 0;
     }
+  }
+
+  // 
+  .box_main_j2{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .box_main_J1{
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    img{
+      margin-left: 10px;
+    }
+  }
+  .box_chameaux_j2{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .box_pioche{
+    margin-top: 20px;
+    margin-bottom:20px;
   }

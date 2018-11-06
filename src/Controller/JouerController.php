@@ -423,9 +423,11 @@ class JouerController extends AbstractController
     }
 
     /**
-     * @Route("/liste-partie", name="partie_liste")
+     * @Route("/abondon-partie", name="partie_abondon")
      */
-    public function listePartie()
+    public function abondon( UserRepository $userRepository,
+    Request $request,
+    UserInterface $user)
     {
 
     }

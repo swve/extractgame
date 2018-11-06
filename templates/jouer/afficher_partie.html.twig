@@ -4,26 +4,47 @@
 <link rel="stylesheet" href="../stylesheets/app.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tuesday/1.1.0/tuesday.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../stylesheets/plateau.css" />
 <style>
+  body{
+    transition-duration: 0.2s;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/fond.jpg);
+    background-size: cover;
+  }
   .selected {
-    border: 2px solid red;
+    box-shadow: 0px 17px 47px -1px rgba(0, 0, 0, 0.6);
+    transition-duration: 0.2s;
+    margin-right: 20px;
+    
+    transform: scale(1.2);
+    border-radius: 2px;
+    border: azure solid;
+  }
+  .unselected {
+    box-shadow: inherit;
+    transition-duration: 0.2s;
+    margin-right: 0px;
+    transform: inherit;
+    border-radius: 0px;
+    border: inherit;
   }
 
   .new {
-    border: 2px solid green;
+    box-shadow: 0px 17px 47px -1px rgba(0, 0, 0, 0.6);
+    transition-duration: 0.2s;
+    margin-right: 20px;
+    transform: scale(1.2);
   }
 
-  body {
-    padding: 28px;
-    background-color: aliceblue;
-  }
+  
+
+  
 </style>
 {% endblock %}
 
 {% block body %}
-<h1>Partie entre {{ partie.joueur1.username }} et {{ partie.joueur2.username }}</h1>
-<input type="hidden" class="idPartie" value="{{partie.id}}">
-<div id="plateau" class="animated tdExpandIn">
+
+<div  class="animated tdExpandIn">
   {{ render(controller(
   'App\\Controller\\JouerController::afficherPlateau',
   { 'partie': partie.id }
@@ -101,7 +122,7 @@
   $(document).on('click', '#terrain .cartechameau', function () {
 
     if ($(this).hasClass('selected')) {
-      $(this).removeClass('selected');
+      $(this).removeClass('selected');$(this).addClass('unselected');
 
       //retirer d'un tableau
       $index = cartesSelectedChameau.indexOf($(this).data('carte'));
@@ -109,6 +130,11 @@
       console.log("Chameaux " + cartesSelectedChameau)
     } else {
       $('.cartechameau').addClass('selected');
+
+      if ($(this).hasClass('unselected')) {
+        $(this).removeClass('unselected');
+        $('.cartechameau').addClass('selected');
+      }
       //ajouter dans un tableau
       carteType = "chameau";
       $('.cartechameau').each(function (index) {
@@ -126,7 +152,7 @@
   $(document).on('click', '.carteterrain', function () {
 
     if ($(this).hasClass('selected')) {
-      $(this).removeClass('selected');
+      $(this).removeClass('selected');$(this).addClass('unselected');
       carteType = "terrain";
       //retirer d'un tableau
       $index = cartesSelectedTerrain.indexOf($(this).data('carte'));
@@ -134,6 +160,10 @@
       console.log("Terrain : " + cartesSelectedTerrain)
     } else {
       $(this).addClass('selected');
+      if ($(this).hasClass('unselected')) {
+        $(this).removeClass('unselected');
+        $('.cartechameau').addClass('selected');
+      }
       //ajouter dans un tableau
       cartesSelectedTerrain.push($(this).data('carte'));
       console.log("Terrain : " + cartesSelectedTerrain)
@@ -144,7 +174,7 @@
 
   $(document).on('click', '.carteMain', function () {
     if ($(this).hasClass('selected')) {
-      $(this).removeClass('selected');
+      $(this).removeClass('selected');$(this).addClass('unselected');
 
       //retirer d'un tableau
       $index = cartesSelectedMain.indexOf($(this).data('carte'));
@@ -152,6 +182,10 @@
       console.log("Main :" + cartesSelectedMain)
     } else {
       $(this).addClass('selected');
+      if ($(this).hasClass('unselected')) {
+        $(this).removeClass('unselected');
+        $('.cartechameau').addClass('selected');
+      }
       carteType = "main";
       TrocChameau = true;
 
@@ -163,7 +197,7 @@
 
   $(document).on('click', '.carteMain_chameau', function () {
     if ($(this).hasClass('selected')) {
-      $(this).removeClass('selected');
+      $(this).removeClass('selected');$(this).addClass('unselected');
 
       //retirer d'un tableau
       $index = cartesSelectedMainChameau.indexOf($(this).data('carte'));
@@ -171,6 +205,10 @@
       console.log("Main chameaux :" + cartesSelectedMainChameau)
     } else {
       $(this).addClass('selected');
+      if ($(this).hasClass('unselected')) {
+        $(this).removeClass('unselected');
+        $('.cartechameau').addClass('selected');
+      }
       carteType = "main";
 
       //ajouter dans un tableau
