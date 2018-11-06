@@ -16,6 +16,8 @@
                 </video>
                 <div class="col-12 nav">
                     <ul>
+                            <a name="" id="" style="margin-right:20px;" class="btn btn-success" href="{{ path('home_route') }}"
+                            role="button">Accueil</a>
                         {% if is_granted('ROLE_ADMIN') %}
 
 
@@ -30,7 +32,7 @@
                             <li> {{ app.user.username }}</li>
                         </a>
                         <li class="sepa">|</li>
-
+                        
                         <a href="{{ path('security_logout') }}">
                             <li>Déconnexion</li>
                         </a>
@@ -51,8 +53,8 @@
                     </div>
                     <div class="menu">
                         <div id="menu3">
-                            <a href="#"><img src="img/classement.svg" alt=""></a>
-                            <a href="#">Classement</a>
+                            <a href="{{ path('classement_page') }}"><img src="img/classement.svg" alt=""></a>
+                            <a href="{{ path('classement_page') }}">Classement</a>
                         </div>
                     </div>
                 </div>

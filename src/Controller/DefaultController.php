@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use App\Repository\UserRepository;
 use App\Repository\PartieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,4 +38,15 @@ class DefaultController extends AbstractController
 
         );
     }
+
+    /**
+     * @Route("/classement", name="classement_page")
+     */
+    public function classement(AuthorizationCheckerInterface $authChecker , UserRepository $UserRepository )
+    {
+
+        $query = $UserRepository->findClassement() ; 
+        return $this->render('default/classement.html.twig', ['users' => $query ] );
+    }
+
 }
