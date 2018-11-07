@@ -6,20 +6,22 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="{{ path('index_route') }}stylesheets/plateau.css" />
 <style>
-  body{
+  body {
     transition-duration: 0.2s;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/fond.jpg);
     background-size: cover;
   }
+
   .selected {
     box-shadow: 0px 17px 47px -1px rgba(0, 0, 0, 0.6);
     transition-duration: 0.2s;
     margin-right: 20px;
-    
+
     transform: scale(1.2);
     border-radius: 2px;
     border: azure solid;
   }
+
   .unselected {
     box-shadow: inherit;
     transition-duration: 0.2s;
@@ -35,16 +37,12 @@
     margin-right: 20px;
     transform: scale(1.2);
   }
-
-  
-
-  
 </style>
 {% endblock %}
 
 {% block body %}
 
-<div  class="animated tdExpandIn">
+<div class="animated tdExpandIn">
   {{ render(controller(
   'App\\Controller\\JouerController::afficherPlateau',
   { 'partie': partie.id }
@@ -80,7 +78,7 @@
   var carteType = "default";
 
   $(document).ready(function () {
-  setInterval(actualisePlateau, 2000);
+    setInterval(actualisePlateau, 2000);
 
   })
 
@@ -123,7 +121,8 @@
   $(document).on('click', '#terrain .cartechameau', function () {
 
     if ($(this).hasClass('selected')) {
-      $(this).removeClass('selected');$(this).addClass('unselected');
+      $(this).removeClass('selected');
+      $(this).addClass('unselected');
 
       //retirer d'un tableau
       $index = cartesSelectedChameau.indexOf($(this).data('carte'));
@@ -153,7 +152,8 @@
   $(document).on('click', '.carteterrain', function () {
 
     if ($(this).hasClass('selected')) {
-      $(this).removeClass('selected');$(this).addClass('unselected');
+      $(this).removeClass('selected');
+      $(this).addClass('unselected');
       carteType = "terrain";
       //retirer d'un tableau
       $index = cartesSelectedTerrain.indexOf($(this).data('carte'));
@@ -175,12 +175,13 @@
 
   $(document).on('click', '.carteMain', function () {
     if ($(this).hasClass('selected')) {
-      $(this).removeClass('selected');$(this).addClass('unselected');
+      $(this).removeClass('selected');
+      $(this).addClass('unselected');
 
       $indexValeur = valeurSelectedMain.indexOf($(this).data('valeur'));
       //retirer d'un tableau
       $index = cartesSelectedMain.indexOf($(this).data('carte'));
-      
+
       cartesSelectedMain.splice($index, 1);
       valeurSelectedMain.splice($indexValeur, 1);
 
@@ -205,7 +206,8 @@
 
   $(document).on('click', '.carteMain_chameau', function () {
     if ($(this).hasClass('selected')) {
-      $(this).removeClass('selected');$(this).addClass('unselected');
+      $(this).removeClass('selected');
+      $(this).addClass('unselected');
 
       //retirer d'un tableau
       $index = cartesSelectedMainChameau.indexOf($(this).data('carte'));
@@ -309,7 +311,7 @@
         },
         error: function (data) {
 
-          
+
           if (data === 'erreur7') {
 
             iziToast.error({
@@ -317,9 +319,7 @@
               message: 'Vous avez deja 7 cartes en main  ',
             });
 
-          }
-          
-           else {
+          } else {
             iziToast.error({
               title: 'Erreur',
               message: 'Action prendre',
@@ -327,7 +327,7 @@
           }
         }
 
-        
+
       })
     }
   })
@@ -336,7 +336,7 @@
   $(document).on('click', '#action-vendre', function () {
     // Envoi des cartes en Main
     if (carteType == "main") {
-      
+
       console.log('Envoi des cartes main :D ');
 
       valeurVerif = true;
@@ -346,55 +346,70 @@
 
         if (valeurVerif = true) {
 
-          if (valeurSelectedMain[i] ==   vraivaleur ) {
+          if (valeurSelectedMain[i] == vraivaleur) {
 
-           valeurVerif = true;
-           console.log('POSSIBLE');
+            valeurVerif = true;
+            console.log('POSSIBLE');
 
-          }
-          else{
-           valeurVerif = false;
+          } else {
+            valeurVerif = false;
             console.log('PAS POSSIBLE');
-            
+
             break;
           }
         }
-        
-      }
 
-      if (valeurVerif== true ) {
-        
-        if (vraivaleur == ( 1 || 2 || 3 ) && vraivaleur.length >= 2) {
-          
+      }
+      valeurOK = null ;
+      if (valeurVerif == true) {
+
+        if (vraivaleur == (1 || 2 || 3)) {
+
+          if (vraivaleur.length >= 2) {
+            valeurOK = true;
+            console.log(valeurOK);
+          } else {
+            valeurOK = false;
+            console.log(valeurOK);
+          }
+        } else {
+          valeurOK = true;
+
         }
       }
-    
 
-      $.ajax({
-        url: "{{ path('jouer_action_vendre', {partie: partie.id}) }}",
-        data: {
-          main: cartesSelectedMain
+      if (valeurOK == true) {
+        $.ajax({
+          url: "{{ path('jouer_action_vendre', {partie: partie.id}) }}",
+          data: {
+            main: cartesSelectedMain,
+            valeur: valeurSelectedMain
+          },
+          method: 'POST',
 
-        },
-        method: 'POST',
+          success: function (data) {
+            $('#bloc-action').hide('2000');
+            ValideTour();
 
-        success: function (data) {
-          $('#bloc-action').hide('2000');
-          ValideTour();
+            var i;
+            for (i = 0; i < cartesSelectedMain.length; ++i) {
+              // do something with `substr[i]`
+              $('.carteMain_' + cartesSelectedMain[i]).hide('20000');
+              iziToast.success({
+                title: 'Succès',
+                message: 'Vous avez vendu la carte  ' + cartesSelectedMain[i],
+              });
+            }
 
-          var i;
-          for (i = 0; i < cartesSelectedMain.length; ++i) {
-            // do something with `substr[i]`
-            $('.carteMain_' + cartesSelectedMain[i]).hide('20000');
-            iziToast.success({
-              title: 'Succès',
-              message: 'Vous avez vendu la carte  ' + cartesSelectedMain[i],
-            });
-          }
+          },
 
-        },
-
-      })
+        })
+      } else {
+        iziToast.error({
+          title: 'Erreur',
+          message: 'Vente impossible ',
+        });
+      }
     }
   })
 
@@ -449,17 +464,17 @@
         },
         error: function (data) {
 
-          
-if (data === 'ERREUR_NB7') {
 
-  iziToast.error({
-    title: 'Erreur',
-    message: 'Vous ne pouvez pas avoir plus de 7 cartes ',
-  });
+          if (data === 'ERREUR_NB7') {
 
-}
+            iziToast.error({
+              title: 'Erreur',
+              message: 'Vous ne pouvez pas avoir plus de 7 cartes ',
+            });
 
-}
+          }
+
+        }
 
       })
     }
