@@ -22,7 +22,7 @@ class Partie
     private $date;
 
     /**
-     * @ORM\Column(type="string", length=1)
+     * @ORM\Column(type="integer")
      */
     private $status;
 

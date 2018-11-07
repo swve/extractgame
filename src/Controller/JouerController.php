@@ -3,15 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Partie;
-use App\Repository\UserRepository;
 use App\Repository\CarteRepository;
 use App\Repository\JetonRepository;
 use App\Repository\PartieRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class JouerController extends AbstractController
 {
@@ -49,7 +49,7 @@ class JouerController extends AbstractController
 
             $partie->setNbManche(1);
             $partie->setDefausse(false); //pas de carte dans la défausse.
-            $partie->setStatus('1');
+            $partie->setStatus($userId);
             $partie->setJetonChameaux(0); //dans aucun des deux joueurs
             $partie->setPointJ1(0); //a 0 pas de point au début d'une partie
             $partie->setPointJ2(0);
@@ -156,17 +156,9 @@ class JouerController extends AbstractController
      */
     public function actualisePlateau(Partie $partie)
     {
-        switch ($partie->getStatus()) {
-            //tester si je suis J1 ou J2 et en fonction adapter les return.
-            case '1':
-                return $this->json('montour');
-            case '2':
-                return $this->json('touradversaire');
-            case 'T':
-                return $this->json('T');
-            default:
-                return $this->json('E');
-        }
+
+        return $this->json($partie->getStatus());
+
     }
 
     /**
@@ -228,7 +220,7 @@ class JouerController extends AbstractController
             if ($carte !== null) {
 
                 //je considére que je suis j1.
-                
+
                 $main = $partie->getMainJ1();
                 //vérifier s'il y a 7 cartes dans la main (pourrait se faire en js).
 
@@ -275,10 +267,9 @@ class JouerController extends AbstractController
         $idcarteMain = $request->request->get('main');
         $valeurcarteMain = $request->request->get('valeur');
 
-
         $nbcartes = count($idcarteMain);
-        
-        for ($i=0; $i < $nbcartes ; $i++) { 
+
+        for ($i = 0; $i < $nbcartes; $i++) {
             $carte = $carteRepository->find($idcarteMain[0]);
             $valeur = $carteRepository->find($idcarteMain[0]);
         }
@@ -301,9 +292,7 @@ class JouerController extends AbstractController
                 $entityManager->flush();
 
                 return $this->json(['cartemain' => $carte->getJson(), 'main' => $main], 200);
-            } 
-            
-            else {
+            } else {
                 return $this->json('Erreur action vendre ', 500);
             }
 
@@ -326,104 +315,102 @@ class JouerController extends AbstractController
         }
 
         $idcarteTerrain = $request->request->get('terrain');
-        $idcarteMainChameau = null ; 
+        $idcarteMainChameau = null;
 
         if ($request->request->get('chameaux_main') !== null) {
-        $idcarteMainChameau = $request->request->get('chameaux_main');
+            $idcarteMainChameau = $request->request->get('chameaux_main');
         }
-        $nbMain = count($main) ; 
+        $nbMain = count($main);
         if ($idcarteMain !== null) {
-            $nbCarteMain = count($idcarteMain); 
+            $nbCarteMain = count($idcarteMain);
+        } else {
+            $nbCarteMain = 0;
         }
-        else{
-            $nbCarteMain = 0  ; 
-        }
-        $nbCarteTerrain = count($idcarteTerrain)  ; 
-        $calculMain = $nbMain - $nbCarteMain  + $nbCarteTerrain ; 
+        $nbCarteTerrain = count($idcarteTerrain);
+        $calculMain = $nbMain - $nbCarteMain + $nbCarteTerrain;
 
-        if ( $calculMain <= 7) {
-        if ($idcarteMain !== null || $idcarteMainChameau !== null) {
+        if ($calculMain <= 7) {
+            if ($idcarteMain !== null || $idcarteMainChameau !== null) {
 
-            $carteMain = null;
-            if ($idcarteMain !== null) {
-                $carteMain = $carteRepository->find($idcarteMain[0]);
-            }
+                $carteMain = null;
+                if ($idcarteMain !== null) {
+                    $carteMain = $carteRepository->find($idcarteMain[0]);
+                }
 
-            $carteTerrain = $carteRepository->find($idcarteTerrain[0]);
+                $carteTerrain = $carteRepository->find($idcarteTerrain[0]);
 
-            if ($idcarteMainChameau !== null) {
-            $carteMainChameau = $carteRepository->find($idcarteMainChameau[0]);
-            }
+                if ($idcarteMainChameau !== null) {
+                    $carteMainChameau = $carteRepository->find($idcarteMainChameau[0]);
+                }
 
-            $terrain = $partie->getTerrain();
-
-            if (count($terrain) <= 5) {
-                
-                //je considére que je suis j1.
-
-                $main = $partie->getMainJ1();
                 $terrain = $partie->getTerrain();
-                $main_chameaux = $partie->getChameauxJ1();
 
-                if (isset($idcarteMain)) {
-                    # code...
-                    // Retirer de la main & ID de la carte retirée 1
-                    for ($i = 0; $i < count($idcarteMain); $i++) {
-                        $index = array_search($idcarteMain[$i], $main);
-                        unset($main[$index]);
+                if (count($terrain) <= 5) {
+
+                    //je considére que je suis j1.
+
+                    $main = $partie->getMainJ1();
+                    $terrain = $partie->getTerrain();
+                    $main_chameaux = $partie->getChameauxJ1();
+
+                    if (isset($idcarteMain)) {
+                        # code...
+                        // Retirer de la main & ID de la carte retirée 1
+                        for ($i = 0; $i < count($idcarteMain); $i++) {
+                            $index = array_search($idcarteMain[$i], $main);
+                            unset($main[$index]);
+                        }
                     }
-                }
 
-                // Retirer du terrain & ID de la carte retirée 2
-                for ($i = 0; $i < count($idcarteTerrain); $i++) {
-                    $index = array_search($idcarteTerrain[$i], $terrain);
-                    unset($terrain[$index]);
-                }
-
-                // Retirer du chameaux & ID de la carte retirée 3
-                if (isset($idcarteMainChameau)) {
-                for ($i = 0; $i < count($idcarteMainChameau); $i++) {
-                    $index = array_search($idcarteMainChameau[$i], $main_chameaux);
-                    unset($main_chameaux[$index]);
-                }
-            }
-
-                if (isset($idcarteMain)) {
-                    // Ajoutes les cartes
-                    for ($i = 0; $i < count($idcarteMain); $i++) {
-                        $terrain[] = $idcarteMain[$i];
+                    // Retirer du terrain & ID de la carte retirée 2
+                    for ($i = 0; $i < count($idcarteTerrain); $i++) {
+                        $index = array_search($idcarteTerrain[$i], $terrain);
+                        unset($terrain[$index]);
                     }
+
+                    // Retirer du chameaux & ID de la carte retirée 3
+                    if (isset($idcarteMainChameau)) {
+                        for ($i = 0; $i < count($idcarteMainChameau); $i++) {
+                            $index = array_search($idcarteMainChameau[$i], $main_chameaux);
+                            unset($main_chameaux[$index]);
+                        }
+                    }
+
+                    if (isset($idcarteMain)) {
+                        // Ajoutes les cartes
+                        for ($i = 0; $i < count($idcarteMain); $i++) {
+                            $terrain[] = $idcarteMain[$i];
+                        }
+                    }
+
+                    // Ajouter les cartes
+                    for ($i = 0; $i < count($idcarteTerrain); $i++) {
+                        $main[] = $idcarteTerrain[$i];
+                    }
+
+                    // Ajouter les cartes
+                    if (isset($idcarteMainChameau)) {
+                        for ($i = 0; $i < count($idcarteMainChameau); $i++) {
+                            $terrain[] = $idcarteMainChameau[$i];
+                        }
+                    }
+
+                    // Appliquer les changements
+                    $partie->setMainJ1($main);
+                    $partie->setTerrain($terrain);
+                    $partie->setChameauxJ1($main_chameaux);
+
+                    $entityManager->flush();
+
+                    return $this->json(['main' => $main, 'terrain' => $terrain, 'carteterrain' => $carteTerrain->getJson()], 200);
+                } else {
+                    return $this->json('Erreur action vendre ', 500);
                 }
 
-                // Ajouter les cartes
-                for ($i = 0; $i < count($idcarteTerrain); $i++) {
-                    $main[] = $idcarteTerrain[$i];
-                }
-
-                // Ajouter les cartes
-                if (isset($idcarteMainChameau)) {
-                for ($i = 0; $i < count($idcarteMainChameau); $i++) {
-                    $terrain[] = $idcarteMainChameau[$i];
-                }
             }
-
-                // Appliquer les changements
-                $partie->setMainJ1($main);
-                $partie->setTerrain($terrain);
-                $partie->setChameauxJ1($main_chameaux);
-
-                $entityManager->flush();
-
-                return $this->json(['main' => $main, 'terrain' => $terrain, 'carteterrain' => $carteTerrain->getJson()], 200);
-            } else {
-                return $this->json('Erreur action vendre ', 500);
-            }
-
+        } else {
+            return $this->json('ERREUR_NB7 ', 500);
         }
-    }
-    else{
-        return $this->json('ERREUR_NB7 ' ,500 );
-    }
     }
 
     /**
@@ -431,18 +418,32 @@ class JouerController extends AbstractController
      */
     public function jouerActionSuivant(EntityManagerInterface $entityManager,
         Partie $partie) {
-        $partie->setStatus('2'); //en considérant que je suis J1 ... a calculer.
-        $entityManager->flush();
-        return $this->json('Joueur-suivant', 200);
+
+            $j1 = $partie->getJoueur1()->getId(); 
+            $j2 = $partie->getJoueur2()->getId(); 
+            $status = $partie->getStatus();
+
+        if ($status == $j1) {
+            $partie->setStatus($j2);
+            $entityManager->flush();
+            return $this->json('Joueur-suivant', 200);
+            
+        } 
+        elseif ($status == $j2) {
+            $partie->setStatus($j1);
+            $entityManager->flush();
+            return $this->json('Joueur-suivant', 200);
+        }
+        
+        return $this->json($j1, 200);
     }
 
     /**
      * @Route("/abondon-partie", name="partie_abondon")
      */
-    public function abondon( UserRepository $userRepository,
-    Request $request,
-    UserInterface $user)
-    {
+    public function abondon(UserRepository $userRepository,
+        Request $request,
+        UserInterface $user) {
 
     }
 }

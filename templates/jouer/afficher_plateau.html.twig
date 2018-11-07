@@ -1,5 +1,9 @@
 <div class="container-fluid">
     <input type="hidden" class="idPartie" value="{{partie.id}}">
+    
+    
+    <input type="hidden" class="UserJoueurID" value="{{app.user.id}}">
+
     <div class="row">
         <div class="col-8 plateau">
             <div class="row">
@@ -85,14 +89,26 @@
                 <div class="col-sm-8">
                     <div class="row" style="margin-bottom:30px; height:550px">
                         <div class="col-sm-12 box_main_j2" style="height: 101px">
+                        {% if app.user.id == partie.joueur1.id %}
                             {% for carte in partie.mainJ2 %}
                             <img src="{{ asset('cartes/dos.jpg') }}" height="82px" />
                             {% endfor %}
+                        {% elseif app.user.id == partie.joueur2.id %}
+                            {% for carte in partie.mainJ1 %}
+                            <img src="{{ asset('cartes/dos.jpg') }}" height="82px" />
+                            {% endfor %}
+                        {% endif %}
                         </div>
                         <div class="col-sm-12 box_chameaux_j2" style="height: 101px">
+                        {% if app.user.id == partie.joueur1.id %}
                             {% for carte in partie.chameauxJ2 %}
                             <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" height="82px" />
                             {% endfor %}
+                        {% elseif app.user.id == partie.joueur2.id %}
+                            {% for carte in partie.chameauxJ1 %}
+                            <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" height="82px" />
+                        {% endfor %}
+                            {% endif %}
                         </div>
                         <div class="col-sm-12 box_pioche" style="height: 140px">
                             <div class="row">
@@ -110,18 +126,36 @@
                         </div>
                         <br><br>
                         <div class="col-sm-12 box_chameaux_j1" style="height: 100px">
+                        {% if app.user.id == partie.joueur1.id %}
                             {% for carte in partie.chameauxJ1 %}
                             <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="carteMain_chameau" height="82px"
                                 data-carte="{{ carte }}" />
                             {% endfor %}
+                        {% elseif app.user.id == partie.joueur2.id %}
+                        {% for carte in partie.chameauxJ2 %}
+                        <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="carteMain_chameau" height="82px"
+                            data-carte="{{ carte }}" />
+                        {% endfor %}
+                        {% endif %}
                         </div>
                         <br><br>
                         <div class="col-sm-12 box_main_J1 " style="height: 100px">
                             <div id="main" class="row">
+                              
+
+                            {% if app.user.id == partie.joueur1.id %}
                                 {% for carte in partie.mainJ1 %}
                                 <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="carteMain carteMain_{{ carte }}  valeur_{{ cartes[carte].valeur }}"
                                     height="90px" data-carte="{{ carte }}" data-valeur="{{ cartes[carte].valeur }}" />
                                 {% endfor %}
+                          
+
+                            {% elseif app.user.id == partie.joueur2.id %}
+                                {% for carte in partie.mainJ2 %}
+                                <img src="{{ asset('cartes/'~cartes[carte].fichier) }}" class="carteMain carteMain_{{ carte }}  valeur_{{ cartes[carte].valeur }}"
+                                    height="90px" data-carte="{{ carte }}" data-valeur="{{ cartes[carte].valeur }}" />
+                                {% endfor %}
+                        {% endif %}
                             </div>
 
                         </div>

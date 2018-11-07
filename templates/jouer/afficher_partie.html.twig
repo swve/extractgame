@@ -50,7 +50,7 @@
 </div>
 
 <div id="attentejoueur" class="animated tdExpandIn" style="position: fixed;top: -4px;left: 0px;height: 100%;padding: 160px;text-align: center;width: 100%;transition: all 0.2s ease 0s;background-color: #ffffffe0;opacity: 0.8;font-size: 60px;font-weight: bold;">
-  <br> Attente du joueur {{ partie.joueur2.username }} <br>
+  <br> Attente du joueur suivant <br>
   <center>
     <div class="lds-ripple">
       <div></div>
@@ -76,13 +76,15 @@
   var cartesSelectedMainChameau = Array();
   var valeurSelectedMain = Array();
   var carteType = "default";
+  var TourJoueur = $('input.UserJoueurID').val();
 
- // $(document).ready(function () {
-   // setInterval(actualisePlateau, 2000);
+  $(document).ready(function () {
+    setInterval(actualisePlateau, 2000);
 
-  //})
+  })
 
   function actualisePlateau() {
+
     $.ajax({
       url: "{{ path('actualise_plateau', {partie: partie.id}) }}",
     }).done(function (etat) {
@@ -91,14 +93,10 @@
       console.log(etat);
 
 
-      if (etat === 'touradversaire') {
-        actualise = false;
-        console.log('attente Adversaire')
-        $('#attentejoueur').show();
-      }
+      
 
 
-      if (etat === 'montour') {
+      if (etat === TourJoueur) {
         if (actualise === false) {
           console.log('reload');
 
@@ -111,6 +109,12 @@
           $('#attentejoueur').hide();
         }
         //console.log('Mon tour')
+      }
+
+        else {
+        actualise = false;
+        console.log('attente Adversaire')
+        $('#attentejoueur').show();
       }
 
 
