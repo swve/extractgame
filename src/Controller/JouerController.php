@@ -174,11 +174,19 @@ class JouerController extends AbstractController
         $idcarte = $request->request->get('cartes');
         $idchameaux = $request->request->get('chameaux');
 
+        $statutPartie = $partie->getStatus();
+        $j1 = $partie->getJoueur1()->getId();
+        $j2 = $partie->getJoueur2()->getId();
+
         if ($idchameaux !== null) {
             $chameau = $carteRepository->find($idchameaux[0]);
 
-            //je considére que je suis j1.
-            $main_chameaux = $partie->getChameauxJ1();
+            if ($statutPartie == $j1) {
+                $main_chameaux = $partie->getChameauxJ1();
+            } elseif ($statutPartie == $j2) {
+                $main_chameaux = $partie->getChameauxJ2();
+            }
+
             $terrain = $partie->getTerrain();
 
             for ($i = 0; $i < count($idchameaux); $i++) {
@@ -205,7 +213,13 @@ class JouerController extends AbstractController
             }
 
             // executer
-            $partie->setChameauxJ1($main_chameaux);
+
+            if ($statutPartie == $j1) {
+                $partie->setChameauxJ1($main_chameaux);
+            } elseif ($statutPartie == $j2) {
+                $partie->setChameauxJ2($main_chameaux);
+            }
+
             $partie->setTerrain($terrain);
             $partie->setPioche($pioche);
 
@@ -220,8 +234,12 @@ class JouerController extends AbstractController
             if ($carte !== null) {
 
                 //je considére que je suis j1.
+                if ($statutPartie == $j1) {
+                    $main = $partie->getMainJ1();
+                } elseif ($statutPartie == $j2) {
+                    $main = $partie->getMainJ2();
+                }
 
-                $main = $partie->getMainJ1();
                 //vérifier s'il y a 7 cartes dans la main (pourrait se faire en js).
 
                 if (count($main) < 7) {
@@ -238,7 +256,13 @@ class JouerController extends AbstractController
                         }
                     }
 
-                    $partie->setMainJ1($main);
+                    //je considére que je suis j1.
+                    if ($statutPartie == $j1) {
+                        $partie->setMainJ1($main);
+                    } elseif ($statutPartie == $j2) {
+                        $partie->setMainJ2($main);
+                    }
+
                     $partie->setTerrain($terrain);
                     $partie->setPioche($pioche);
                     $entityManager->flush();
@@ -267,6 +291,10 @@ class JouerController extends AbstractController
         $idcarteMain = $request->request->get('main');
         $valeurcarteMain = $request->request->get('valeur');
 
+        $statutPartie = $partie->getStatus();
+        $j1 = $partie->getJoueur1()->getId();
+        $j2 = $partie->getJoueur2()->getId();
+
         $nbcartes = count($idcarteMain);
 
         for ($i = 0; $i < $nbcartes; $i++) {
@@ -280,14 +308,23 @@ class JouerController extends AbstractController
             if ($carte !== null) {
                 //je considére que je suis j1.
 
-                $main = $partie->getMainJ1();
+                if ($statutPartie == $j1) {
+                    $main = $partie->getMainJ1();
+                } elseif ($statutPartie == $j2) {
+                    $main = $partie->getMainJ2();
+                }
+
                 $index = array_search($carte->getId(), $main);
                 unset($main[$index]); // on retire du terrain
 
                 // Ajouter au terrain
                 $terrain[] = $carte->getId(); //piocher et mettre sur le terrain
 
-                $partie->setMainJ1($main);
+                if ($statutPartie == $j1) {
+                    $partie->setMainJ1($main);
+                } elseif ($statutPartie == $j2) {
+                    $partie->setMainJ2($main);
+                }
 
                 $entityManager->flush();
 
@@ -308,7 +345,17 @@ class JouerController extends AbstractController
         Request $request,
         Partie $partie
     ) {
-        $main = $partie->getMainJ1();
+
+        $statutPartie = $partie->getStatus();
+        $j1 = $partie->getJoueur1()->getId();
+        $j2 = $partie->getJoueur2()->getId();
+
+        if ($statutPartie == $j1) {
+            $main = $partie->getMainJ1();
+        } elseif ($statutPartie == $j2) {
+            $main = $partie->getMainJ2();
+        }
+
         $idcarteMain = null;
         if ($request->request->get('main') !== null) {
             $idcarteMain = $request->request->get('main');
@@ -349,9 +396,15 @@ class JouerController extends AbstractController
 
                     //je considére que je suis j1.
 
-                    $main = $partie->getMainJ1();
-                    $terrain = $partie->getTerrain();
-                    $main_chameaux = $partie->getChameauxJ1();
+                    if ($statutPartie == $j1) {
+                        $main = $partie->getMainJ1();
+                        $terrain = $partie->getTerrain();
+                        $main_chameaux = $partie->getChameauxJ1();
+                    } elseif ($statutPartie == $j2) {
+                        $main = $partie->getMainJ2();
+                        $terrain = $partie->getTerrain();
+                        $main_chameaux = $partie->getChameauxJ2();
+                    }
 
                     if (isset($idcarteMain)) {
                         # code...
@@ -396,9 +449,15 @@ class JouerController extends AbstractController
                     }
 
                     // Appliquer les changements
-                    $partie->setMainJ1($main);
-                    $partie->setTerrain($terrain);
-                    $partie->setChameauxJ1($main_chameaux);
+                    if ($statutPartie == $j1) {
+                        $partie->setMainJ1($main);
+                        $partie->setTerrain($terrain);
+                        $partie->setChameauxJ1($main_chameaux);
+                    } elseif ($statutPartie == $j2) {
+                        $partie->setMainJ2($main);
+                        $partie->setTerrain($terrain);
+                        $partie->setChameauxJ2($main_chameaux);
+                    }
 
                     $entityManager->flush();
 
@@ -419,22 +478,21 @@ class JouerController extends AbstractController
     public function jouerActionSuivant(EntityManagerInterface $entityManager,
         Partie $partie) {
 
-            $j1 = $partie->getJoueur1()->getId(); 
-            $j2 = $partie->getJoueur2()->getId(); 
-            $status = $partie->getStatus();
+        $j1 = $partie->getJoueur1()->getId();
+        $j2 = $partie->getJoueur2()->getId();
+        $status = $partie->getStatus();
 
         if ($status == $j1) {
             $partie->setStatus($j2);
             $entityManager->flush();
             return $this->json('Joueur-suivant', 200);
-            
-        } 
-        elseif ($status == $j2) {
+
+        } elseif ($status == $j2) {
             $partie->setStatus($j1);
             $entityManager->flush();
             return $this->json('Joueur-suivant', 200);
         }
-        
+
         return $this->json($j1, 200);
     }
 
