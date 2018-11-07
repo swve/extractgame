@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tuesday/1.1.0/tuesday.min.css" />
-  <link rel="stylesheet" href="../stylesheets/screen.css">
+  <link rel="stylesheet" href="{{ path('index_route') }}stylesheets/screen.css">
 
   <style></style>
   {% endblock %}
@@ -44,9 +44,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ path('back_ban') }}">Ban utilisateurs</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Modération Tchat⚠</a>
-        </li>
+     
         <li class="nav-item">
           <a class="nav-link" href="{{ path('jeton_index') }}">Jetons</a>
         </li>
