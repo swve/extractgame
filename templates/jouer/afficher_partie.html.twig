@@ -488,6 +488,7 @@
   })
 
   var partieID = $('input[type=hidden].idPartie').val();
+  var route = $('input[type=hidden].Route').val();
 
   function ValideTour() {
     iziToast.question({
@@ -507,7 +508,7 @@
             transitionOut: 'fadeOut'
           }, toast, 'button');
           $.ajax({
-            url: ('/jouer-action/suivant/' + partieID),
+            url: (route +'jouer-action/suivant/' + partieID),
             method: 'POST'
           });
 
