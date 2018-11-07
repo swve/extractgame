@@ -228,6 +228,7 @@ class JouerController extends AbstractController
             if ($carte !== null) {
 
                 //je considére que je suis j1.
+                
                 $main = $partie->getMainJ1();
                 //vérifier s'il y a 7 cartes dans la main (pourrait se faire en js).
 
@@ -272,14 +273,15 @@ class JouerController extends AbstractController
     ) {
 
         $idcarteMain = $request->request->get('main');
+        $valeurcarteMain = $request->request->get('valeur');
 
 
-
-
-
-
-
-
+        $nbcartes = count($idcarteMain);
+        
+        for ($i=0; $i < $nbcartes ; $i++) { 
+            $carte = $carteRepository->find($idcarteMain[0]);
+            $valeur = $carteRepository->find($idcarteMain[0]);
+        }
 
         if ($idcarteMain !== null) {
             $carte = $carteRepository->find($idcarteMain[0]);
@@ -299,7 +301,9 @@ class JouerController extends AbstractController
                 $entityManager->flush();
 
                 return $this->json(['cartemain' => $carte->getJson(), 'main' => $main], 200);
-            } else {
+            } 
+            
+            else {
                 return $this->json('Erreur action vendre ', 500);
             }
 

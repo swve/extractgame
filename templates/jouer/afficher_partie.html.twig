@@ -77,10 +77,10 @@
   var valeurSelectedMain = Array();
   var carteType = "default";
 
-  $(document).ready(function () {
-    setInterval(actualisePlateau, 2000);
+ // $(document).ready(function () {
+   // setInterval(actualisePlateau, 2000);
 
-  })
+  //})
 
   function actualisePlateau() {
     $.ajax({
@@ -362,18 +362,21 @@
       }
       valeurOK = null ;
       if (valeurVerif == true) {
+        console.log(vraivaleur);
+        if (vraivaleur == 1 || vraivaleur ==  2 || vraivaleur == 3 ) {
 
-        if (vraivaleur == (1 || 2 || 3)) {
-
-          if (vraivaleur.length >= 2) {
+          if (valeurSelectedMain.length >= 2) {
             valeurOK = true;
             console.log(valeurOK);
-          } else {
+          } 
+          else {
             valeurOK = false;
             console.log(valeurOK);
           }
-        } else {
+        } 
+        else {
           valeurOK = true;
+          
 
         }
       }

@@ -33,6 +33,7 @@ class Jeton
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Carte", inversedBy="valeur")
      */
     private $type;
 

@@ -28,6 +28,7 @@ class Carte
 
     /**
      * @ORM\Column(type="integer")
+     * @ORM\OneToMany(targetEntity="App\Entity\Jeton", mappedBy="type")
      */
     private $valeur;
 
