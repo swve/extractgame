@@ -316,9 +316,11 @@ class JouerController extends AbstractController
                     $main = $partie->getMainJ2();
                 }
 
-                $index = array_search($carte->getId(), $main);
-                unset($main[$index]); // on retire du terrain
+                for ($i = 0; $i < count($idcarteMain); $i++) {
 
+                    $index = array_search($idcarteMain[$i], $main);
+                    unset($main[$index]); // on retire du terrain
+                }
                 // Ajouter au terrain
                 $terrain[] = $carte->getId(); //piocher et mettre sur le terrain
 
