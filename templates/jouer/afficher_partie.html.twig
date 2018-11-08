@@ -42,7 +42,7 @@
 
 {% block body %}
 
-<div class="animated tdExpandIn" >
+<div class="animated tdExpandIn">
   {{ render(controller(
   'App\\Controller\\JouerController::afficherPlateau',
   { 'partie': partie.id }
@@ -59,6 +59,17 @@
   </center>
 
 </div>
+<div id="attente" class="animated tdExpandIn" style="position: fixed;top: -4px;left: 0px;height: 100%;padding: 160px;text-align: center;width: 100%;transition: all 0.2s ease 0s;background-color: #ffffffe0;opacity: 0.8;font-size: 60px;font-weight: bold;">
+  <br><br>
+  <center>
+    <div class="lds-ripple">
+      <div></div>
+      <div></div>
+    </div>
+  </center>
+
+</div>
+
 {% endblock %}
 
 {% block title %}
@@ -79,6 +90,7 @@
   var TourJoueur = $('input.UserJoueurID').val();
 
   $(document).ready(function () {
+    $('#attente').show();
     setInterval(actualisePlateau, 2000);
 
   })
@@ -93,28 +105,38 @@
       console.log(etat);
 
 
-      
+
 
 
       if (etat === TourJoueur) {
         if (actualise === false) {
           console.log('reload');
-
+         
           $('#plateau').empty().load("{{ path('afficher_plateau', {partie:partie.id}) }}");
           $('img').removeClass('selected');
-          cartesSelectedTerrain = Array();
-          cartesSelectedChameau = Array();
-          cartesSelectedMain = Array();
+         
           actualise = true;
           $('#attentejoueur').hide();
+          $('#attente').hide();
+          cartesSelectedTerrain =[];
+          cartesSelectedChameau = [];
+         cartesSelectedMain = [];
+          cartesSelectedMainChameau = [];
+          valeurSelectedMain = [];
+         
         }
         //console.log('Mon tour')
-      }
-
-        else {
+      } else {
         actualise = false;
         console.log('attente Adversaire')
+        
         $('#attentejoueur').show();
+        cartesSelectedTerrain = [];
+        cartesSelectedChameau = [];
+          cartesSelectedMain = [];
+          cartesSelectedMainChameau = [];
+        valeurSelectedMain = [];
+          
       }
 
 
@@ -364,23 +386,21 @@
         }
 
       }
-      valeurOK = null ;
+      valeurOK = null;
       if (valeurVerif == true) {
         console.log(vraivaleur);
-        if (vraivaleur == 1 || vraivaleur ==  2 || vraivaleur == 3 ) {
+        if (vraivaleur == 6 || vraivaleur == 5 || vraivaleur == 4) {
 
           if (valeurSelectedMain.length >= 2) {
             valeurOK = true;
             console.log(valeurOK);
-          } 
-          else {
+          } else {
             valeurOK = false;
             console.log(valeurOK);
           }
-        } 
-        else {
+        } else {
           valeurOK = true;
-          
+
 
         }
       }
@@ -414,7 +434,7 @@
       } else {
         iziToast.error({
           title: 'Erreur',
-          message: 'Vente impossible ',
+          message: 'Prenez au moins deux cartes de ce type ',
         });
       }
     }
@@ -462,9 +482,9 @@
               message: 'Vous avez troqué ',
             });
           } else {
-            iziToast.error({
-              title: 'Erreur',
-              message: 'Selectionnez la meme quantité de cartes ',
+            iziToast.info({
+              title: 'Info',
+              message: 'Erreur probable',
             });
           }
 
@@ -508,13 +528,13 @@
             transitionOut: 'fadeOut'
           }, toast, 'button');
           $.ajax({
-            url: (route +'jouer-action/suivant/' + partieID),
+            url: (route + 'jouer-action/suivant/' + partieID),
             method: 'POST'
           });
 
           iziToast.show({
             id: 'haduken',
-            timeout: 50000,
+            timeout: 20000,
             close: true,
             overlay: true,
             theme: 'dark',

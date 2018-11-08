@@ -294,12 +294,14 @@ class JouerController extends AbstractController
         $statutPartie = $partie->getStatus();
         $j1 = $partie->getJoueur1()->getId();
         $j2 = $partie->getJoueur2()->getId();
+        $scorej1 = $partie->getPointJ1();
+        $scorej2 = $partie->getPointJ2();
 
         $nbcartes = count($idcarteMain);
-
+        $valeur = 0;
         for ($i = 0; $i < $nbcartes; $i++) {
             $carte = $carteRepository->find($idcarteMain[0]);
-            $valeur = $carteRepository->find($idcarteMain[0]);
+            $valeur += $valeurcarteMain[$i];
         }
 
         if ($idcarteMain !== null) {
@@ -322,8 +324,10 @@ class JouerController extends AbstractController
 
                 if ($statutPartie == $j1) {
                     $partie->setMainJ1($main);
+                    $partie->setPointJ1($scorej1 + $valeur);
                 } elseif ($statutPartie == $j2) {
                     $partie->setMainJ2($main);
+                    $partie->setPointJ2($scorej2 + $valeur);
                 }
 
                 $entityManager->flush();
