@@ -49,4 +49,15 @@ class DefaultController extends AbstractController
         return $this->render('default/classement.html.twig', ['users' => $query ] );
     }
 
+     /**
+     * @Route("/regles", name="regles_page")
+     */
+    public function regles(AuthorizationCheckerInterface $authChecker , UserRepository $UserRepository )
+    {
+
+        $query = $UserRepository->findClassement() ; 
+        return $this->render('default/regles.html.twig', ['users' => $query ] );
+    }
+    
+
 }

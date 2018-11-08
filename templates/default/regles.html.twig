@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Extract | Home {% endblock %}
+
+{% block body %}
+
+{% block header %}
+<link rel="stylesheet" href="{{ path('index_route') }}stylesheets/regles.css">
+{% endblock %}
+<div class="main">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 embed-responsive" id="intro">
+                <video autoplay loop muted>
+                    <source src="video/animation.mp4" type="video/mp4">
+                </video>
+                <div class="col-12 nav">
+                    <a href="#" class="retour"> < Retour</a>
+                    <ul>
+                        <a name="" id="" style="margin-right:20px;" class="btn btn-success" href="{{ path('home_route') }}"
+                        role="button">Accueil</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+
+
+
+
+                    <a name="" id="" style="margin-right:20px;" class="btn btn-danger" href="{{ path('back') }}"
+                        role="button">Administration</a>
+
+
+                    {% endif %}
+                    <a href="#">
+                        <li> {{ app.user.username }}</li>
+                    </a>
+                    <li class="sepa">|</li>
+
+                    <a href="{{ path('security_logout') }}">
+                        <li>Déconnexion</li>
+                    </a>
+                </ul>
+                </div>
+                <div class="regles col-12 text-center text-white">
+                   <div class="video">
+                       <div class="containv">
+                            <iframe src="https://www.youtube.com/embed/hIO6TJ4sT44" frameborder="0"></iframe>
+                       </div>
+                   </div>
+                   <div class="texte">
+                    <div class="containt">
+                            <p>Extract : Mission 312 est un jeu audacieux et captivant. Votre but, en tant qu'agent secret, est de dérober le plus d'informations secrètes avant votre adversaire. Faites des échanges de données au sein même de la matrice et revendez autant de données que possible avant la fin de la partie. <br/> 
+                                Apprenez-en plus sur les règles d'Extract : Mission 312, en téléchargeant notre <a href="#">PDF</a></p>
+                    </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
