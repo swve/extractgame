@@ -15,7 +15,7 @@ final class Version20181107142045 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE partie CHANGE terrain terrain JSON NOT NULL COMMENT \'(DC2Type:json_array)\', CHANGE pioche pioche JSON NOT NULL COMMENT \'(DC2Type:json_array)\', CHANGE main_j1 main_j1 JSON NOT NULL COMMENT \'(DC2Type:json_array)\', CHANGE main_j2 main_j2 JSON NOT NULL COMMENT \'(DC2Type:json_array)\', CHANGE chameaux_j1 chameaux_j1 JSON NOT NULL COMMENT \'(DC2Type:json_array)\', CHANGE chameaux_j2 chameaux_j2 JSON NOT NULL COMMENT \'(DC2Type:json_array)\', CHANGE jetons_j1 jetons_j1 JSON NOT NULL COMMENT \'(DC2Type:json_array)\', CHANGE jetons_j2 jetons_j2 JSON NOT NULL COMMENT \'(DC2Type:json_array)\', CHANGE jetons_terrain jetons_terrain JSON NOT NULL COMMENT \'(DC2Type:json_array)\'');
+        $this->addSql('ALTER TABLE partie CHANGE terrain terrain LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', CHANGE pioche pioche LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', CHANGE main_j1 main_j1 LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', CHANGE main_j2 main_j2 LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', CHANGE chameaux_j1 chameaux_j1 LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', CHANGE chameaux_j2 chameaux_j2 LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', CHANGE jetons_j1 jetons_j1 LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', CHANGE jetons_j2 jetons_j2 LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\', CHANGE jetons_terrain jetons_terrain LONGTEXT NOT NULL COMMENT \'(DC2Type:array)\'');
     }
 
     public function down(Schema $schema) : void

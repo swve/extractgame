@@ -76,7 +76,7 @@ class SecurityController extends AbstractController
                     $this->renderView(
                         // templates/emails/registration.html.twig
                         'emails/registration.html.twig',
-                        array('username' => $username_user, 'plain_pass' => $plain_password)
+                        array('username' => $username_user)
                     ),
                     'text/html'
                 );
@@ -147,7 +147,7 @@ class SecurityController extends AbstractController
                                         $this->renderView(
                                             // templates/emails/registration.html.twig
                                             'emails/reset.html.twig',
-                                            array('username' => $username_user, 'plain_pass' => $plain_password)
+                                            array('username' => $username_user)
                                         ),
                                         'text/html'
                                     );
